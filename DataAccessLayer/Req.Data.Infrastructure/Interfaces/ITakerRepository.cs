@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Infrastructure.Interfaces
 {
-    public interface ITakerDAL
+    public interface ITakerRepository
     {
         void CreateTaker(Taker taker);
         void EditTaker(Taker taker);

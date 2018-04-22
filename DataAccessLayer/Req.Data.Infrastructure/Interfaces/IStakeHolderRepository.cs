@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Infrastructure.Interfaces
 {
-    public interface IStakeHolderDAL
+    public interface IStakeHolderRepository
     {
         void Create(StakeHolder stakeHolder);
         IQueryable<StakeHolder> GetStakeHolders();

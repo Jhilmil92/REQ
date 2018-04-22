@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Infrastructure.Classes
 {
-    public class StakeHolderDAL:IStakeHolderDAL
+    public class StakeHolderRepository:IStakeHolderRepository
     {
         private readonly IReqDataSource _dataContext;
-        public StakeHolderDAL(IReqDataSource dataContext)
+        public StakeHolderRepository(IReqDataSource dataContext)
         {
             _dataContext = dataContext;
         }

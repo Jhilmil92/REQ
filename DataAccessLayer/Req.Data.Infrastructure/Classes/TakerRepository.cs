@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Infrastructure.Classes
 {
-    public class TakerDAL:ITakerDAL
+    public class TakerRepository:ITakerRepository
     {
         private readonly IReqDataSource _dataContext;
 
-        public TakerDAL(IReqDataSource dataContext)
+        public TakerRepository(IReqDataSource dataContext)
         {
             _dataContext = dataContext;
         }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Infrastructure.Interfaces
 {
-    public interface IJobDAL
+    public interface IJobRepository
     {
         void CreateJob(Job job,Taker taker);
         void EditJob(Job job);

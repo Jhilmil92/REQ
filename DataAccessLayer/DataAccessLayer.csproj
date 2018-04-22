@@ -49,13 +49,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Req.Data.Infrastructure\Classes\DataContext.cs" />
-    <Compile Include="Req.Data.Infrastructure\Classes\JobDAL.cs" />
-    <Compile Include="Req.Data.Infrastructure\Classes\StakeHolderDAL.cs" />
-    <Compile Include="Req.Data.Infrastructure\Classes\TakerDAL.cs" />
-    <Compile Include="Req.Data.Infrastructure\Interfaces\IJobDAL.cs" />
+    <Compile Include="Req.Data.Infrastructure\Classes\JobRepository.cs" />
+    <Compile Include="Req.Data.Infrastructure\Classes\StakeHolderRepository.cs" />
+    <Compile Include="Req.Data.Infrastructure\Classes\TakerRepository.cs" />
+    <Compile Include="Req.Data.Infrastructure\Interfaces\IJobRepository.cs" />
     <Compile Include="Req.Data.Infrastructure\Interfaces\IReqDataSource.cs" />
-    <Compile Include="Req.Data.Infrastructure\Interfaces\IStakeHolderDAL.cs" />
-    <Compile Include="Req.Data.Infrastructure\Interfaces\ITakerDAL.cs" />
+    <Compile Include="Req.Data.Infrastructure\Interfaces\IStakeHolderRepository.cs" />
+    <Compile Include="Req.Data.Infrastructure\Interfaces\ITakerRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

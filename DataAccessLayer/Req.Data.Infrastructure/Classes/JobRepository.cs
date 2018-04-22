@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 namespace DataAccessLayer.Infrastructure.Classes
 {
 
-    public class JobDAL:IJobDAL
+    public class JobRepository:IJobRepository
     {
         private readonly IReqDataSource _dataContext;
 
-        public JobDAL(IReqDataSource dataContext)
+        public JobRepository(IReqDataSource dataContext)
         {
             _dataContext = dataContext;
         }
