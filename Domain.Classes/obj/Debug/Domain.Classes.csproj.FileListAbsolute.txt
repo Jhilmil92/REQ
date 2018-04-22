@@ -1,0 +1,7 @@
+e:\visual studio 2013\Projects\RequestEnhancementQueueSystem\Domain.Classes\obj\Debug\Domain.Classes.csprojResolveAssemblyReference.cache
+e:\visual studio 2013\Projects\RequestEnhancementQueueSystem\Domain.Classes\bin\Debug\Domain.Classes.dll
+e:\visual studio 2013\Projects\RequestEnhancementQueueSystem\Domain.Classes\bin\Debug\Domain.Classes.pdb
+e:\visual studio 2013\Projects\RequestEnhancementQueueSystem\Domain.Classes\bin\Debug\Req.Enums.dll
+e:\visual studio 2013\Projects\RequestEnhancementQueueSystem\Domain.Classes\bin\Debug\Req.Enums.pdb
+e:\visual studio 2013\Projects\RequestEnhancementQueueSystem\Domain.Classes\obj\Debug\Domain.Classes.dll
+e:\visual studio 2013\Projects\RequestEnhancementQueueSystem\Domain.Classes\obj\Debug\Domain.Classes.pdb

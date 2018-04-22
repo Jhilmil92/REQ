@@ -1,0 +1,4 @@
+e:\visual studio 2013\Projects\RequestEnhancementQueueSystem\BusinessLogicLayer\bin\Debug\BusinessLogicLayer.dll
+e:\visual studio 2013\Projects\RequestEnhancementQueueSystem\BusinessLogicLayer\bin\Debug\BusinessLogicLayer.pdb
+e:\visual studio 2013\Projects\RequestEnhancementQueueSystem\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.dll
+e:\visual studio 2013\Projects\RequestEnhancementQueueSystem\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.pdb
