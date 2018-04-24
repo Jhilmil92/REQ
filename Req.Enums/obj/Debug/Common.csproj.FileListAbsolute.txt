@@ -2,3 +2,7 @@ e:\visual studio 2013\Projects\RequestEnhancementQueueSystem\Req.Enums\bin\Debug
 e:\visual studio 2013\Projects\RequestEnhancementQueueSystem\Req.Enums\bin\Debug\Req.Enums.pdb
 e:\visual studio 2013\Projects\RequestEnhancementQueueSystem\Req.Enums\obj\Debug\Req.Enums.dll
 e:\visual studio 2013\Projects\RequestEnhancementQueueSystem\Req.Enums\obj\Debug\Req.Enums.pdb
+E:\Source\Repos\REQ\Req.Enums\bin\Debug\Req.Enums.dll
+E:\Source\Repos\REQ\Req.Enums\bin\Debug\Req.Enums.pdb
+E:\Source\Repos\REQ\Req.Enums\obj\Debug\Req.Enums.dll
+E:\Source\Repos\REQ\Req.Enums\obj\Debug\Req.Enums.pdb

@@ -5,3 +5,10 @@ e:\visual studio 2013\Projects\RequestEnhancementQueueSystem\Domain.Classes\bin\
 e:\visual studio 2013\Projects\RequestEnhancementQueueSystem\Domain.Classes\bin\Debug\Req.Enums.pdb
 e:\visual studio 2013\Projects\RequestEnhancementQueueSystem\Domain.Classes\obj\Debug\Domain.Classes.dll
 e:\visual studio 2013\Projects\RequestEnhancementQueueSystem\Domain.Classes\obj\Debug\Domain.Classes.pdb
+E:\Source\Repos\REQ\Domain.Classes\bin\Debug\Domain.Classes.dll
+E:\Source\Repos\REQ\Domain.Classes\bin\Debug\Domain.Classes.pdb
+E:\Source\Repos\REQ\Domain.Classes\bin\Debug\Req.Enums.dll
+E:\Source\Repos\REQ\Domain.Classes\bin\Debug\Req.Enums.pdb
+E:\Source\Repos\REQ\Domain.Classes\obj\Debug\Domain.Classes.csprojResolveAssemblyReference.cache
+E:\Source\Repos\REQ\Domain.Classes\obj\Debug\Domain.Classes.dll
+E:\Source\Repos\REQ\Domain.Classes\obj\Debug\Domain.Classes.pdb

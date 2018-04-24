@@ -16,8 +16,6 @@ namespace DataAccessLayer.Infrastructure.Classes
 
         }
         public DbSet<Job> Jobs { get; set; }
-        public DbSet<JobType> JobTypes { get; set; }
-        public DbSet<Priority> Priorities { get; set; }
         public DbSet<StakeHolder> StakeHolders { get; set; }
         public DbSet<Taker> Takers { get; set; }
 
@@ -30,22 +28,6 @@ namespace DataAccessLayer.Infrastructure.Classes
             }
             set 
             {
-            }
-        }
-
-        IQueryable<JobType> IReqDataSource.JobTypes
-        {
-            get
-            {
-                return JobTypes;
-            }
-        }
-
-        IQueryable<Priority> IReqDataSource.Priorities
-        {
-            get
-            {
-                return Priorities;
             }
         }
 

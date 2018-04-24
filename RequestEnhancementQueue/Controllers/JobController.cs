@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BusinessLogicLayer.BLL.Interfaces;
+using Domain.Classes.Req.Domain.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +10,15 @@ namespace RequestEnhancementQueue.Controllers
 {
     public class JobController : Controller
     {
-        // GET: Job
-        public ActionResult ReportJob()
+        private readonly IJobBLL _jobBLL;
+        public JobController(IJobBLL jobBLL)
         {
-            return View();
+            _jobBLL = jobBLL;
         }
+        // GET: Job
+        public ActionResult CreateJob(ReportRequestViewModel reportRequest)
+        {
+            _jobBLL.CreateJob(reportRequest);
+        }   
     }
 }

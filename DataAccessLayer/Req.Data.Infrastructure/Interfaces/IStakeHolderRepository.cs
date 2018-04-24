@@ -11,7 +11,8 @@ namespace DataAccessLayer.Infrastructure.Interfaces
     {
         void Create(StakeHolder stakeHolder);
         IQueryable<StakeHolder> GetStakeHolders();
-        void Edit(StakeHolder stakeHolder);
-        void Delete (StakeHolder stakeHolder);
+        StakeHolder GetStakeHolderById(int stakeHolderID);
+        void Update(StakeHolder stakeHolder);
+        void Delete (int stakeHolderId);
     }
 }

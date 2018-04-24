@@ -2,6 +2,7 @@
 using Domain.Classes;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,7 +18,7 @@ namespace DataAccessLayer.Infrastructure.Classes
             _dataContext = dataContext;
         }
 
-        public void CreateTaker(Domain.Classes.Taker taker)
+        public void Create(Domain.Classes.Taker taker)
         {
             var newTaker = new Taker
             {
@@ -25,11 +26,12 @@ namespace DataAccessLayer.Infrastructure.Classes
                 TakerName = taker.TakerName
             };
             _dataContext.Takers = newTaker as IQueryable<Taker>;
+            _dataContext.Save();
         }
 
-        public void EditTaker(Domain.Classes.Taker taker)
+        public void Update(Domain.Classes.Taker taker)
         {
-            
+            this._dataContext.Save();
         }
 
         public Domain.Classes.Taker GetTakerById(int takerID)
@@ -43,9 +45,12 @@ namespace DataAccessLayer.Infrastructure.Classes
             return _dataContext.Takers;
         }
 
-        public void DeleteTaker(int takerId)
+        public void Delete(int takerId)
         {
-
+            var taker = new Taker { TakerId = takerId};
+            var dataContext = _dataContext as DataContext;
+            dataContext.Entry(taker).State = EntityState.Deleted;
+            _dataContext.Save();
         }
     }
 }

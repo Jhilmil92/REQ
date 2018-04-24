@@ -206,12 +206,12 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\ReportRequest\ProcessRequest.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Job\" />
     <Folder Include="Views\ReportIssue\" />
-    <Folder Include="Views\ReportRequest\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -221,9 +221,17 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BusinessLogicLayer\BusinessLogicLayer.csproj">
+      <Project>{b8a67505-6607-4c32-a021-49476cd44ab0}</Project>
+      <Name>BusinessLogicLayer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Domain.Classes\Domain.Classes.csproj">
       <Project>{930008a8-b297-406f-8cec-a86e8dcdcb7a}</Project>
       <Name>Domain.Classes</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Req.Enums\Common.csproj">
+      <Project>{4106437c-3e7e-4181-ad32-245c56c19f57}</Project>
+      <Name>Common</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

@@ -18,7 +18,7 @@ namespace RequestEnhancementQueue.Controllers
         [HttpPost]
         public ActionResult ProcessRequest(ReportRequestViewModel reportRequest)
         {
-            
+            return RedirectToAction("CreateJob","JobController",reportRequest);
         }
     }
 }

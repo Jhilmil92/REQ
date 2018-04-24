@@ -10,7 +10,7 @@ namespace Domain.Classes
     {
         public int TakerId { get; set; }
         public string TakerName { get; set; }
-        public ICollection<Job> Jobs { get; set; }
+        public virtual ICollection<Job> Jobs { get; set; }
 
     }
 }

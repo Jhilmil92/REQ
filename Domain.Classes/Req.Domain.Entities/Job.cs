@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Req.Enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace Domain.Classes
     {
         public int JobId { get; set; }
         public string JobDescription { get; set; }
-        public JobType JobType { get; set; }
+        public JobCategory JobType { get; set; }
 
         [DataType(DataType.Date,ErrorMessage = "Add a valid Date")]
         public DateTime CreatedOn { get; set; }
@@ -21,8 +22,7 @@ namespace Domain.Classes
         [DataType(DataType.Time, ErrorMessage = "Enter a valid Time")]
         public DateTime ActualTimeTaken { get; set; }
         public string AssignedTo { get; set; }
-        public Priority JobPriority { get; set; }
+        public PriorityLevel JobPriority { get; set; }
         
-
     }
 }

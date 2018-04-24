@@ -2,6 +2,7 @@
 using Domain.Classes;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,14 +31,27 @@ namespace DataAccessLayer.Infrastructure.Classes
             return _dataContext.StakeHolders;
         }
 
-        public void Edit(Domain.Classes.StakeHolder stakeHolder)
+        public StakeHolder GetStakeHolderById(int stakeHolderID)
         {
-
+            var stakeHolder = _dataContext.StakeHolders.SingleOrDefault(d=>d.StakeHolderId == stakeHolderID);
+            return stakeHolder;
         }
 
-        public void Delete(Domain.Classes.StakeHolder stakeHolder)
+        public void Update(Domain.Classes.StakeHolder stakeHolder)
         {
-
+            this._dataContext.Save();
         }
+
+        public void Delete(int stakeHolderId)
+        {
+            var stakeHolder = new StakeHolder
+            {
+                StakeHolderId = stakeHolderId
+            };
+            var dataContext = _dataContext as DataContext;
+            dataContext.Entry(stakeHolder).State = EntityState.Deleted;
+            _dataContext.Save();
+        }
+
     }
 }
