@@ -44,6 +44,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Req.Domain.Entities\StakeHolder.cs" />
     <Compile Include="Req.Domain.Entities\Taker.cs" />
+    <Compile Include="Req.Domain.ViewModels\LoginViewModel.cs" />
+    <Compile Include="Req.Domain.ViewModels\RegistrationViewModel.cs" />
     <Compile Include="Req.Domain.ViewModels\ReportRequestViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

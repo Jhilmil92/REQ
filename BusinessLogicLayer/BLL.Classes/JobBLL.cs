@@ -27,9 +27,9 @@ namespace BusinessLogicLayer
                 CreatedOn = DateTime.Now.Date,
                 //ReportedBy = assign stakeholder information
                 //Stakeholder id needs to go in here (stakeholder id association).
-                JobPriority = requestViewModel.JobType
+                JobPriority = requestViewModel.JobPriority
             };
-            _jobRepository.Create(job,taker);
+            //_jobRepository.Create(job,taker);
         }
 
         public IQueryable<Domain.Classes.Job> GetJobs()

@@ -1,4 +1,5 @@
 ﻿using Domain.Classes;
+using Domain.Classes.Req.Domain.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +10,11 @@ namespace BusinessLogicLayer.BLL.Interfaces
 {
     public interface IStakeHolderBLL
     {
-        void CreateStakeHolder(StakeHolder stakeHolder);
+        void CreateStakeHolder(RegistrationViewModel registrationViewModel);
         IQueryable<StakeHolder> GetStakeHolders();
         StakeHolder GetStakeHolderById(int stakeHolderId);
         void UpdateStakeHolder(StakeHolder stakeHolder);
         void DeleteStakeHolder(int stakeHolderID);
+        StakeHolder ValidateLoginCredentials(LoginViewModel loginViewModel);
     }
 }

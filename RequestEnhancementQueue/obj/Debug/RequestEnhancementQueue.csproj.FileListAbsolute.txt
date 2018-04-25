@@ -112,3 +112,7 @@ E:\Source\Repos\REQ\RequestEnhancementQueue\bin\Microsoft.Owin.Security.Twitter.
 E:\Source\Repos\REQ\RequestEnhancementQueue\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 E:\Source\Repos\REQ\RequestEnhancementQueue\bin\Req.Enums.pdb
 E:\Source\Repos\REQ\RequestEnhancementQueue\obj\Debug\RequestEnhancementQueue.pdb
+E:\Source\Repos\REQ\RequestEnhancementQueue\bin\BusinessLogicLayer.dll
+E:\Source\Repos\REQ\RequestEnhancementQueue\bin\DataAccessLayer.dll
+E:\Source\Repos\REQ\RequestEnhancementQueue\bin\BusinessLogicLayer.pdb
+E:\Source\Repos\REQ\RequestEnhancementQueue\bin\DataAccessLayer.pdb

@@ -11,14 +11,18 @@ namespace RequestEnhancementQueue.Controllers
     public class JobController : Controller
     {
         private readonly IJobBLL _jobBLL;
+        public JobController()
+        {
+
+        }
         public JobController(IJobBLL jobBLL)
         {
             _jobBLL = jobBLL;
         }
         // GET: Job
-        public ActionResult CreateJob(ReportRequestViewModel reportRequest)
-        {
-            _jobBLL.CreateJob(reportRequest);
-        }   
+        //public ActionResult CreateJob(ReportRequestViewModel reportRequest)
+        //{
+        //    //_jobBLL.CreateJob(reportRequest);
+        //}   
     }
 }

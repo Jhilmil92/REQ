@@ -56,6 +56,10 @@
       <Project>{930008a8-b297-406f-8cec-a86e8dcdcb7a}</Project>
       <Name>Domain.Classes</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Req.Enums\Common.csproj">
+      <Project>{4106437c-3e7e-4181-ad32-245c56c19f57}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

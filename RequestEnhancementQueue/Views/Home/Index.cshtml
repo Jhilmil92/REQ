@@ -1,31 +1,31 @@
-﻿@{
-    ViewBag.Title = "Request Enhancements jQueue System";
+﻿
+@{
+    ViewBag.Title = "Home-Request Enhancement Queue System";
 }
-<h1>Request Enhancement Queue System</h1>
-<br/>
 
-<table class="linkstable" height="50">
-    <tr>
-        <td>
-            <div class="reportProblem">
-                @Html.ActionLink("Report a Problem", "ProcessRequest", "ReportRequest")
-            </div>
-        </td>
-    </tr
-    <tr>
-        <td>
-            <div class="login">
-                @Html.ActionLink("Login", "index", "Login")
-            </div>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <div class="register">
-                @Html.ActionLink("Register", "index", "Login")
-            </div>
-        </td>
-    </tr>
-</table>
+<h2>Welcome!</h2>
 
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4">
+            @Html.ActionLink("New User? Register", "Register", "Login")
+        </div>
+        <br/>
+        <div class="col-lg-4">
+            @Html.ActionLink("Already Registered? Login Here","Login","Login")
+        </div>
+    </div>
+</div>
 
+<div>
+
+</div>
+
+<script>
+    $(".row").css("foreground-color", "golden")
+</script>
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    
+}

@@ -1,0 +1,25 @@
+﻿@model Domain.Classes.StakeHolder
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Hi @Model.StakeHolderOrganization, Welcome to the Request Enhancement Queue System!</h2>
+
+<br/>
+<br/>
+
+<div>
+    <h4>
+        What would you like to do today?
+    </h4>
+</div>
+ =
+<div>
+    @Html.ActionLink("Report a Request", "ProcessRequest", "ReportRequest", new RouteValueDictionary(Model))
+</div>
+
+<div>
+
+</div>
+

@@ -1,6 +1,7 @@
 ﻿using BusinessLogicLayer.BLL.Interfaces;
 using DataAccessLayer.Infrastructure.Interfaces;
 using Domain.Classes;
+using Domain.Classes.Req.Domain.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,8 +18,14 @@ namespace BusinessLogicLayer.BLL.Classes
             _stakeHolderRepository = stakeHolderRepository;
         }
 
-        public void CreateStakeHolder(StakeHolder stakeHolder)
+        public void CreateStakeHolder(RegistrationViewModel registrationViewModel)
         {
+            var stakeHolder = new StakeHolder
+            {
+                StakeHolderOrganization = registrationViewModel.StakeHolderOrganization,
+                UserName = registrationViewModel.StakeHolderUserName,
+                Password = registrationViewModel.StakeHolderPassword
+            };
             _stakeHolderRepository.Create(stakeHolder);
         }
 
@@ -41,6 +48,31 @@ namespace BusinessLogicLayer.BLL.Classes
         public void DeleteStakeHolder(int stakeHolderID)
         {
             _stakeHolderRepository.Delete(stakeHolderID);
+        }
+
+        public StakeHolder ValidateLoginCredentials(LoginViewModel loginViewModel)
+        {
+            //fetch login credentials from the database and check it against the view model.
+            //Return bool status accordingly.
+            bool isValid = false;
+            StakeHolder stakeHolder = null;
+            IQueryable<StakeHolder> stakeHolders = _stakeHolderRepository.GetStakeHolders();
+            if(stakeHolders != null && stakeHolders.Count() != 0)
+            {
+                stakeHolder = stakeHolders.SingleOrDefault((d=>(d.UserName == loginViewModel.UserName && d.Password == loginViewModel.Password))) ;
+                if(stakeHolder != null)
+                {
+                    isValid = true;
+                }
+            }
+            if (isValid)
+            {
+                return stakeHolder;
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }
