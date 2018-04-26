@@ -14,12 +14,12 @@
         What would you like to do today?
     </h4>
 </div>
- =
+
 <div>
-    @Html.ActionLink("Report a Request", "ProcessRequest", "ReportRequest", new RouteValueDictionary(Model))
+    @Html.ActionLink("Report a Request", "ProcessRequest", "ReportRequest", new { stakeHolderId = Model.StakeHolderId})
 </div>
 
 <div>
-
+    @*Put link to view requests already reported*@
 </div>
 

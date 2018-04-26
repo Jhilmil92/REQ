@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Req.Common.Datastructure\PriorityQueue.cs" />
     <Compile Include="Req.Common.Enums\JobCategory.cs" />
     <Compile Include="Req.Common.Enums\PriorityLevel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

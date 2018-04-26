@@ -20,9 +20,10 @@ namespace RequestEnhancementQueue.Controllers
             _jobBLL = jobBLL;
         }
         // GET: Job
-        //public ActionResult CreateJob(ReportRequestViewModel reportRequest)
-        //{
-        //    //_jobBLL.CreateJob(reportRequest);
-        //}   
+        public ActionResult CreateJob(ReportRequestViewModel reportRequest)
+        {
+            _jobBLL.CreateJob(reportRequest);
+        } 
+          
     }
 }

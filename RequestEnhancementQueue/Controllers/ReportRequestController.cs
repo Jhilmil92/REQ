@@ -22,15 +22,21 @@ namespace RequestEnhancementQueue.Controllers
         }
 
         [HttpGet]
-        public ActionResult ProcessRequest(StakeHolder stakeHolder)
+        public ActionResult ProcessRequest(int stakeHolderId)
         {
-            return View();
+            var model = new ReportRequestViewModel();
+            model.StakeHolderId = stakeHolderId;
+            return View(model);
         }
 
         [HttpPost]
         public ActionResult ProcessRequest(ReportRequestViewModel reportRequest)
         {
-            return RedirectToAction("CreateJob","JobController",new RouteValueDictionary(reportRequest));
+            if (ModelState.IsValid)
+            {
+                return RedirectToAction("CreateJob", "JobController", new RouteValueDictionary(reportRequest));
+            }
+            return View(reportRequest);
         }
     }
 }

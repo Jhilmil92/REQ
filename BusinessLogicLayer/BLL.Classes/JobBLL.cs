@@ -13,22 +13,26 @@ namespace BusinessLogicLayer
     public class JobBLL:IJobBLL
     {
         private readonly IJobRepository _jobRepository;
-        public JobBLL(IJobRepository jobRepository)
+        private readonly IStakeHolderRepository _stakeHolderRepository;
+        private readonly ITakerRepository _takerRepository;
+        public JobBLL(IJobRepository jobRepository, IStakeHolderRepository stakeHolderRepository)
         {
             _jobRepository = jobRepository;
+            _stakeHolderRepository = stakeHolderRepository;
         }
 
         public void CreateJob(ReportRequestViewModel requestViewModel)
         {
+            var stakeHolder = _stakeHolderRepository.GetStakeHolderById(requestViewModel.StakeHolderId);
             var job = new Job 
             { 
                 JobDescription = requestViewModel.JobDescription,
                 JobType = requestViewModel.JobType,
                 CreatedOn = DateTime.Now.Date,
-                //ReportedBy = assign stakeholder information
-                //Stakeholder id needs to go in here (stakeholder id association).
+                ReportedBy = stakeHolder,
                 JobPriority = requestViewModel.JobPriority
             };
+            //Push job to the priority Queue
             //_jobRepository.Create(job,taker);
         }
 
@@ -52,6 +56,11 @@ namespace BusinessLogicLayer
         public void DeleteJob(int jobID)
         {
             _jobRepository.Delete(jobID);
+        }
+
+        public void PushJobToQueue(Job job)
+        {
+            throw new NotImplementedException();
         }
     }
 }
