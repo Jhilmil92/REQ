@@ -15,10 +15,11 @@ namespace BusinessLogicLayer
         private readonly IJobRepository _jobRepository;
         private readonly IStakeHolderRepository _stakeHolderRepository;
         private readonly ITakerRepository _takerRepository;
-        public JobBLL(IJobRepository jobRepository, IStakeHolderRepository stakeHolderRepository)
+        public JobBLL(IJobRepository jobRepository, IStakeHolderRepository stakeHolderRepository,ITakerRepository takerRepository)
         {
             _jobRepository = jobRepository;
             _stakeHolderRepository = stakeHolderRepository;
+            _takerRepository = takerRepository;
         }
 
         public void CreateJob(ReportRequestViewModel requestViewModel)
@@ -61,6 +62,21 @@ namespace BusinessLogicLayer
         public void PushJobToQueue(Job job)
         {
             throw new NotImplementedException();
+        }
+
+
+        public ICollection<Job> GetJobsByStakeHolderId(int stakeHolderId)
+        {
+            var jobs = _jobRepository.GetJobs();
+            ICollection<Job> jobsByStakeHolderId = null;
+            foreach(var job in jobs)
+            {
+                if(job.ReportedBy.StakeHolderId == stakeHolderId)
+                {
+                    jobsByStakeHolderId.Add(job);
+                }
+            }
+            return jobsByStakeHolderId;
         }
     }
 }

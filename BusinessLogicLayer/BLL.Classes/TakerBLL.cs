@@ -1,5 +1,6 @@
 ﻿using BusinessLogicLayer.BLL.Interfaces;
 using DataAccessLayer.Infrastructure.Interfaces;
+using Domain.Classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,6 +40,32 @@ namespace BusinessLogicLayer.BLL.Classes
         public void DeleteTaker(int takerId)
         {
             _takerRepository.Delete(takerId);
+        }
+
+
+        public Domain.Classes.Taker ValidateLoginCredentials(Domain.Classes.Req.Domain.ViewModels.LoginViewModel loginViewModel)
+        {
+            //fetch login credentials from the database and check it against the view model.
+            //Return bool status accordingly.
+            bool isValid = false;
+            Taker taker = null;
+            IQueryable<Taker> takers = _takerRepository.GetTakers();
+            if (takers != null && takers.Count() != 0)
+            {
+                taker = takers.SingleOrDefault((d => (d.UserName == loginViewModel.UserName && d.Password == loginViewModel.Password)));
+                if (taker!= null)
+                {
+                    isValid = true;
+                }
+            }
+            if (isValid)
+            {
+                return taker;
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }

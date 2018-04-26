@@ -1,0 +1,24 @@
+﻿@model Domain.Classes.Taker
+
+@{
+    ViewBag.Title = "TakerInformation";
+}
+
+<h2>Hi @Model.TakerName, Welcome to the Request Enhancement Queue System!</h2>
+
+<div class="informationList">
+    <div>
+        @Html.ActionLink("View Your Jobs", "ViewJobs", "Job", new { takerId = Model.TakerId })
+    </div>
+    <br/>
+    <div>
+        @Html.ActionLink("Update Job", "UpdateJob", "Job", new { takerId = Model.TakerId })
+    </div>
+    <br/>
+    <div>
+        @Html.ActionLink("Log out","Logout","Login")
+    </div>
+</div>
+
+
+

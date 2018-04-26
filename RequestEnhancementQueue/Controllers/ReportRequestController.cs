@@ -1,4 +1,5 @@
-﻿using Domain.Classes;
+﻿using BusinessLogicLayer.BLL.Interfaces;
+using Domain.Classes;
 using Domain.Classes.Req.Domain.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -11,9 +12,15 @@ namespace RequestEnhancementQueue.Controllers
 {
     public class ReportRequestController : Controller
     {
+        private readonly IJobBLL _jobBLL;
+
         public ReportRequestController()
         {
 
+        }
+        public ReportRequestController(IJobBLL jobBLL)
+        {
+            _jobBLL = jobBLL;
         }
         // GET: ReportIssue
         public ActionResult Index(StakeHolder stakeHolder)
@@ -30,6 +37,7 @@ namespace RequestEnhancementQueue.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult ProcessRequest(ReportRequestViewModel reportRequest)
         {
             if (ModelState.IsValid)
@@ -37,6 +45,12 @@ namespace RequestEnhancementQueue.Controllers
                 return RedirectToAction("CreateJob", "JobController", new RouteValueDictionary(reportRequest));
             }
             return View(reportRequest);
+        }
+
+        public ActionResult ViewReportedRequests(int stakeHolderId)
+        {
+            var reportedRequests = _jobBLL.GetJobsByStakeHolderId(stakeHolderId);
+            return View(reportedRequests);
         }
     }
 }

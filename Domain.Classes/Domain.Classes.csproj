@@ -75,6 +75,7 @@
     <Compile Include="Req.Domain.ViewModels\LoginViewModel.cs" />
     <Compile Include="Req.Domain.ViewModels\RegistrationViewModel.cs" />
     <Compile Include="Req.Domain.ViewModels\ReportRequestViewModel.cs" />
+    <Compile Include="Req.Domain.ViewModels\UpdateJobViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Req.Enums\Common.csproj">

@@ -16,10 +16,15 @@
 </div>
 
 <div>
-    @Html.ActionLink("Report a Request", "ProcessRequest", "ReportRequest", new { stakeHolderId = Model.StakeHolderId})
+    @Html.ActionLink("Report a Request", "ProcessRequest", "ReportRequest", new { stakeHolderId = Model.StakeHolderId},null)
+</div>
+<br/>
+<div>
+    @Html.ActionLink("View Reported Requests","ViewReportedRequests","ReportRequest", new { stakeHolderId = Model.StakeHolderId},null)
+</div>
+<br/>
+<div>
+    @Html.ActionLink("Log out","Logout","Login")
 </div>
 
-<div>
-    @*Put link to view requests already reported*@
-</div>
 

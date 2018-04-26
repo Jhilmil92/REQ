@@ -20,10 +20,26 @@ namespace RequestEnhancementQueue.Controllers
             _jobBLL = jobBLL;
         }
         // GET: Job
-        public ActionResult CreateJob(ReportRequestViewModel reportRequest)
+        //public ActionResult CreateJob(ReportRequestViewModel reportRequest)
+        //{
+        //    _jobBLL.CreateJob(reportRequest);
+        //} 
+
+        public ActionResult ViewJobs(int takerId)
         {
-            _jobBLL.CreateJob(reportRequest);
-        } 
+            var jobsByTakerId = _jobBLL.GetJobById(takerId);
+            return View(jobsByTakerId);
+        }
+
+        public ActionResult UpdateJobs(int takerId)
+        {
+            var jobsByTakerId = _jobBLL.GetJobById(takerId);
+            return View(jobsByTakerId);
+        }
           
+        public ActionResult EditJob(UpdateJobViewModel viewModel)
+        {
+
+        }
     }
 }

@@ -3,17 +3,25 @@
     ViewBag.Title = "Home-Request Enhancement Queue System";
 }
 
-<h2>Welcome!</h2>
-
+<h2 class="headingOne">Welcome to the Alpha Request Queue Management System!</h2>
+<br/>
 <div class="container">
     <div class="row">
-        <div class="col-lg-4">
-            @Html.ActionLink("New User? Register", "Register", "Login")
+        <div class="col-lg-8 rowOne">
+            @Html.ActionLink("New Stakeholder? Register", "Register", "Login")
         </div>
         <br/>
-        <div class="col-lg-4">
-            @Html.ActionLink("Already Registered? Login Here","Login","Login")
+        <br/>
+        <div class="col-lg-8 rowTwo">
+            @Html.ActionLink("Already Registered Stakeholder? Login Here","Login","Login")
         </div>
+        <br/>
+        <br/>
+        <div class = "col-lg-8 rowThree">
+            @Html.ActionLink("Taker? Login Here","Login","Login")
+        </div>
+        <br/>
+        <br/>
     </div>
 </div>
 
@@ -22,7 +30,20 @@
 </div>
 
 <script>
-    $(".row").css("foreground-color", "golden")
+    $(".rowOne,.rowTwo,.rowThree").css(
+        {
+            'font-family': "Sans-serif,Verdana",
+            'font-size': '20px',
+            'height': '10px',
+            //'color' : ''
+
+        });
+    $(".headingOne").css(
+        {
+            'font-family': 'Trebuchet MS, Helvetica, sans-serif',
+            'color': 'LawnGreen'
+        });
+
 </script>
 
 @section scripts{

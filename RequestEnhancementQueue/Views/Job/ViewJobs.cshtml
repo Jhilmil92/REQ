@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Domain.Classes.Job>
+
+@{
+    ViewBag.Title = "ViewJobs";
+}
+
+<h2>ViewJobs</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.JobDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.JobType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedOn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReportedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EstimatedTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ActualTimeTaken)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AssignedTo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.JobPriority)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.JobDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.JobType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedOn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReportedBy.StakeHolderOrganization)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EstimatedTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ActualTimeTaken)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AssignedTo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.JobPriority)
+        </td>
+    </tr>
+}
+
+</table>

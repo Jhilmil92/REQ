@@ -11,6 +11,7 @@ namespace Domain.Classes
         public int TakerId { get; set; }
         public string TakerName { get; set; }
         public virtual ICollection<Job> Jobs { get; set; }
-
+        public string UserName { get; set; }
+        public string Password { get; set; }
     }
 }

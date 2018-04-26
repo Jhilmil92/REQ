@@ -15,3 +15,13 @@ E:\Source\Repos\REQ\BusinessLogicLayer\bin\Debug\DataAccessLayer.pdb
 E:\Source\Repos\REQ\BusinessLogicLayer\bin\Debug\Domain.Classes.pdb
 E:\Source\Repos\REQ\BusinessLogicLayer\bin\Debug\EntityFramework.xml
 E:\Source\Repos\REQ\BusinessLogicLayer\bin\Debug\Req.Enums.pdb
+E:\Source\Repos\REQ\BusinessLogicLayer\bin\Debug\System.Web.Mvc.dll
+E:\Source\Repos\REQ\BusinessLogicLayer\bin\Debug\System.Web.WebPages.dll
+E:\Source\Repos\REQ\BusinessLogicLayer\bin\Debug\System.Web.WebPages.Razor.dll
+E:\Source\Repos\REQ\BusinessLogicLayer\bin\Debug\System.Web.Razor.dll
+E:\Source\Repos\REQ\BusinessLogicLayer\bin\Debug\System.Web.WebPages.Deployment.dll
+E:\Source\Repos\REQ\BusinessLogicLayer\bin\Debug\System.Web.Mvc.xml
+E:\Source\Repos\REQ\BusinessLogicLayer\bin\Debug\System.Web.WebPages.xml
+E:\Source\Repos\REQ\BusinessLogicLayer\bin\Debug\System.Web.WebPages.Razor.xml
+E:\Source\Repos\REQ\BusinessLogicLayer\bin\Debug\System.Web.Razor.xml
+E:\Source\Repos\REQ\BusinessLogicLayer\bin\Debug\System.Web.WebPages.Deployment.xml

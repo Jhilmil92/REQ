@@ -16,5 +16,6 @@ namespace BusinessLogicLayer.BLL.Interfaces
         void UpdateJob(Job job);
         void DeleteJob(int jobID);
         void PushJobToQueue(Job job);
+        ICollection<Job> GetJobsByStakeHolderId(int stakeHolderId);
     }
 }
