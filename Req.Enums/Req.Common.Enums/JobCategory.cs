@@ -8,8 +8,8 @@ namespace Req.Enums
 {
         public enum JobCategory
         {
-            REQUIREMENT = 1,
-            ENHANCEMENT = 2,
-            BUGFIX = 3
+            Requirement = 1,
+            Enhancement = 2,
+            Bugfix = 3
         };
 }

@@ -32,6 +32,9 @@
         <th>
             @Html.DisplayNameFor(model => model.JobPriority)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
     </tr>
 
 @foreach (var item in Model) {
@@ -55,10 +58,13 @@
             @Html.DisplayFor(modelItem => item.ActualTimeTaken)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.AssignedTo)
+            @Html.DisplayFor(modelItem => item.AssignedTo.TakerName)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.JobPriority)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
         </td>
     </tr>
 }

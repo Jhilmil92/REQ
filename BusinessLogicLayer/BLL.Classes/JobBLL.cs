@@ -49,9 +49,16 @@ namespace BusinessLogicLayer
             return getJobById;
         }
 
-        public void UpdateJob(Job job)
+        public void UpdateJob(UpdateJobViewModel job)
         {
-            _jobRepository.Update(job);
+            var currentJob = _jobRepository.GetJobById(job.JobId);
+            if (currentJob != null)
+            {
+                currentJob.EstimatedTime = job.EstimatedTime ;
+                currentJob.ActualTimeTaken = job.ActualTimeTaken ;
+                currentJob.Status = job.JobStatus;
+            }
+            _jobRepository.Update(currentJob);
         }
 
         public void DeleteJob(int jobID)

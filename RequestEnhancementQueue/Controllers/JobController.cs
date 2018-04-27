@@ -36,10 +36,23 @@ namespace RequestEnhancementQueue.Controllers
             var jobsByTakerId = _jobBLL.GetJobById(takerId);
             return View(jobsByTakerId);
         }
-          
+
+        public ActionResult EditJob(int jobId)
+        {
+            var model = new UpdateJobViewModel
+            {
+                JobId = jobId
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
         public ActionResult EditJob(UpdateJobViewModel viewModel)
         {
-
+            _jobBLL.UpdateJob(viewModel);
+            var model = _jobBLL.GetJobById(viewModel.JobId);
+            return View("TakerInformation",model.AssignedTo);
         }
     }
 }

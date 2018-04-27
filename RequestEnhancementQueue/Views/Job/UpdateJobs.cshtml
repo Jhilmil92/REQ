@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Domain.Classes.Job>
 
 @{
-    ViewBag.Title = "UpdateJobs";
+    ViewBag.Title = "Update Jobs";
 }
 
 <h2>Update Jobs</h2>
@@ -17,7 +17,7 @@
 @foreach (var item in Model) {
     <tr>
         <td class="jobDescription">
-            @Html.ActionLink(item.JobDescription,"EditJob","Job")
+            @Html.ActionLink(item.JobDescription, "EditJob", "Job", new { jobId = item.JobId }, null)
         </td>
     </tr>
 }

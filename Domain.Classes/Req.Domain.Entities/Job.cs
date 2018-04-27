@@ -21,8 +21,8 @@ namespace Domain.Classes
         public DateTime EstimatedTime { get; set; }
         [DataType(DataType.Time, ErrorMessage = "Enter a valid Time")]
         public DateTime ActualTimeTaken { get; set; }
-        public string AssignedTo { get; set; }
+        public Taker AssignedTo { get; set; }
         public PriorityLevel JobPriority { get; set; }
-        
+        public JobStatus Status { get; set; }
     }
 }
