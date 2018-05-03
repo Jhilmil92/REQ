@@ -1,4 +1,5 @@
 ﻿using BusinessLogicLayer.BLL.Interfaces;
+using DataAccessLayer.Infrastructure.Classes;
 using DataAccessLayer.Infrastructure.Interfaces;
 using Domain.Classes;
 using Domain.Classes.Req.Domain.ViewModels;
@@ -13,10 +14,16 @@ namespace BusinessLogicLayer.BLL.Classes
     public class StakeHolderBLL:IStakeHolderBLL
     {
         private readonly IStakeHolderRepository _stakeHolderRepository;
-        public StakeHolderBLL(IStakeHolderRepository stakeHolderRepository)
+
+        public StakeHolderBLL()
         {
-            _stakeHolderRepository = stakeHolderRepository;
+            _stakeHolderRepository = new StakeHolderRepository();
         }
+
+        //public StakeHolderBLL(IStakeHolderRepository stakeHolderRepository)
+        //{
+        //    _stakeHolderRepository = stakeHolderRepository;
+        //}
 
         public void CreateStakeHolder(RegistrationViewModel registrationViewModel)
         {
@@ -56,14 +63,11 @@ namespace BusinessLogicLayer.BLL.Classes
             //Return bool status accordingly.
             bool isValid = false;
             StakeHolder stakeHolder = null;
-            IQueryable<StakeHolder> stakeHolders = _stakeHolderRepository.GetStakeHolders();
-            if(stakeHolders != null && stakeHolders.Count() != 0)
+            var stakeHolders = _stakeHolderRepository.GetStakeHolders().ToArray();
+            stakeHolder = stakeHolders.SingleOrDefault((d => (d.UserName == loginViewModel.UserName && d.Password == loginViewModel.Password)));
+            if(stakeHolder != null)
             {
-                stakeHolder = stakeHolders.SingleOrDefault((d=>(d.UserName == loginViewModel.UserName && d.Password == loginViewModel.Password))) ;
-                if(stakeHolder != null)
-                {
                     isValid = true;
-                }
             }
             if (isValid)
             {

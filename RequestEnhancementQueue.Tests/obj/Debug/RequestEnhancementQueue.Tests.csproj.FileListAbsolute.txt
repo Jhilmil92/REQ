@@ -59,7 +59,6 @@ E:\Source\Repos\REQ\RequestEnhancementQueue.Tests\bin\Debug\Owin.dll
 E:\Source\Repos\REQ\RequestEnhancementQueue.Tests\bin\Debug\EntityFramework.dll
 E:\Source\Repos\REQ\RequestEnhancementQueue.Tests\bin\Debug\Microsoft.Owin.Security.dll
 E:\Source\Repos\REQ\RequestEnhancementQueue.Tests\bin\Debug\Microsoft.Owin.Security.Cookies.dll
-E:\Source\Repos\REQ\RequestEnhancementQueue.Tests\bin\Debug\RequestEnhancementQueue.pdb
 E:\Source\Repos\REQ\RequestEnhancementQueue.Tests\bin\Debug\Newtonsoft.Json.xml
 E:\Source\Repos\REQ\RequestEnhancementQueue.Tests\bin\Debug\System.Web.Helpers.xml
 E:\Source\Repos\REQ\RequestEnhancementQueue.Tests\bin\Debug\System.Web.Mvc.xml
@@ -89,3 +88,9 @@ E:\Source\Repos\REQ\RequestEnhancementQueue.Tests\bin\Debug\Req.Enums.pdb
 E:\Source\Repos\REQ\RequestEnhancementQueue.Tests\bin\Debug\GenericTest1.GenericTest
 E:\Source\Repos\REQ\RequestEnhancementQueue.Tests\bin\Debug\EntityFramework.SqlServer.dll
 E:\Source\Repos\REQ\RequestEnhancementQueue.Tests\bin\Debug\EntityFramework.SqlServer.xml
+E:\Source\Repos\REQ\RequestEnhancementQueue.Tests\bin\Debug\Ninject.Web.Common.dll
+E:\Source\Repos\REQ\RequestEnhancementQueue.Tests\bin\Debug\Ninject.dll
+E:\Source\Repos\REQ\RequestEnhancementQueue.Tests\bin\Debug\WebActivatorEx.dll
+E:\Source\Repos\REQ\RequestEnhancementQueue.Tests\bin\Debug\Ninject.Web.Common.xml
+E:\Source\Repos\REQ\RequestEnhancementQueue.Tests\bin\Debug\Ninject.xml
+E:\Source\Repos\REQ\RequestEnhancementQueue.Tests\bin\Debug\RequestEnhancementQueue.pdb

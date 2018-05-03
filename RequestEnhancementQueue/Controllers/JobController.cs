@@ -1,29 +1,40 @@
-﻿using BusinessLogicLayer.BLL.Interfaces;
+﻿using BusinessLogicLayer;
+using BusinessLogicLayer.BLL.Classes;
+using BusinessLogicLayer.BLL.Interfaces;
 using Domain.Classes.Req.Domain.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Routing;
 
 namespace RequestEnhancementQueue.Controllers
 {
     public class JobController : Controller
     {
         private readonly IJobBLL _jobBLL;
+        private readonly IStakeHolderBLL _stakeHolderBLL;
         public JobController()
         {
-
+            _jobBLL = new JobBLL();
+            _stakeHolderBLL = new StakeHolderBLL();
         }
-        public JobController(IJobBLL jobBLL)
-        {
-            _jobBLL = jobBLL;
-        }
-        // GET: Job
-        //public ActionResult CreateJob(ReportRequestViewModel reportRequest)
+        //public JobController(IJobBLL jobBLL)
         //{
-        //    _jobBLL.CreateJob(reportRequest);
-        //} 
+        //    _jobBLL = jobBLL;
+        //}
+        // GET: Job
+
+        public ActionResult CreateJob(ReportRequestViewModel reportRequest)
+        {
+            if (ModelState.IsValid)
+            {
+                _jobBLL.CreateJob(reportRequest);
+            }
+            var stakeHolder = _stakeHolderBLL.GetStakeHolderById(reportRequest.StakeHolderId);
+            return RedirectToAction("index", "ReportRequest",new RouteValueDictionary(stakeHolder));           
+        } 
 
         public ActionResult ViewJobs(int takerId)
         {

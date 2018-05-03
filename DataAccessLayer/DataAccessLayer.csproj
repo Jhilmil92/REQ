@@ -48,6 +48,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Migrations\201805011907421_InitialCreate.cs" />
+    <Compile Include="Migrations\201805011907421_InitialCreate.Designer.cs">
+      <DependentUpon>201805011907421_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805012118188_ReportedByForeignKey.cs" />
+    <Compile Include="Migrations\201805012118188_ReportedByForeignKey.Designer.cs">
+      <DependentUpon>201805012118188_ReportedByForeignKey.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805020543466_NullableDateTimeInJob.cs" />
+    <Compile Include="Migrations\201805020543466_NullableDateTimeInJob.Designer.cs">
+      <DependentUpon>201805020543466_NullableDateTimeInJob.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Req.Data.Infrastructure\Classes\DataContext.cs" />
     <Compile Include="Req.Data.Infrastructure\Classes\JobRepository.cs" />
     <Compile Include="Req.Data.Infrastructure\Classes\StakeHolderRepository.cs" />
@@ -58,7 +71,17 @@
     <Compile Include="Req.Data.Infrastructure\Interfaces\ITakerRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201805011907421_InitialCreate.resx">
+      <DependentUpon>201805011907421_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805012118188_ReportedByForeignKey.resx">
+      <DependentUpon>201805012118188_ReportedByForeignKey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805020543466_NullableDateTimeInJob.resx">
+      <DependentUpon>201805020543466_NullableDateTimeInJob.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Domain.Classes\Domain.Classes.csproj">
       <Project>{930008a8-b297-406f-8cec-a86e8dcdcb7a}</Project>

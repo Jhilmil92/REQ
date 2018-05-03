@@ -12,21 +12,23 @@ namespace DataAccessLayer.Infrastructure.Classes
     public class StakeHolderRepository:IStakeHolderRepository
     {
         private readonly IReqDataSource _dataContext;
-        public StakeHolderRepository(IReqDataSource dataContext)
+
+        public StakeHolderRepository()
         {
-            _dataContext = dataContext;
+            _dataContext = new DataContext();
+        }
+        //public StakeHolderRepository(IReqDataSource dataContext)
+        //{
+        //    _dataContext = dataContext;
+        //}
+
+        public void Create(StakeHolder stakeHolder)
+        {
+            ((DbSet<StakeHolder>)(_dataContext.StakeHolders)).Add(stakeHolder);
+            _dataContext.Save();
         }
 
-        public void Create(Domain.Classes.StakeHolder stakeHolder)
-        {
-            var currentStakeHolder = new StakeHolder
-            {
-                StakeHolderId = stakeHolder.StakeHolderId,
-                StakeHolderOrganization = stakeHolder.StakeHolderOrganization
-            };
-        }
-
-        public IQueryable<Domain.Classes.StakeHolder> GetStakeHolders()
+        public IQueryable<StakeHolder> GetStakeHolders()
         {
             return _dataContext.StakeHolders;
         }

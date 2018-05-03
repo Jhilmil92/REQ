@@ -25,3 +25,8 @@ E:\Source\Repos\REQ\Domain.Classes\bin\Debug\System.Web.Razor.xml
 E:\Source\Repos\REQ\Domain.Classes\bin\Debug\System.Web.WebPages.xml
 E:\Source\Repos\REQ\Domain.Classes\bin\Debug\System.Web.WebPages.Deployment.xml
 E:\Source\Repos\REQ\Domain.Classes\bin\Debug\System.Web.WebPages.Razor.xml
+E:\Source\Repos\REQ\Domain.Classes\bin\Debug\Domain.Classes.dll.config
+E:\Source\Repos\REQ\Domain.Classes\bin\Debug\EntityFramework.dll
+E:\Source\Repos\REQ\Domain.Classes\bin\Debug\EntityFramework.SqlServer.dll
+E:\Source\Repos\REQ\Domain.Classes\bin\Debug\EntityFramework.xml
+E:\Source\Repos\REQ\Domain.Classes\bin\Debug\EntityFramework.SqlServer.xml

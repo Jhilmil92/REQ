@@ -1,4 +1,5 @@
 ﻿using BusinessLogicLayer.BLL.Interfaces;
+using DataAccessLayer.Infrastructure.Classes;
 using DataAccessLayer.Infrastructure.Interfaces;
 using Domain.Classes;
 using Domain.Classes.Req.Domain.ViewModels;
@@ -15,12 +16,20 @@ namespace BusinessLogicLayer
         private readonly IJobRepository _jobRepository;
         private readonly IStakeHolderRepository _stakeHolderRepository;
         private readonly ITakerRepository _takerRepository;
-        public JobBLL(IJobRepository jobRepository, IStakeHolderRepository stakeHolderRepository,ITakerRepository takerRepository)
+
+        public JobBLL()
         {
-            _jobRepository = jobRepository;
-            _stakeHolderRepository = stakeHolderRepository;
-            _takerRepository = takerRepository;
+            _jobRepository = new JobRepository();
+            _stakeHolderRepository = new StakeHolderRepository();
+            _takerRepository = new TakerRepository();
         }
+
+        //public JobBLL(IJobRepository jobRepository, IStakeHolderRepository stakeHolderRepository,ITakerRepository takerRepository)
+        //{
+        //    _jobRepository = jobRepository;
+        //    _stakeHolderRepository = stakeHolderRepository;
+        //    _takerRepository = takerRepository;
+        //}
 
         public void CreateJob(ReportRequestViewModel requestViewModel)
         {
@@ -30,11 +39,12 @@ namespace BusinessLogicLayer
                 JobDescription = requestViewModel.JobDescription,
                 JobType = requestViewModel.JobType,
                 CreatedOn = DateTime.Now.Date,
-                ReportedBy = stakeHolder,
+                //ReportedBy = stakeHolder,
+                ReportedById = stakeHolder.StakeHolderId,
                 JobPriority = requestViewModel.JobPriority
             };
-            //Push job to the priority Queue
-            //_jobRepository.Create(job,taker);
+
+            _jobRepository.Create(job);
         }
 
         public IQueryable<Domain.Classes.Job> GetJobs()
@@ -74,8 +84,8 @@ namespace BusinessLogicLayer
 
         public ICollection<Job> GetJobsByStakeHolderId(int stakeHolderId)
         {
-            var jobs = _jobRepository.GetJobs();
-            ICollection<Job> jobsByStakeHolderId = null;
+            var jobs = _jobRepository.GetJobs().Where(d=>d.ReportedById == stakeHolderId).ToList();
+            ICollection<Job> jobsByStakeHolderId = new List<Job>();
             foreach(var job in jobs)
             {
                 if(job.ReportedBy.StakeHolderId == stakeHolderId)

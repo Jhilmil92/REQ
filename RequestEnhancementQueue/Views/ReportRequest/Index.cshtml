@@ -14,9 +14,18 @@
         What would you like to do today?
     </h4>
 </div>
-
+@*@{
+    var stakeHolder = new Domain.Classes.StakeHolder
+    {
+        StakeHolderId = Model.StakeHolderId,
+        StakeHolderOrganization = Model.StakeHolderOrganization,
+        UserName = Model.UserName,
+        Password = Model.Password
+    };
+}*@
 <div>
-    @Html.ActionLink("Report a Request", "ProcessRequest", "ReportRequest", new { stakeHolderId = Model.StakeHolderId},null)
+    
+    @Html.ActionLink("Report a Request", "ProcessRequest", "ReportRequest", new { stakeHolderId = Model.StakeHolderId, stakeHolderOrganization = Model.StakeHolderOrganization }, null)
 </div>
 <br/>
 <div>

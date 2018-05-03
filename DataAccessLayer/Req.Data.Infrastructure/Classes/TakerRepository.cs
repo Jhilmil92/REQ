@@ -13,19 +13,19 @@ namespace DataAccessLayer.Infrastructure.Classes
     {
         private readonly IReqDataSource _dataContext;
 
-        public TakerRepository(IReqDataSource dataContext)
+        public TakerRepository()
         {
-            _dataContext = dataContext;
+            _dataContext = new DataContext();
         }
 
-        public void Create(Domain.Classes.Taker taker)
+        //public TakerRepository(IReqDataSource dataContext)
+        //{
+        //    _dataContext = dataContext;
+        //}
+
+        public void Create(Taker taker)
         {
-            var newTaker = new Taker
-            {
-                TakerId = taker.TakerId,
-                TakerName = taker.TakerName
-            };
-            _dataContext.Takers = newTaker as IQueryable<Taker>;
+            ((DbSet<Taker>)_dataContext.Takers).Add(taker);
             _dataContext.Save();
         }
 

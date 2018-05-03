@@ -33,7 +33,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.StakeHolderPassword, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.StakeHolderPassword, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.PasswordFor(model => model.StakeHolderPassword, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.StakeHolderPassword, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -41,7 +41,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.StakeHolderConfirmPassword, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.StakeHolderConfirmPassword, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.PasswordFor(model => model.StakeHolderConfirmPassword, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.StakeHolderConfirmPassword, "", new { @class = "text-danger" })
             </div>
         </div>

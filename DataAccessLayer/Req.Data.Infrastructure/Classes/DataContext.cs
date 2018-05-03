@@ -26,9 +26,6 @@ namespace DataAccessLayer.Infrastructure.Classes
             {
                 return Jobs;
             }
-            set 
-            {
-            }
         }
 
         IQueryable<StakeHolder> IReqDataSource.StakeHolders
@@ -37,9 +34,6 @@ namespace DataAccessLayer.Infrastructure.Classes
             {
                 return StakeHolders;
             }
-            set
-            {
-            }
         }
 
         IQueryable<Taker> IReqDataSource.Takers
@@ -47,9 +41,6 @@ namespace DataAccessLayer.Infrastructure.Classes
             get
             {
                 return Takers;
-            }
-            set
-            {
             }
         }
 

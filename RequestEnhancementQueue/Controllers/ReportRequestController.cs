@@ -1,4 +1,5 @@
-﻿using BusinessLogicLayer.BLL.Interfaces;
+﻿using BusinessLogicLayer;
+using BusinessLogicLayer.BLL.Interfaces;
 using Domain.Classes;
 using Domain.Classes.Req.Domain.ViewModels;
 using System;
@@ -16,23 +17,24 @@ namespace RequestEnhancementQueue.Controllers
 
         public ReportRequestController()
         {
-
+            _jobBLL = new JobBLL();
         }
-        public ReportRequestController(IJobBLL jobBLL)
-        {
-            _jobBLL = jobBLL;
-        }
+        //public ReportRequestController(IJobBLL jobBLL)
+        //{
+        //    _jobBLL = jobBLL;
+        //}
         // GET: ReportIssue
-        public ActionResult Index(StakeHolder stakeHolder)
+        public ActionResult Index()
         {
-            return View(stakeHolder);
+            return View((StakeHolder)Session["StakeHolder"]);
         }
 
         [HttpGet]
-        public ActionResult ProcessRequest(int stakeHolderId)
+        public ActionResult ProcessRequest(int stakeHolderId, string stakeHolderOrganization)
         {
             var model = new ReportRequestViewModel();
             model.StakeHolderId = stakeHolderId;
+            model.StakeHolderOrganization = stakeHolderOrganization;
             return View(model);
         }
 
@@ -42,14 +44,14 @@ namespace RequestEnhancementQueue.Controllers
         {
             if (ModelState.IsValid)
             {
-                return RedirectToAction("CreateJob", "JobController", new RouteValueDictionary(reportRequest));
+                return RedirectToAction("CreateJob", "Job", new RouteValueDictionary(reportRequest));
             }
             return View(reportRequest);
         }
 
-        public ActionResult ViewReportedRequests(int stakeHolderId)
+        public ActionResult ViewReportedRequests()
         {
-            var reportedRequests = _jobBLL.GetJobsByStakeHolderId(stakeHolderId);
+            var reportedRequests = _jobBLL.GetJobsByStakeHolderId((int)((StakeHolder)Session["StakeHolder"]).StakeHolderId);
             return View(reportedRequests);
         }
     }

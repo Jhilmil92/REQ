@@ -14,16 +14,18 @@ namespace DataAccessLayer.Infrastructure.Classes
     {
         private readonly IReqDataSource _dataContext;
 
-        public JobRepository(IReqDataSource dataContext)
+        public JobRepository()
         {
-            _dataContext = dataContext;
+            _dataContext = new DataContext();
         }
+        //public JobRepository(IReqDataSource dataContext)
+        //{
+        //    _dataContext = dataContext;
+        //}
 
-
-        public void Create(Job job, Taker taker)
+        public void Create(Job job)
         {
-            Job newJob = job;
-            _dataContext.Jobs = newJob as IQueryable<Job>;
+            ((DbSet<Job>)_dataContext.Jobs).Add(job);
             _dataContext.Save();
         }
 

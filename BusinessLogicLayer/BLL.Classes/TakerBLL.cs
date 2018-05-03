@@ -1,4 +1,5 @@
 ﻿using BusinessLogicLayer.BLL.Interfaces;
+using DataAccessLayer.Infrastructure.Classes;
 using DataAccessLayer.Infrastructure.Interfaces;
 using Domain.Classes;
 using System;
@@ -12,10 +13,15 @@ namespace BusinessLogicLayer.BLL.Classes
     public class TakerBLL : ITakerBLL
     {
         private readonly ITakerRepository _takerRepository;
-        public TakerBLL(ITakerRepository takerRepository)
+        public TakerBLL()
         {
-            _takerRepository = takerRepository;
+            _takerRepository = new TakerRepository();
         }
+
+        //public TakerBLL(ITakerRepository takerRepository)
+        //{
+        //    _takerRepository = takerRepository;
+        //}
         public void CreateTaker(Domain.Classes.Taker taker)
         {
             _takerRepository.Create(taker);
