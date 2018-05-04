@@ -32,7 +32,7 @@ namespace BusinessLogicLayer
         //    _takerRepository = takerRepository;
         //}
 
-        public void CreateJob(ReportRequestViewModel requestViewModel)
+        public Job CreateJob(ReportRequestViewModel requestViewModel)
         {
             var stakeHolder = _stakeHolderRepository.GetStakeHolderById(requestViewModel.StakeHolderId);
             var job = new Job 
@@ -46,6 +46,7 @@ namespace BusinessLogicLayer
             };
 
             _jobRepository.Create(job);
+            return job;
         }
 
         public IQueryable<Domain.Classes.Job> GetJobs()
@@ -58,6 +59,11 @@ namespace BusinessLogicLayer
         {
             var getJobById = _jobRepository.GetJobById(jobID);
             return getJobById;
+        }
+
+        public void UpdateJob(Job job)
+        {
+            _jobRepository.Update(job);
         }
 
         public void UpdateJob(UpdateJobViewModel job)
@@ -76,12 +82,6 @@ namespace BusinessLogicLayer
         {
             _jobRepository.Delete(jobID);
         }
-
-        public void PushJobToQueue(Job job)
-        {
-            throw new NotImplementedException();
-        }
-
 
         public ICollection<Job> GetJobsByStakeHolderId(int stakeHolderId)
         {

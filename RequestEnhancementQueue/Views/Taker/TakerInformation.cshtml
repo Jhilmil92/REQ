@@ -8,11 +8,15 @@
 
 <div class="informationList">
     <div>
-        @Html.ActionLink("View Your Jobs", "ViewJobs", "Job", new { takerId = Model.TakerId })
+        @Html.ActionLink("View Your Jobs", "ViewJobs", "Job")
     </div>
     <br/>
     <div>
-        @Html.ActionLink("Update Job", "UpdateJob", "Job", new { takerId = Model.TakerId })
+        @Html.ActionLink("Update Job", "UpdateJob", "Job")
+    </div>
+    <br/>
+    <div>
+        @Html.ActionLink("Assign Jobs", "AssignJob","Job")
     </div>
     <br/>
     <div>

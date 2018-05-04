@@ -38,12 +38,16 @@
     </tr>
 
 @foreach (var item in Model) {
+
+    var priorityLevel = ((Req.Enums.PriorityLevel)item.JobPriority).ToString();
+    var jobType = ((Req.Enums.JobCategory)item.JobType).ToString();
+    
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.JobDescription)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.JobType)
+            @Html.DisplayFor(modelItem => jobType)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.CreatedOn)
@@ -61,7 +65,7 @@
             @Html.DisplayFor(modelItem => item.AssignedTo.TakerName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.JobPriority)
+            @Html.DisplayFor(modelItem => priorityLevel)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Status)

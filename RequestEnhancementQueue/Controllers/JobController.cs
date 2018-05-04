@@ -1,6 +1,7 @@
 ﻿using BusinessLogicLayer;
 using BusinessLogicLayer.BLL.Classes;
 using BusinessLogicLayer.BLL.Interfaces;
+using Domain.Classes;
 using Domain.Classes.Req.Domain.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -15,10 +16,12 @@ namespace RequestEnhancementQueue.Controllers
     {
         private readonly IJobBLL _jobBLL;
         private readonly IStakeHolderBLL _stakeHolderBLL;
+        private readonly ITakerBLL _takerBLL;
         public JobController()
         {
             _jobBLL = new JobBLL();
             _stakeHolderBLL = new StakeHolderBLL();
+            _takerBLL = new TakerBLL();
         }
         //public JobController(IJobBLL jobBLL)
         //{
@@ -30,29 +33,35 @@ namespace RequestEnhancementQueue.Controllers
         {
             if (ModelState.IsValid)
             {
-                _jobBLL.CreateJob(reportRequest);
+                var job = _jobBLL.CreateJob(reportRequest);
+                var queueInstance = JobQueueService.GetInstance();
+                queueInstance.Enqueue(job);
+            }
+            else
+            {
+                ModelState.AddModelError("","Fill in all the fields");
             }
             var stakeHolder = _stakeHolderBLL.GetStakeHolderById(reportRequest.StakeHolderId);
             return RedirectToAction("index", "ReportRequest",new RouteValueDictionary(stakeHolder));           
         } 
 
-        public ActionResult ViewJobs(int takerId)
+        public ActionResult ViewJobs()
         {
-            var jobsByTakerId = _jobBLL.GetJobById(takerId);
+            var jobsByTakerId = _jobBLL.GetJobById(((Taker)Session["Taker"]).TakerId);
             return View(jobsByTakerId);
         }
 
-        public ActionResult UpdateJobs(int takerId)
+        public ActionResult UpdateJobs()
         {
-            var jobsByTakerId = _jobBLL.GetJobById(takerId);
+            var jobsByTakerId = _jobBLL.GetJobById(((Taker)Session["Taker"]).TakerId);
             return View(jobsByTakerId);
         }
 
-        public ActionResult EditJob(int jobId)
+        public ActionResult EditJob()
         {
             var model = new UpdateJobViewModel
             {
-                JobId = jobId
+                JobId = ((Job)Session["Taker"]).JobId
             };
 
             return View(model);
@@ -64,6 +73,19 @@ namespace RequestEnhancementQueue.Controllers
             _jobBLL.UpdateJob(viewModel);
             var model = _jobBLL.GetJobById(viewModel.JobId);
             return View("TakerInformation",model.AssignedTo);
+        }
+
+        public ActionResult AssignJob()
+        {
+            var queueInstance = JobQueueService.GetInstance();
+            //Have to handle the scenario when the queue is empty and there are no jobs to be assigned.
+            var priorityJob = (Job)queueInstance.PriorityQue.Peek();
+            var taker = (Taker)Session["Taker"];
+            priorityJob.AssignedTo = taker;
+            _jobBLL.UpdateJob(priorityJob);
+            taker.Jobs.Add(priorityJob);
+            _takerBLL.UpdateTaker(taker);
+            return View("ViewJobs");
         }
     }
 }
