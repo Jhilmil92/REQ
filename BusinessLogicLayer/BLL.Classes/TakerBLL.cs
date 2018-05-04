@@ -2,6 +2,7 @@
 using DataAccessLayer.Infrastructure.Classes;
 using DataAccessLayer.Infrastructure.Interfaces;
 using Domain.Classes;
+using Domain.Classes.Req.Domain.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,8 +23,14 @@ namespace BusinessLogicLayer.BLL.Classes
         //{
         //    _takerRepository = takerRepository;
         //}
-        public void CreateTaker(Domain.Classes.Taker taker)
+        public void CreateTaker(TakerRegistrationViewModel registrationViewModel)
         {
+            var taker = new Taker
+            {
+                TakerName = registrationViewModel.TakerName,
+                UserName = registrationViewModel.TakerUserName,
+                Password = registrationViewModel.TakerPassword
+            };
             _takerRepository.Create(taker);
         }
 

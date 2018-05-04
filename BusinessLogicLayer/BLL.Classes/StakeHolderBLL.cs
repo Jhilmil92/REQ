@@ -25,7 +25,7 @@ namespace BusinessLogicLayer.BLL.Classes
         //    _stakeHolderRepository = stakeHolderRepository;
         //}
 
-        public void CreateStakeHolder(RegistrationViewModel registrationViewModel)
+        public void CreateStakeHolder(StakeHolderRegistrationViewModel registrationViewModel)
         {
             var stakeHolder = new StakeHolder
             {

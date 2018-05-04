@@ -13,6 +13,7 @@ namespace BusinessLogicLayer.BLL.Interfaces
         Job CreateJob(ReportRequestViewModel requestViewModel);
         IQueryable<Job> GetJobs();
         Job GetJobById(int jobID);
+        IQueryable<Job> GetJobsByTakerId(int takerID);
         void UpdateJob(Job job);
         void UpdateJob(UpdateJobViewModel job);
         void DeleteJob(int jobID);

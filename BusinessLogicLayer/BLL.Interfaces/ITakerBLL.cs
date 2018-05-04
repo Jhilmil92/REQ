@@ -10,7 +10,7 @@ namespace BusinessLogicLayer.BLL.Interfaces
 {
     public interface ITakerBLL
     {
-        void CreateTaker(Taker taker);
+        void CreateTaker(TakerRegistrationViewModel registrationViewModel);
         IQueryable<Taker> GetTakers();
         Taker GetTakerById(int takerId);
         void UpdateTaker(Taker taker);

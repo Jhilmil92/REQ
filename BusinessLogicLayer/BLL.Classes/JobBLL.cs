@@ -96,5 +96,12 @@ namespace BusinessLogicLayer
             }
             return jobsByStakeHolderId;
         }
+
+        
+        public IQueryable<Job> GetJobsByTakerId(int takerID)
+        {
+            var jobsByTakerId = _jobRepository.GetJobs().Where(d=>d.AssignedTo.TakerId == takerID);
+            return jobsByTakerId;
+        }
     }
 }

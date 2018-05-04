@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Classes.Req.Domain.ViewModels
 {
-    public class RegistrationViewModel
+    public class StakeHolderRegistrationViewModel
     {
         [Required(ErrorMessage="Please Enter your Organization Name")]
         public string StakeHolderOrganization { get; set; }

@@ -10,9 +10,9 @@ namespace RequestEnhancementQueue.Controllers
     public class TakerController : Controller
     {
         // GET: Taker
-        public ActionResult TakerInformation(Taker taker)
+        public ActionResult TakerInformation()
         {
-            return View(taker);
+            return View(((Taker)Session["Taker"]));
         }
 
     }

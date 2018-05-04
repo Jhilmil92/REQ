@@ -47,7 +47,7 @@ namespace RequestEnhancementQueue.Controllers
 
         public ActionResult ViewJobs()
         {
-            var jobsByTakerId = _jobBLL.GetJobById(((Taker)Session["Taker"]).TakerId);
+            var jobsByTakerId = _jobBLL.GetJobsByTakerId(((Taker)Session["Taker"]).TakerId);
             return View(jobsByTakerId);
         }
 
@@ -82,10 +82,12 @@ namespace RequestEnhancementQueue.Controllers
             var priorityJob = (Job)queueInstance.PriorityQue.Peek();
             var taker = (Taker)Session["Taker"];
             priorityJob.AssignedTo = taker;
+            priorityJob.Status = Req.Enums.JobStatus.Approved;
             _jobBLL.UpdateJob(priorityJob);
             taker.Jobs.Add(priorityJob);
             _takerBLL.UpdateTaker(taker);
-            return View("ViewJobs");
+            var jobs = _jobBLL.GetJobsByTakerId(taker.TakerId);
+            return View("ViewJobs",jobs);
         }
     }
 }

@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<Domain.Classes.Job>
 
 @{
-    ViewBag.Title = "ViewJobs";
+    ViewBag.Title = "View Jobs";
 }
 
-<h2>ViewJobs</h2>
+<h2>View Jobs</h2>
 
 <table class="table">
     <tr>
@@ -41,6 +41,7 @@
 
     var priorityLevel = ((Req.Enums.PriorityLevel)item.JobPriority).ToString();
     var jobType = ((Req.Enums.JobCategory)item.JobType).ToString();
+    var jobStatus = ((Req.Enums.JobStatus)item.Status).ToString();
     
     <tr>
         <td>
@@ -68,9 +69,13 @@
             @Html.DisplayFor(modelItem => priorityLevel)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Status)
+            @Html.DisplayFor(modelItem => jobStatus)
         </td>
     </tr>
 }
 
 </table>
+
+<div>
+    @Html.ActionLink("Back to List", "TakerInformation", "Taker")
+</div>

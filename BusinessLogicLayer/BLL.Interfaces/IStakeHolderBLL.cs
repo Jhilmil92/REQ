@@ -10,7 +10,7 @@ namespace BusinessLogicLayer.BLL.Interfaces
 {
     public interface IStakeHolderBLL
     {
-        void CreateStakeHolder(RegistrationViewModel registrationViewModel);
+        void CreateStakeHolder(StakeHolderRegistrationViewModel registrationViewModel);
         IQueryable<StakeHolder> GetStakeHolders();
         StakeHolder GetStakeHolderById(int stakeHolderId);
         void UpdateStakeHolder(StakeHolder stakeHolder);

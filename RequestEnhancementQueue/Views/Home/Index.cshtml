@@ -7,17 +7,22 @@
 <br/>
 <div class="container">
     <div class="row">
-        <div class="col-lg-8 rowOne">
+        <div class="col-lg-8">
             @Html.ActionLink("New Stakeholder? Register", "Register", "Login")
         </div>
         <br/>
         <br/>
-        <div class="col-lg-8 rowTwo">
+        <div class="col-lg-8">
             @Html.ActionLink("Already Registered Stakeholder? Login Here","Login","Login")
         </div>
         <br/>
         <br/>
-        <div class = "col-lg-8 rowThree">
+        <div class="col-lg-8">
+            @Html.ActionLink("Taker Registration", "RegisterTaker", "Login")
+        </div>
+        <br/>
+        <br/>
+        <div class = "col-lg-8">
             @Html.ActionLink("Taker Login","Login","Login")
         </div>
         <br/>
@@ -30,9 +35,10 @@
 </div>
 
 <script>
-    $(".rowOne,.rowTwo,.rowThree").css(
+    //$(".rowOne,.rowTwo,.rowThree").css
+    $(".row").css(
         {
-            'font-family': "Sans-serif,Verdana",
+            'font-family': 'Sans-serif,Verdana',
             'font-size': '20px',
             'height': '10px',
             //'color' : ''

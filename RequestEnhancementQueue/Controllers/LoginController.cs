@@ -34,7 +34,7 @@ namespace RequestEnhancementQueue.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Register(RegistrationViewModel registrationViewModel)
+        public ActionResult Register(StakeHolderRegistrationViewModel registrationViewModel)
         {
             if(ModelState.IsValid)
             {
@@ -46,6 +46,31 @@ namespace RequestEnhancementQueue.Controllers
                 else
                 {
                     return View();
+                }
+            }
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult RegisterTaker()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult RegisterTaker(TakerRegistrationViewModel registrationViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                if (registrationViewModel.TakerPassword.Equals(registrationViewModel.TakerConfirmPassword))
+                {
+                    _takerBLL.CreateTaker(registrationViewModel);
+                    return RedirectToAction("Login");
+                }
+                else
+                {
+                    ModelState.AddModelError("","Please fill in all the fields of teh registration form");
                 }
             }
             return View();
@@ -73,8 +98,8 @@ namespace RequestEnhancementQueue.Controllers
                 }
                 else if(validTaker != null)
                 {
-                        Session["Taker"] = validTaker;
-                        return RedirectToAction("TakerInformation", "Taker", (Taker)Session["Taker"]);
+                    Session["Taker"] = validTaker;
+                    return RedirectToAction("TakerInformation", "Taker", (Taker)Session["Taker"]);
                 }
                 else
                 {
