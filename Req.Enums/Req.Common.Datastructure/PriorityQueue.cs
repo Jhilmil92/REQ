@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Req.Enums.Req.Common.Datastructure
 {
-        public class PriorityQueue<T> where T : IComparable
+        public class PriorityQueue<T> where T : IComparable<T>
         {
             private List<T> list;
             public int Count 
@@ -17,6 +17,8 @@ namespace Req.Enums.Req.Common.Datastructure
                 } 
             }
             public readonly bool IsDescending;
+
+            #region Constructor
 
             public PriorityQueue()
             {
@@ -50,6 +52,8 @@ namespace Req.Enums.Req.Common.Datastructure
                 foreach (var item in collection)
                     Enqueue(item);
             }
+
+            #endregion
 
 
             public void Enqueue(T x)

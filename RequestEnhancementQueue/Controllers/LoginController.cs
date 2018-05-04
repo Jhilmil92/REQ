@@ -8,6 +8,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using System.Web.Security;
 
 namespace RequestEnhancementQueue.Controllers
 {
@@ -63,22 +64,31 @@ namespace RequestEnhancementQueue.Controllers
             if (ModelState.IsValid)
             {
                 var validStakeHolder = _stakeHolderBLL.ValidateLoginCredentials(loginViewModel);
+                var validTaker = _takerBLL.ValidateLoginCredentials(loginViewModel);
+
                 if (validStakeHolder != null)
                 {
                     Session["StakeHolder"] = validStakeHolder;
                     return RedirectToAction("Index", "ReportRequest", (StakeHolder)Session["StakeHolder"]);
                 }
-                else
+                else if(validTaker != null)
                 {
-                    var validTaker = _takerBLL.ValidateLoginCredentials(loginViewModel);
-                    if(validTaker != null)
-                    {
                         Session["Taker"] = validTaker;
                         return RedirectToAction("TakerInformation", "Taker", (Taker)Session["Taker"]);
-                    }
+                }
+                else
+                {
+                    ModelState.AddModelError("","The Username or Password provided is Incorrect");
                 }
             }
             return View();
+        }
+
+        public ActionResult LogOut()
+        {
+            FormsAuthentication.SignOut();
+            Session.Abandon();
+            return RedirectToAction("Index","Home");
         }
     }
 }

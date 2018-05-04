@@ -60,6 +60,10 @@
     <Compile Include="Migrations\201805020543466_NullableDateTimeInJob.Designer.cs">
       <DependentUpon>201805020543466_NullableDateTimeInJob.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805031208314_RoleTable.cs" />
+    <Compile Include="Migrations\201805031208314_RoleTable.Designer.cs">
+      <DependentUpon>201805031208314_RoleTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Req.Data.Infrastructure\Classes\DataContext.cs" />
     <Compile Include="Req.Data.Infrastructure\Classes\JobRepository.cs" />
@@ -80,6 +84,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805020543466_NullableDateTimeInJob.resx">
       <DependentUpon>201805020543466_NullableDateTimeInJob.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805031208314_RoleTable.resx">
+      <DependentUpon>201805031208314_RoleTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

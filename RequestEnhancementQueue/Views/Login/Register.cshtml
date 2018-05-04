@@ -15,33 +15,33 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.StakeHolderOrganization, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.StakeHolderOrganization,"Organization", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.StakeHolderOrganization, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.StakeHolderOrganization, new { htmlAttributes = new { @class = "form-control" , style = "height : 30px"} })
                 @Html.ValidationMessageFor(model => model.StakeHolderOrganization, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.StakeHolderUserName, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.StakeHolderUserName, "Username", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.StakeHolderUserName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextBoxFor(model => model.StakeHolderUserName, new { htmlAttributes = new { @class = "form-control"} })
                 @Html.ValidationMessageFor(model => model.StakeHolderUserName, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.StakeHolderPassword, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.StakeHolderPassword,"Password",htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.PasswordFor(model => model.StakeHolderPassword, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.PasswordFor(model => model.StakeHolderPassword, new { htmlAttributes = new { @class = "form-control" , style = "width : 280px"} })
                 @Html.ValidationMessageFor(model => model.StakeHolderPassword, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.StakeHolderConfirmPassword, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.StakeHolderConfirmPassword, "Confirm Password",htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.PasswordFor(model => model.StakeHolderConfirmPassword, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.PasswordFor(model => model.StakeHolderConfirmPassword, new { htmlAttributes = new { @class = "form-control" , style = "width : 280px" } })
                 @Html.ValidationMessageFor(model => model.StakeHolderConfirmPassword, "", new { @class = "text-danger" })
             </div>
         </div>

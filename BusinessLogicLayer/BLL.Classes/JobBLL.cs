@@ -3,6 +3,7 @@ using DataAccessLayer.Infrastructure.Classes;
 using DataAccessLayer.Infrastructure.Interfaces;
 using Domain.Classes;
 using Domain.Classes.Req.Domain.ViewModels;
+using Req.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -88,7 +89,7 @@ namespace BusinessLogicLayer
             ICollection<Job> jobsByStakeHolderId = new List<Job>();
             foreach(var job in jobs)
             {
-                if(job.ReportedBy.StakeHolderId == stakeHolderId)
+                if(job.ReportedById == stakeHolderId)
                 {
                     jobsByStakeHolderId.Add(job);
                 }

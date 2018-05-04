@@ -6,3 +6,4 @@ E:\Source\Repos\REQ\Req.Enums\bin\Debug\Req.Enums.dll
 E:\Source\Repos\REQ\Req.Enums\bin\Debug\Req.Enums.pdb
 E:\Source\Repos\REQ\Req.Enums\obj\Debug\Req.Enums.dll
 E:\Source\Repos\REQ\Req.Enums\obj\Debug\Req.Enums.pdb
+E:\Source\Repos\REQ\Req.Enums\obj\Debug\Common.csprojResolveAssemblyReference.cache

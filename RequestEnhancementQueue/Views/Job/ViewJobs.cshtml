@@ -49,7 +49,7 @@
             @Html.DisplayFor(modelItem => item.CreatedOn)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ReportedBy.StakeHolderOrganization)
+            @Html.DisplayFor(modelItem => ((Domain.Classes.StakeHolder)Session["StakeHolder"]).StakeHolderOrganization)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.EstimatedTime)

@@ -27,3 +27,4 @@ E:\Source\Repos\REQ\DataAccessLayer\obj\Debug\DataAccessLayer.Migrations.Initial
 E:\Source\Repos\REQ\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.GenerateResource.Cache
 E:\Source\Repos\REQ\DataAccessLayer\obj\Debug\DataAccessLayer.Migrations.ReportedByForeignKey.resources
 E:\Source\Repos\REQ\DataAccessLayer\obj\Debug\DataAccessLayer.Migrations.NullableDateTimeInJob.resources
+E:\Source\Repos\REQ\DataAccessLayer\obj\Debug\DataAccessLayer.Migrations.RoleTable.resources
