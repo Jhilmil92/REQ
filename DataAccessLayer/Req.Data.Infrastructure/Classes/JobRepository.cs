@@ -23,15 +23,22 @@ namespace DataAccessLayer.Infrastructure.Classes
         //    _dataContext = dataContext;
         //}
 
-        public void Create(Job job)
+        public Job Create(Job job)
         {
             ((DbSet<Job>)_dataContext.Jobs).Add(job);
             _dataContext.Save();
+
+            return job;
         }
 
-        public void Update(Domain.Classes.Job job)
+        public Job Update(Domain.Classes.Job job)
         {
+            var dataContext = _dataContext as DataContext;
+            var entity = dataContext.Jobs.Find(job.JobId);
+            dataContext.Entry(entity).CurrentValues.SetValues(job);
             this._dataContext.Save();
+
+            return entity;
         }
 
         public Domain.Classes.Job GetJobById(int jobID)

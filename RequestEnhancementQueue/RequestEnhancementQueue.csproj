@@ -235,6 +235,7 @@
     <Content Include="Views\ReportRequest\ViewReportedRequests.cshtml" />
     <Content Include="Views\Job\UpdateJobs.cshtml" />
     <Content Include="Views\Login\RegisterTaker.cshtml" />
+    <Content Include="Views\Job\EditJob.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

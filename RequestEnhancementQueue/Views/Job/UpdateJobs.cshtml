@@ -17,13 +17,13 @@
 @foreach (var item in Model) {
     <tr>
         <td class="jobDescription">
-            @Html.ActionLink(item.JobDescription, "EditJob", "Job")
+            @Html.ActionLink(item.JobDescription, "EditJob", "Job", new {jobId = item.JobId},null)
         </td>
     </tr>
 }
 
 </table>
 
-<script>
-
-</script>
+<div>
+        @Html.ActionLink("Back to List", "TakerInformation", "Taker")
+</div>

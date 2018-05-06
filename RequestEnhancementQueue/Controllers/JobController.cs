@@ -3,6 +3,7 @@ using BusinessLogicLayer.BLL.Classes;
 using BusinessLogicLayer.BLL.Interfaces;
 using Domain.Classes;
 using Domain.Classes.Req.Domain.ViewModels;
+using Req.Enums.Req.Common.Constants;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,11 +18,13 @@ namespace RequestEnhancementQueue.Controllers
         private readonly IJobBLL _jobBLL;
         private readonly IStakeHolderBLL _stakeHolderBLL;
         private readonly ITakerBLL _takerBLL;
+        private readonly IJobQueueService _jobQueueService;
         public JobController()
         {
             _jobBLL = new JobBLL();
             _stakeHolderBLL = new StakeHolderBLL();
             _takerBLL = new TakerBLL();
+            _jobQueueService = JobQueueService.GetInstance();
         }
         //public JobController(IJobBLL jobBLL)
         //{
@@ -47,21 +50,27 @@ namespace RequestEnhancementQueue.Controllers
 
         public ActionResult ViewJobs()
         {
-            var jobsByTakerId = _jobBLL.GetJobsByTakerId(((Taker)Session["Taker"]).TakerId);
-            return View(jobsByTakerId);
+            var jobs= _jobBLL.GetJobsByTakerId((int)(Session[Constants.TakerId])).ToList();
+            return View(jobs);
         }
 
         public ActionResult UpdateJobs()
         {
-            var jobsByTakerId = _jobBLL.GetJobById(((Taker)Session["Taker"]).TakerId);
-            return View(jobsByTakerId);
+            var jobs= _jobBLL.GetJobsByTakerId((int)(Session[Constants.TakerId])).ToList();
+            return View(jobs);
         }
 
-        public ActionResult EditJob()
+        public ActionResult EditJob(int jobId)
         {
+            var job = _jobBLL.GetJobById(jobId);
             var model = new UpdateJobViewModel
             {
-                JobId = ((Job)Session["Taker"]).JobId
+                JobId = jobId,
+                ActualTimeTakenHrPart = job.ActualTimeTakenHour,
+                ActualTimeTakenMinPart = job.ActualTimeTakenMinute,
+                EstimatedTimeHrPart = job.EstimatedTimeHour,
+                EstimatedTimeMinPart = job.EstimatedTimeMinute,
+                JobStatus = job.Status
             };
 
             return View(model);
@@ -71,22 +80,18 @@ namespace RequestEnhancementQueue.Controllers
         public ActionResult EditJob(UpdateJobViewModel viewModel)
         {
             _jobBLL.UpdateJob(viewModel);
-            var model = _jobBLL.GetJobById(viewModel.JobId);
-            return View("TakerInformation",model.AssignedTo);
+            return RedirectToAction("TakerInformation","Taker");
         }
 
         public ActionResult AssignJob()
         {
             var queueInstance = JobQueueService.GetInstance();
-            //Have to handle the scenario when the queue is empty and there are no jobs to be assigned.
-            var priorityJob = (Job)queueInstance.PriorityQue.Peek();
-            var taker = (Taker)Session["Taker"];
-            priorityJob.AssignedTo = taker;
+            var priorityJob = (Job)queueInstance.PriorityQue.Dequeue();
+            var takerId = (int)(Session[Constants.TakerId]);
+            priorityJob.AssignedToId = takerId;
             priorityJob.Status = Req.Enums.JobStatus.Approved;
             _jobBLL.UpdateJob(priorityJob);
-            taker.Jobs.Add(priorityJob);
-            _takerBLL.UpdateTaker(taker);
-            var jobs = _jobBLL.GetJobsByTakerId(taker.TakerId);
+            var jobs = _jobBLL.GetJobsByTakerId(takerId).ToList();
             return View("ViewJobs",jobs);
         }
     }

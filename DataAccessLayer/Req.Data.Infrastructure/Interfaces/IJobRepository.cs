@@ -9,8 +9,8 @@ namespace DataAccessLayer.Infrastructure.Interfaces
 {
     public interface IJobRepository
     {
-        void Create(Job job);
-        void Update(Job job);
+        Job Create(Job job);
+        Job Update(Job job);
         Job GetJobById(int jobID);
         IQueryable<Job> GetJobs();
         void Delete(int jobID);

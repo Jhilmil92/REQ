@@ -14,10 +14,11 @@ namespace Domain.Classes.Req.Domain.ViewModels
     {
         [HiddenInput(DisplayValue = false)]
         public int JobId { get; set; }
-        [DataType(DataType.Time)]
-        public DateTime EstimatedTime { get; set; }
-        [DataType(DataType.Time)]
-        public DateTime ActualTimeTaken { get; set; }
+        public int EstimatedTimeHrPart { get; set; }
+        public int EstimatedTimeMinPart { get; set; }
+        public int ActualTimeTakenHrPart { get; set; }
+        public int ActualTimeTakenMinPart { get; set; }
+
         public JobStatus JobStatus { get; set; }
     }
 }

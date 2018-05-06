@@ -15,10 +15,13 @@ namespace BusinessLogicLayer.BLL.Classes
         private static JobQueueService instance;
         private readonly PriorityQueue<Job> _priorityQueue;
         private const int jobQueueCount = 50;
+        private IJobBLL _jobBLL;
 
         private JobQueueService()
         {
             _priorityQueue = new PriorityQueue<Job>(jobQueueCount,true);
+            _jobBLL = new JobBLL();
+            InitializeQueue();
         }
 
         public static JobQueueService GetInstance()
@@ -48,6 +51,16 @@ namespace BusinessLogicLayer.BLL.Classes
         public Job Dequeue()
         {
             return _priorityQueue.Dequeue();
+        }
+
+
+        private void InitializeQueue()
+        {
+            var idleJobs = _jobBLL.GetJobs().Where(d => d.AssignedTo == null);
+            foreach(var job in idleJobs)
+            {
+                Enqueue(job);
+            }
         }
     }
 }

@@ -1,7 +1,9 @@
 ﻿using BusinessLogicLayer;
+using BusinessLogicLayer.BLL.Classes;
 using BusinessLogicLayer.BLL.Interfaces;
 using Domain.Classes;
 using Domain.Classes.Req.Domain.ViewModels;
+using Req.Enums.Req.Common.Constants;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,10 +16,12 @@ namespace RequestEnhancementQueue.Controllers
     public class ReportRequestController : Controller
     {
         private readonly IJobBLL _jobBLL;
+        private readonly IStakeHolderBLL _stakeHolderBLL;
 
         public ReportRequestController()
         {
             _jobBLL = new JobBLL();
+            _stakeHolderBLL = new StakeHolderBLL();
         }
         //public ReportRequestController(IJobBLL jobBLL)
         //{
@@ -26,7 +30,8 @@ namespace RequestEnhancementQueue.Controllers
         // GET: ReportIssue
         public ActionResult Index()
         {
-            return View((StakeHolder)Session["StakeHolder"]);
+            var stakeHolder = _stakeHolderBLL.GetStakeHolderById((int)Session[Constants.StakeHolderId]);
+            return View(stakeHolder);
         }
 
         [HttpGet]
@@ -51,7 +56,7 @@ namespace RequestEnhancementQueue.Controllers
 
         public ActionResult ViewReportedRequests()
         {
-            var reportedRequests = _jobBLL.GetJobsByStakeHolderId((int)((StakeHolder)Session["StakeHolder"]).StakeHolderId);
+            var reportedRequests = _jobBLL.GetJobsByStakeHolderId((int)Session[Constants.StakeHolderId]);
             return View(reportedRequests);
         }
     }

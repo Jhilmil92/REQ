@@ -38,15 +38,15 @@ namespace BusinessLogicLayer
             var job = new Job 
             { 
                 JobDescription = requestViewModel.JobDescription,
-                JobType = requestViewModel.JobType,
+                JobCategory = requestViewModel.JobType,
                 CreatedOn = DateTime.Now.Date,
                 //ReportedBy = stakeHolder,
                 ReportedById = stakeHolder.StakeHolderId,
-                JobPriority = requestViewModel.JobPriority
+                JobPriority = requestViewModel.JobPriority,
+                Status = JobStatus.Queued
             };
 
-            _jobRepository.Create(job);
-            return job;
+            return _jobRepository.Create(job);
         }
 
         public IQueryable<Domain.Classes.Job> GetJobs()
@@ -61,21 +61,30 @@ namespace BusinessLogicLayer
             return getJobById;
         }
 
-        public void UpdateJob(Job job)
+        public Job UpdateJob(Job job)
         {
-            _jobRepository.Update(job);
+            return _jobRepository.Update(job);
         }
 
-        public void UpdateJob(UpdateJobViewModel job)
+        public Job UpdateJob(UpdateJobViewModel job)
         {
             var currentJob = _jobRepository.GetJobById(job.JobId);
             if (currentJob != null)
             {
-                currentJob.EstimatedTime = job.EstimatedTime ;
-                currentJob.ActualTimeTaken = job.ActualTimeTaken ;
-                currentJob.Status = job.JobStatus;
+                currentJob.ActualTimeTakenHour = job.ActualTimeTakenHrPart;
+                currentJob.ActualTimeTakenMinute = job.ActualTimeTakenMinPart;
+                currentJob.EstimatedTimeHour = job.EstimatedTimeHrPart;
+                currentJob.EstimatedTimeMinute = job.EstimatedTimeMinPart;
+                if (job.JobStatus != 0)
+                {
+                    currentJob.Status = job.JobStatus;
+                }
+                else
+                {
+                    currentJob.Status = JobStatus.Approved;
+                }
             }
-            _jobRepository.Update(currentJob);
+            return _jobRepository.Update(currentJob);
         }
 
         public void DeleteJob(int jobID)

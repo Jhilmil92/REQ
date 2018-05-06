@@ -48,6 +48,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Migrations\201805061633392_InitialCreate.cs" />
+    <Compile Include="Migrations\201805061633392_InitialCreate.Designer.cs">
+      <DependentUpon>201805061633392_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805062021518_estimatedandactualtime.cs" />
+    <Compile Include="Migrations\201805062021518_estimatedandactualtime.Designer.cs">
+      <DependentUpon>201805062021518_estimatedandactualtime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Req.Data.Infrastructure\Classes\DataContext.cs" />
     <Compile Include="Req.Data.Infrastructure\Classes\JobRepository.cs" />
     <Compile Include="Req.Data.Infrastructure\Classes\StakeHolderRepository.cs" />
@@ -67,6 +76,14 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201805061633392_InitialCreate.resx">
+      <DependentUpon>201805061633392_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805062021518_estimatedandactualtime.resx">
+      <DependentUpon>201805062021518_estimatedandactualtime.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

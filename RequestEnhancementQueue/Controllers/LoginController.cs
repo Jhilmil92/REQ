@@ -2,6 +2,7 @@
 using BusinessLogicLayer.BLL.Interfaces;
 using Domain.Classes;
 using Domain.Classes.Req.Domain.ViewModels;
+using Req.Enums.Req.Common.Constants;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -93,13 +94,13 @@ namespace RequestEnhancementQueue.Controllers
 
                 if (validStakeHolder != null)
                 {
-                    Session["StakeHolder"] = validStakeHolder;
-                    return RedirectToAction("Index", "ReportRequest", (StakeHolder)Session["StakeHolder"]);
+                    Session[Constants.StakeHolderId] = validStakeHolder.StakeHolderId;
+                    return RedirectToAction("Index", "ReportRequest", (int)Session[Constants.StakeHolderId]);
                 }
                 else if(validTaker != null)
                 {
-                    Session["Taker"] = validTaker;
-                    return RedirectToAction("TakerInformation", "Taker", (Taker)Session["Taker"]);
+                    Session[Constants.TakerId] = validTaker.TakerId;
+                    return RedirectToAction("TakerInformation", "Taker", (int)Session[Constants.TakerId]);
                 }
                 else
                 {
