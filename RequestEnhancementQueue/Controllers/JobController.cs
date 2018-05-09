@@ -94,5 +94,30 @@ namespace RequestEnhancementQueue.Controllers
             var jobs = _jobBLL.GetJobsByTakerId(takerId).ToList();
             return View("ViewJobs",jobs);
         }
+
+        public ActionResult EditJobForStakeHolder(int jobId)
+        {
+            var job = _jobBLL.GetJobById(jobId);
+            var model = new UpdateStakeHolderJobViewModel
+            {
+                JobId = jobId,
+                EstimatedTimeInHours = job.EstimatedTimeHour,
+                AssignedTakerId = job.AssignedToId,
+                JobTitle = job.JobTitle,
+                JobType = job.JobCategory,
+                JobDescription = job.JobDescription,
+                ReleaseVersion = job.ReleaseVersion
+            };
+
+            ViewBag.Takers = _takerBLL.GetTakers().ToList();
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult EditJobForStakeHolder(UpdateStakeHolderJobViewModel viewModel)
+        {
+            var job = _jobBLL.UpdateJob(viewModel);
+            return RedirectToAction("ViewReportedRequests","ReportRequest");
+        }
     }
 }

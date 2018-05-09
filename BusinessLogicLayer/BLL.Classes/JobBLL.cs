@@ -44,7 +44,8 @@ namespace BusinessLogicLayer
                 //ReportedBy = stakeHolder,
                 ReportedById = stakeHolder.StakeHolderId,
                 JobPriority = requestViewModel.JobPriority,
-                EstimatedTimeHour = requestViewModel.EstimatedTimeInHours
+                EstimatedTimeHour = requestViewModel.EstimatedTimeInHours,
+                ReleaseVersion = requestViewModel.ReleaseVersion
             };
 
             if (requestViewModel.JobTakerId != 0)
@@ -122,6 +123,25 @@ namespace BusinessLogicLayer
         {
             var jobsByTakerId = _jobRepository.GetJobs().Where(d=>d.AssignedTo.TakerId == takerID);
             return jobsByTakerId;
+        }
+
+
+        public Job UpdateJob(UpdateStakeHolderJobViewModel viewModel)
+        {
+            var currentJob = _jobRepository.GetJobById(viewModel.JobId);
+            currentJob.EstimatedTimeHour = viewModel.EstimatedTimeInHours;
+            if (currentJob.AssignedToId != viewModel.AssignedTakerId)
+            {
+                currentJob.AssignedToId = viewModel.AssignedTakerId;
+            }
+            if(!(currentJob.ReleaseVersion.Equals(viewModel.ReleaseVersion)))
+            {
+                currentJob.ReleaseVersion = viewModel.ReleaseVersion;
+            }
+            currentJob.JobTitle = viewModel.JobTitle;
+            currentJob.JobDescription = viewModel.JobDescription;
+            currentJob.JobCategory = viewModel.JobType;
+            return _jobRepository.Update(currentJob);
         }
     }
 }

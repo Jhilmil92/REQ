@@ -236,6 +236,7 @@
     <Content Include="Views\Job\UpdateJobs.cshtml" />
     <Content Include="Views\Login\RegisterTaker.cshtml" />
     <Content Include="Views\Job\EditJob.cshtml" />
+    <Content Include="Views\Job\EditJobForStakeHolder.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

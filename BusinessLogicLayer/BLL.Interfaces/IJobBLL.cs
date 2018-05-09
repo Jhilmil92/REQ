@@ -16,6 +16,7 @@ namespace BusinessLogicLayer.BLL.Interfaces
         IQueryable<Job> GetJobsByTakerId(int takerID);
         Job UpdateJob(Job job);
         Job UpdateJob(UpdateJobViewModel job);
+        Job UpdateJob(UpdateStakeHolderJobViewModel viewModel);
         void DeleteJob(int jobID);
         ICollection<Job> GetJobsByStakeHolderId(int stakeHolderId);
     }

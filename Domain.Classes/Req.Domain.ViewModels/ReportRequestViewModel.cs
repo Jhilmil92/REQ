@@ -30,7 +30,6 @@ namespace Domain.Classes.Req.Domain.ViewModels
         [Required]
         public PriorityLevel JobPriority { get; set; }
 
-        [MinLength(1),MaxLength(3)]
         public int EstimatedTimeInHours { get; set; }
 
         public int JobTakerId { get; set; }

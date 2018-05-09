@@ -18,16 +18,23 @@ namespace Domain.Classes
         public int JobId { get; set; }
 
         [Column(Order = 1)]
+        [Display(Name = "Job Title")]
         public string JobTitle { get; set; }
+
+        [Display(Name = "Job Description")]
         public string JobDescription { get; set; }
+
+        [Display(Name = "Job Category")]
         public JobCategory JobCategory { get; set; }
 
+        [Display(Name = "Created On")]
         public DateTime? CreatedOn { get; set; }
         public virtual StakeHolder ReportedBy { get; set; }
 
         [ForeignKey("ReportedBy")]
         public int ReportedById { get; set; }
 
+        [Display(Name = "Estimated Time")]
         public string EstimatedTime { get; set; }
 
         [NotMapped]
@@ -88,7 +95,8 @@ namespace Domain.Classes
                 }
             }
         }
-     
+
+        [Display(Name = "Actual Time")]
         public string ActualTimeTaken { get; set; }
 
         [NotMapped]
@@ -156,8 +164,10 @@ namespace Domain.Classes
 
         public PriorityLevel JobPriority { get; set; }
 
+        [Display(Name = "Job Priority")]
         public JobStatus Status { get; set; }
 
+        [Display(Name = "Release Version")]
         public string ReleaseVersion { get; set; }
 
         public int CompareTo(Job other)

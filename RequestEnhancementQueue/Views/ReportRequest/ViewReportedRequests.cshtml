@@ -24,6 +24,9 @@
             @Html.DisplayNameFor(model => model.ActualTimeTaken)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.ReleaseVersion)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.AssignedTo)
         </th>
         <th>
@@ -42,8 +45,8 @@
     var priorityLevel = ((Req.Enums.PriorityLevel)item.JobPriority).ToString();
     var jobCategory = ((Req.Enums.JobCategory)item.JobCategory).ToString();
     var jobStatus = ((Req.Enums.JobStatus)item.Status).ToString();
-    
-    <tr>
+     
+    <tr class="firstRowSet">
         <td>
             @Html.DisplayFor(modelItem => item.JobTitle)
         </td>
@@ -60,6 +63,9 @@
             @Html.DisplayFor(modelItem => item.ActualTimeTaken)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.ReleaseVersion)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.AssignedTo.TakerName)
         </td>
         <td>
@@ -71,6 +77,9 @@
         <td>
             @Html.DisplayFor(modelItem => jobStatus)
         </td>
+        <td>
+            @Html.ActionLink("Edit", "EditJobForStakeHolder", "Job", new { jobId = item.JobId },null)
+        </td>
     </tr>
 }
 
@@ -79,3 +88,7 @@
 <div>
     @Html.ActionLink("Back","Index","ReportRequest")
 </div>
+
+<script>
+    $('.firstRowSet:nth-child(even)').css('background-color', '#dddddd')
+</script>
