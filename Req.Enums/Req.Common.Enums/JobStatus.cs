@@ -9,10 +9,11 @@ namespace Req.Enums
     public enum JobStatus
     {
         Queued = 1,
-        Approved = 2,
-        InProcess = 3,
-        Completed = 4,
-        UAT = 5,
-        Released = 6
+        Unassigned = 2,
+        Assigned = 3,
+        InProcess = 4,
+        Completed = 5,
+        UAT = 6,
+        Released = 7
     }
 }

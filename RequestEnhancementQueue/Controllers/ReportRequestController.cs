@@ -6,6 +6,7 @@ using Domain.Classes.Req.Domain.ViewModels;
 using Req.Enums.Req.Common.Constants;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -17,11 +18,13 @@ namespace RequestEnhancementQueue.Controllers
     {
         private readonly IJobBLL _jobBLL;
         private readonly IStakeHolderBLL _stakeHolderBLL;
+        private readonly ITakerBLL _takerBLL;
 
         public ReportRequestController()
         {
             _jobBLL = new JobBLL();
             _stakeHolderBLL = new StakeHolderBLL();
+            _takerBLL = new TakerBLL();
         }
         //public ReportRequestController(IJobBLL jobBLL)
         //{
@@ -40,6 +43,7 @@ namespace RequestEnhancementQueue.Controllers
             var model = new ReportRequestViewModel();
             model.StakeHolderId = stakeHolderId;
             model.StakeHolderOrganization = stakeHolderOrganization;
+            ViewBag.Takers = _takerBLL.GetTakers().ToList();
             return View(model);
         }
 
@@ -47,8 +51,14 @@ namespace RequestEnhancementQueue.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult ProcessRequest(ReportRequestViewModel reportRequest)
         {
+
             if (ModelState.IsValid)
             {
+                //using (MemoryStream memoryStream = new MemoryStream())
+                //{
+                //    reportRequest.File.InputStream.CopyTo(memoryStream);
+                //}
+
                 return RedirectToAction("CreateJob", "Job", new RouteValueDictionary(reportRequest));
             }
             return View(reportRequest);

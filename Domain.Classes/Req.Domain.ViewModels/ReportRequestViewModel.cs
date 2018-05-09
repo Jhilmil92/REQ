@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Mvc;
 
 namespace Domain.Classes.Req.Domain.ViewModels
@@ -18,11 +19,26 @@ namespace Domain.Classes.Req.Domain.ViewModels
         public string StakeHolderOrganization { get; set; }
 
         [Required]
+        [MaxLength(255)]
+        public string JobTitle { get; set; }
+
+        [Required]
         public string JobDescription { get; set; }
         [Required]
         public JobCategory JobType { get; set; }
         //public string ReportedBy { get; set; }
         [Required]
         public PriorityLevel JobPriority { get; set; }
+
+        [MinLength(1),MaxLength(3)]
+        public int EstimatedTimeInHours { get; set; }
+
+        public int JobTakerId { get; set; }
+
+        [DataType(DataType.Upload)]
+        public HttpPostedFileBase File { get; set; }
+
+        [Required]
+        public string ReleaseVersion { get; set; }
     }
 }

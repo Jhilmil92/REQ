@@ -16,6 +16,9 @@ namespace Domain.Classes
             JobPriority = PriorityLevel.Medium;
         }
         public int JobId { get; set; }
+
+        [Column(Order = 1)]
+        public string JobTitle { get; set; }
         public string JobDescription { get; set; }
         public JobCategory JobCategory { get; set; }
 
@@ -154,6 +157,8 @@ namespace Domain.Classes
         public PriorityLevel JobPriority { get; set; }
 
         public JobStatus Status { get; set; }
+
+        public string ReleaseVersion { get; set; }
 
         public int CompareTo(Job other)
         {

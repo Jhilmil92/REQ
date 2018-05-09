@@ -9,6 +9,9 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.JobTitle)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.JobDescription)
         </th>
         <th>
@@ -44,6 +47,9 @@
     var jobStatus = ((Req.Enums.JobStatus)item.Status).ToString();
     
     <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.JobTitle)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.JobDescription)
         </td>

@@ -37,14 +37,25 @@ namespace BusinessLogicLayer
             var stakeHolder = _stakeHolderRepository.GetStakeHolderById(requestViewModel.StakeHolderId);
             var job = new Job 
             { 
+                JobTitle = requestViewModel.JobTitle,
                 JobDescription = requestViewModel.JobDescription,
                 JobCategory = requestViewModel.JobType,
                 CreatedOn = DateTime.Now.Date,
                 //ReportedBy = stakeHolder,
                 ReportedById = stakeHolder.StakeHolderId,
                 JobPriority = requestViewModel.JobPriority,
-                Status = JobStatus.Queued
+                EstimatedTimeHour = requestViewModel.EstimatedTimeInHours
             };
+
+            if (requestViewModel.JobTakerId != 0)
+            {
+                job.AssignedToId = requestViewModel.JobTakerId;
+                job.Status = JobStatus.Assigned;
+            }
+            else
+            {
+                job.Status = JobStatus.Unassigned;
+            }
 
             return _jobRepository.Create(job);
         }
@@ -81,7 +92,7 @@ namespace BusinessLogicLayer
                 }
                 else
                 {
-                    currentJob.Status = JobStatus.Approved;
+                    currentJob.Status = JobStatus.Assigned;
                 }
             }
             return _jobRepository.Update(currentJob);

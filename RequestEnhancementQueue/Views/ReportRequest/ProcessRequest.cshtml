@@ -7,10 +7,9 @@
 <h2>Process Request</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
     <div class="form-horizontal">
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -20,9 +19,16 @@
             </div>
         </div>*@
         <div class="form-group">
+            <div class="col-md-10">
+                @Html.LabelFor(model => model.JobTitle, "Job Title", htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.JobTitle, new { htmlAttributes = new { @class = "form-control"} })
+                @Html.ValidationMessageFor(model => model.JobTitle, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
             @Html.LabelFor(model => model.JobDescription, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.JobDescription, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.JobDescription, new { htmlAttributes = new { @class = "form-control", type = "textarea" } })
                 @Html.ValidationMessageFor(model => model.JobDescription, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -30,23 +36,54 @@
         <div class="form-group">
             @Html.LabelFor(model => model.JobType, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EnumDropDownListFor(model => model.JobType, "Select a Job Type", new { @class = "form-control"})
-                @Html.ValidationMessageFor(model => model.JobType, "", new { @class = "text-danger"})
+                @Html.EnumDropDownListFor(model => model.JobType, "Select a Job Type", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.JobType, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model=>model.StakeHolderOrganization,"Reported By", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.StakeHolderOrganization, "Reported By", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.StakeHolderOrganization, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly"} })
+                @Html.EditorFor(model => model.StakeHolderOrganization, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
             </div>
         </div>
 
         <div class= "form-group">
             @Html.LabelFor(model => model.JobPriority, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EnumDropDownListFor(model => model.JobPriority, "Select a Job Priority", new { @class = "form-control"})
+                @Html.EnumDropDownListFor(model => model.JobPriority, "Select a Job Priority", new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.JobPriority, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EstimatedTimeInHours, "Estimated Time", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EstimatedTimeInHours, new { htmlAttributes = new { @class = "form-control", @min = 0}})
+                @Html.ValidationMessageFor(model => model.EstimatedTimeInHours,"", new { @class = "text-danger"})
+            </div>
+        </div>
+
+        <div class = "form-group">
+            @Html.LabelFor(model => model.JobTakerId, "Choose a Taker", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.JobTakerId, new SelectList(ViewBag.Takers,"TakerId","TakerName"), "Select a Taker")
+            </div>    
+         </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ReleaseVersion, "Release Version", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ReleaseVersion, new { htmlAttributes = new { @class = "form-control"} })
+                @Html.ValidationMessageFor(model => model.ReleaseVersion, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.File, "Upload File", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.File, new { type = "file" })
+                @Html.ValidationMessageFor(model => model.File, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -61,6 +98,7 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+ 
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

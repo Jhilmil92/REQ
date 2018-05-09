@@ -9,6 +9,9 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.JobTitle)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.JobDescription)
         </th>
         <th>
@@ -42,6 +45,9 @@
     
     <tr>
         <td>
+            @Html.DisplayFor(modelItem => item.JobTitle)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.JobDescription)
         </td>
         <td>
@@ -54,7 +60,7 @@
             @Html.DisplayFor(modelItem => item.ActualTimeTaken)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.AssignedTo)
+            @Html.DisplayFor(modelItem => item.AssignedTo.TakerName)
         </td>
         <td>
             @Html.DisplayFor(modelItem => priorityLevel)

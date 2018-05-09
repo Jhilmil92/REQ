@@ -26,3 +26,5 @@ E:\Source\Repos\REQ\DataAccessLayer\bin\Debug\System.Web.WebPages.Deployment.xml
 E:\Source\Repos\REQ\DataAccessLayer\obj\Debug\DataAccessLayer.Migrations.InitialCreate.resources
 E:\Source\Repos\REQ\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.GenerateResource.Cache
 E:\Source\Repos\REQ\DataAccessLayer\obj\Debug\DataAccessLayer.Migrations.estimatedandactualtime.resources
+E:\Source\Repos\REQ\DataAccessLayer\obj\Debug\DataAccessLayer.Migrations.UploadFileField.resources
+E:\Source\Repos\REQ\DataAccessLayer\obj\Debug\DataAccessLayer.Migrations.releaseversionfield.resources

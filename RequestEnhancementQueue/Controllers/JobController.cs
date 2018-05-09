@@ -37,8 +37,8 @@ namespace RequestEnhancementQueue.Controllers
             if (ModelState.IsValid)
             {
                 var job = _jobBLL.CreateJob(reportRequest);
-                var queueInstance = JobQueueService.GetInstance();
-                queueInstance.Enqueue(job);
+                //var queueInstance = JobQueueService.GetInstance();
+                //queueInstance.Enqueue(job);
             }
             else
             {
@@ -89,7 +89,7 @@ namespace RequestEnhancementQueue.Controllers
             var priorityJob = (Job)queueInstance.PriorityQue.Dequeue();
             var takerId = (int)(Session[Constants.TakerId]);
             priorityJob.AssignedToId = takerId;
-            priorityJob.Status = Req.Enums.JobStatus.Approved;
+            priorityJob.Status = Req.Enums.JobStatus.Assigned;
             _jobBLL.UpdateJob(priorityJob);
             var jobs = _jobBLL.GetJobsByTakerId(takerId).ToList();
             return View("ViewJobs",jobs);

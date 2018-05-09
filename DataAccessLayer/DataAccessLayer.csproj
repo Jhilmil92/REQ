@@ -56,6 +56,14 @@
     <Compile Include="Migrations\201805062021518_estimatedandactualtime.Designer.cs">
       <DependentUpon>201805062021518_estimatedandactualtime.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805080748118_UploadFileField.cs" />
+    <Compile Include="Migrations\201805080748118_UploadFileField.Designer.cs">
+      <DependentUpon>201805080748118_UploadFileField.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805081045151_releaseversionfield.cs" />
+    <Compile Include="Migrations\201805081045151_releaseversionfield.Designer.cs">
+      <DependentUpon>201805081045151_releaseversionfield.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Req.Data.Infrastructure\Classes\DataContext.cs" />
     <Compile Include="Req.Data.Infrastructure\Classes\JobRepository.cs" />
@@ -83,6 +91,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805062021518_estimatedandactualtime.resx">
       <DependentUpon>201805062021518_estimatedandactualtime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805080748118_UploadFileField.resx">
+      <DependentUpon>201805080748118_UploadFileField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805081045151_releaseversionfield.resx">
+      <DependentUpon>201805081045151_releaseversionfield.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
