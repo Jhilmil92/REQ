@@ -40,7 +40,7 @@ namespace BusinessLogicLayer
                 JobTitle = requestViewModel.JobTitle,
                 JobDescription = requestViewModel.JobDescription,
                 JobCategory = requestViewModel.JobType,
-                CreatedOn = DateTime.Now.Date,
+                CreatedOn = (DateTime.Now).Date,
                 //ReportedBy = stakeHolder,
                 ReportedById = stakeHolder.StakeHolderId,
                 JobPriority = requestViewModel.JobPriority,
@@ -84,9 +84,9 @@ namespace BusinessLogicLayer
             if (currentJob != null)
             {
                 currentJob.ActualTimeTakenHour = job.ActualTimeTakenHrPart;
-                currentJob.ActualTimeTakenMinute = job.ActualTimeTakenMinPart;
+                //currentJob.ActualTimeTakenMinute = job.ActualTimeTakenMinPart;
                 currentJob.EstimatedTimeHour = job.EstimatedTimeHrPart;
-                currentJob.EstimatedTimeMinute = job.EstimatedTimeMinPart;
+                //currentJob.EstimatedTimeMinute = job.EstimatedTimeMinPart;
                 if (job.JobStatus != 0)
                 {
                     currentJob.Status = job.JobStatus;

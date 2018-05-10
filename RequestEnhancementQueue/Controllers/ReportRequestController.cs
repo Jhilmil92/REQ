@@ -54,10 +54,16 @@ namespace RequestEnhancementQueue.Controllers
 
             if (ModelState.IsValid)
             {
-                //using (MemoryStream memoryStream = new MemoryStream())
-                //{
-                //    reportRequest.File.InputStream.CopyTo(memoryStream);
-                //}
+                if(reportRequest.File != null)
+                {
+                    string filePath = Server.MapPath("~/Uploads/");
+                    if(!(Directory.Exists(filePath)))
+                    {
+                        Directory.CreateDirectory(filePath);
+                    }
+                    reportRequest.File.SaveAs(filePath + Path.GetFileName(reportRequest.File.FileName)) ;
+                    ViewBag.Message = "File Uploaded Successfully"; // Put this in the view
+                }
 
                 return RedirectToAction("CreateJob", "Job", new RouteValueDictionary(reportRequest));
             }

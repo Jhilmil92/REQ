@@ -64,6 +64,10 @@
     <Compile Include="Migrations\201805081045151_releaseversionfield.Designer.cs">
       <DependentUpon>201805081045151_releaseversionfield.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805100925219_CreatedByColumnAlteration.cs" />
+    <Compile Include="Migrations\201805100925219_CreatedByColumnAlteration.Designer.cs">
+      <DependentUpon>201805100925219_CreatedByColumnAlteration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Req.Data.Infrastructure\Classes\DataContext.cs" />
     <Compile Include="Req.Data.Infrastructure\Classes\JobRepository.cs" />
@@ -97,6 +101,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805081045151_releaseversionfield.resx">
       <DependentUpon>201805081045151_releaseversionfield.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805100925219_CreatedByColumnAlteration.resx">
+      <DependentUpon>201805100925219_CreatedByColumnAlteration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

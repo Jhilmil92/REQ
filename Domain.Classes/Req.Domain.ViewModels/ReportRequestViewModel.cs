@@ -30,6 +30,7 @@ namespace Domain.Classes.Req.Domain.ViewModels
         [Required]
         public PriorityLevel JobPriority { get; set; }
 
+        [DisplayFormat(DataFormatString = "{0}")]
         public int EstimatedTimeInHours { get; set; }
 
         public int JobTakerId { get; set; }

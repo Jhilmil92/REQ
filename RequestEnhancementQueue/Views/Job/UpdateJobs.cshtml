@@ -9,15 +9,15 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.JobDescription)
+            @Html.DisplayNameFor(model => model.JobTitle)
         </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
-        <td class="jobDescription">
-            @Html.ActionLink(item.JobDescription, "EditJob", "Job", new {jobId = item.JobId},null)
+        <td class="jobTitle">
+            @Html.ActionLink(item.JobTitle, "EditJob", "Job", new {jobId = item.JobId},null)
         </td>
     </tr>
 }

@@ -20,6 +20,7 @@ namespace Domain.Classes.Req.Domain.ViewModels
 
         public JobCategory JobType { get; set; }
 
+        [DisplayFormat(DataFormatString = "{0}")]
         public int EstimatedTimeInHours { get; set; }
 
         public int? AssignedTakerId { get; set; }

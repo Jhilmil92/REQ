@@ -24,7 +24,7 @@ namespace RequestEnhancementQueue.Controllers
             _jobBLL = new JobBLL();
             _stakeHolderBLL = new StakeHolderBLL();
             _takerBLL = new TakerBLL();
-            _jobQueueService = JobQueueService.GetInstance();
+            //_jobQueueService = JobQueueService.GetInstance();
         }
         //public JobController(IJobBLL jobBLL)
         //{
@@ -67,9 +67,7 @@ namespace RequestEnhancementQueue.Controllers
             {
                 JobId = jobId,
                 ActualTimeTakenHrPart = job.ActualTimeTakenHour,
-                ActualTimeTakenMinPart = job.ActualTimeTakenMinute,
                 EstimatedTimeHrPart = job.EstimatedTimeHour,
-                EstimatedTimeMinPart = job.EstimatedTimeMinute,
                 JobStatus = job.Status
             };
 

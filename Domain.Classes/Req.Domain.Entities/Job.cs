@@ -28,6 +28,7 @@ namespace Domain.Classes
         public JobCategory JobCategory { get; set; }
 
         [Display(Name = "Created On")]
+        [Column(TypeName="date")]
         public DateTime? CreatedOn { get; set; }
         public virtual StakeHolder ReportedBy { get; set; }
 
@@ -48,51 +49,22 @@ namespace Domain.Classes
                 }
                 else
                 {
-                    var hourPart = EstimatedTime.Split(':')[0];
-                    return Convert.ToInt32(hourPart);
+                    //var hourPart = EstimatedTime.Split(':')[0];
+                    return Convert.ToInt32(EstimatedTime);
                 }
             }
             set
             {
-                if (string.IsNullOrWhiteSpace(EstimatedTime))
-                {
-                    EstimatedTime = string.Format("{0}:0", value);
-                }
-                else
-                {
-                    var estimatedTimeSplit = EstimatedTime.Split(':');
-                    EstimatedTime = string.Format("{0}:{1}", value, estimatedTimeSplit[1]);
-                }
+                //if (string.IsNullOrWhiteSpace(EstimatedTime))
+                //{
+                    EstimatedTime = string.Format("{0}", value);
+                //}
+                //else
+                //{
+                //    var estimatedTimeSplit = EstimatedTime.Split(':');
+                //    EstimatedTime = string.Format("{0}:{1}", value, estimatedTimeSplit[1]);
+                //}
 
-            }
-        }
-
-        [NotMapped]
-        public int EstimatedTimeMinute 
-        {
-            get
-            {
-                if (string.IsNullOrWhiteSpace(EstimatedTime))
-                {
-                    return 0;
-                }
-                else
-                {
-                    var minPart = EstimatedTime.Split(':')[1];
-                    return Convert.ToInt32(minPart);
-                }
-            }
-            set
-            {
-                if (string.IsNullOrWhiteSpace(EstimatedTime))
-                {
-                    EstimatedTime = string.Format("0:{0}", value);
-                }
-                else
-                {
-                    var estimatedTimeSplit = EstimatedTime.Split(':');
-                    EstimatedTime = string.Format("{0}:{1}", estimatedTimeSplit[0], value);
-                }
             }
         }
 
@@ -110,52 +82,24 @@ namespace Domain.Classes
                 }
                 else
                 {
-                    var hourPart = ActualTimeTaken.Split(':')[0];
-                    return Convert.ToInt32(hourPart);
+                    //var hourPart = ActualTimeTaken.Split(':')[0];
+                    return Convert.ToInt32(ActualTimeTaken);
                 }
             }
             set
             {
-                if (string.IsNullOrWhiteSpace(ActualTimeTaken))
-                {
-                    ActualTimeTaken = string.Format("{0}:0", value);
-                }
-                else
-                {
-                    var actualTimeTakenSplit = ActualTimeTaken.Split(':');
-                    ActualTimeTaken = string.Format("{0}:{1}", value, actualTimeTakenSplit[1]);
-                }
+                //if (string.IsNullOrWhiteSpace(ActualTimeTaken))
+                //{
+                    ActualTimeTaken = string.Format("{0}", value);
+                //}
+                //else
+                //{
+                //    var actualTimeTakenSplit = ActualTimeTaken.Split(':');
+                //    ActualTimeTaken = string.Format("{0}:{1}", value, actualTimeTakenSplit[1]);
+                //}
             }
         }
 
-        [NotMapped]
-        public int ActualTimeTakenMinute
-        {
-            get
-            {
-                if (string.IsNullOrWhiteSpace(ActualTimeTaken))
-                {
-                    return 0;
-                }
-                else
-                {
-                    var minPart = ActualTimeTaken.Split(':')[1];
-                    return Convert.ToInt32(minPart);
-                }
-            }
-            set
-            {
-                if (string.IsNullOrWhiteSpace(ActualTimeTaken))
-                {
-                    ActualTimeTaken = string.Format("0:{0}", value);
-                }
-                else
-                {
-                    var actualTimeTakenSplit = ActualTimeTaken.Split(':');
-                    ActualTimeTaken = string.Format("{0}:{1}", actualTimeTakenSplit[0], value);
-                }
-            }
-        }
 
         public virtual Taker AssignedTo { get; set; }
 
