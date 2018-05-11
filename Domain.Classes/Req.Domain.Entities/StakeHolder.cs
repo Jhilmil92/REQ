@@ -12,7 +12,11 @@ namespace Domain.Classes
     {
         [Key]
         public int StakeHolderId { get; set; }
+
+        [Display(Name = "Stakeholder Organization")]
         public string StakeHolderOrganization { get; set; }
+
+        [Display(Name = "Username")]
         public string UserName { get; set; }
         public string Password { get; set; }
     }

@@ -35,8 +35,8 @@ namespace Domain.Classes.Req.Domain.ViewModels
 
         public int JobTakerId { get; set; }
 
-        [DataType(DataType.Upload)]
-        public HttpPostedFileBase File { get; set; }
+       // [DataType(DataType.Upload)]
+        public HttpPostedFileBase[] Files { get; set; }
 
         [Required]
         public string ReleaseVersion { get; set; }

@@ -56,13 +56,24 @@ namespace RequestEnhancementQueue.Controllers
             {
                 if(reportRequest.File != null)
                 {
-                    string filePath = Server.MapPath("~/Uploads/");
-                    if(!(Directory.Exists(filePath)))
+                    //string filePath = Server.MapPath("~/Uploads/");
+                    //if(!(Directory.Exists(filePath)))
+                    //{
+                    //    Directory.CreateDirectory(filePath);
+                    //}
+                    //reportRequest.File.SaveAs(filePath + Path.GetFileName(reportRequest.File.FileName)) ;
+                    //ViewBag.Message = "File Uploaded Successfully"; // Put this in the view
+
+                    foreach(var file in reportRequest.Files)
                     {
-                        Directory.CreateDirectory(filePath);
+                        if(file != null)
+                        {
+                            var fileName = Path.GetFileName(file.FileName);
+                            var serverSavePath = Path.Combine(string.Format("{0}{1}/{2}/{3}",Server.MapPath("~/Uploads/"),reportRequest.StakeHolderOrganization,reportRequest.JobTitle,fileName) );
+                            file.SaveAs(serverSavePath);
+                            ViewBag.UploadStatus = reportRequest.Files.Count().ToString() + "Files Uploaded Successfully";
+                        }
                     }
-                    reportRequest.File.SaveAs(filePath + Path.GetFileName(reportRequest.File.FileName)) ;
-                    ViewBag.Message = "File Uploaded Successfully"; // Put this in the view
                 }
 
                 return RedirectToAction("CreateJob", "Job", new RouteValueDictionary(reportRequest));

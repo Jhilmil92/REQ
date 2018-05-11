@@ -45,6 +45,7 @@
     var priorityLevel = ((Req.Enums.PriorityLevel)item.JobPriority).ToString();
     var jobCategory = ((Req.Enums.JobCategory)item.JobCategory).ToString();
     var jobStatus = ((Req.Enums.JobStatus)item.Status).ToString();
+    var createdOn = string.Format("{0:d-MMM-yyyy}", (item.CreatedOn.Value));
      
     <tr class="firstRowSet">
         <td>
@@ -54,7 +55,7 @@
             @Html.DisplayFor(modelItem => item.JobDescription)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.CreatedOn)
+            @Html.DisplayFor(modelItem => createdOn)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.EstimatedTime)
@@ -78,7 +79,9 @@
             @Html.DisplayFor(modelItem => jobStatus)
         </td>
         <td>
-            @Html.ActionLink("Edit", "EditJobForStakeHolder", "Job", new { jobId = item.JobId },null)
+            <u>
+                @Html.ActionLink("Edit", "EditJobForStakeHolder", "Job", new { jobId = item.JobId }, null)
+            </u>
         </td>
     </tr>
 }

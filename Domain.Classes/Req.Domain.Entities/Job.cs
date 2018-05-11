@@ -49,21 +49,12 @@ namespace Domain.Classes
                 }
                 else
                 {
-                    //var hourPart = EstimatedTime.Split(':')[0];
                     return Convert.ToInt32(EstimatedTime);
                 }
             }
             set
             {
-                //if (string.IsNullOrWhiteSpace(EstimatedTime))
-                //{
                     EstimatedTime = string.Format("{0}", value);
-                //}
-                //else
-                //{
-                //    var estimatedTimeSplit = EstimatedTime.Split(':');
-                //    EstimatedTime = string.Format("{0}:{1}", value, estimatedTimeSplit[1]);
-                //}
 
             }
         }
@@ -82,33 +73,25 @@ namespace Domain.Classes
                 }
                 else
                 {
-                    //var hourPart = ActualTimeTaken.Split(':')[0];
                     return Convert.ToInt32(ActualTimeTaken);
                 }
             }
             set
             {
-                //if (string.IsNullOrWhiteSpace(ActualTimeTaken))
-                //{
                     ActualTimeTaken = string.Format("{0}", value);
-                //}
-                //else
-                //{
-                //    var actualTimeTakenSplit = ActualTimeTaken.Split(':');
-                //    ActualTimeTaken = string.Format("{0}:{1}", value, actualTimeTakenSplit[1]);
-                //}
             }
         }
 
-
+        [Display(Name = "Assigned To")]
         public virtual Taker AssignedTo { get; set; }
 
         [ForeignKey("AssignedTo")]
         public int? AssignedToId { get; set; }
 
+        [Display(Name = "Job Priority")]
         public PriorityLevel JobPriority { get; set; }
 
-        [Display(Name = "Job Priority")]
+        [Display(Name = "Job Status")]
         public JobStatus Status { get; set; }
 
         [Display(Name = "Release Version")]

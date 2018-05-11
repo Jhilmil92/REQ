@@ -12,6 +12,8 @@ namespace Domain.Classes
     {
         [Key]
         public int TakerId { get; set; }
+
+        [Display(Name = "Taker name")]
         public string TakerName { get; set; }
         public virtual ICollection<Job> Jobs { get; set; }
         public string UserName { get; set; }
