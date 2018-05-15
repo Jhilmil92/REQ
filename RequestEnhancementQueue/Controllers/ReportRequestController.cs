@@ -54,7 +54,7 @@ namespace RequestEnhancementQueue.Controllers
 
             if (ModelState.IsValid)
             {
-                if(reportRequest.File != null)
+                if(reportRequest.Files != null)
                 {
                     //string filePath = Server.MapPath("~/Uploads/");
                     //if(!(Directory.Exists(filePath)))
