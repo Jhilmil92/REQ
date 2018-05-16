@@ -56,27 +56,32 @@ namespace RequestEnhancementQueue.Controllers
             {
                 if(reportRequest.Files != null)
                 {
-                    //string filePath = Server.MapPath("~/Uploads/");
-                    //if(!(Directory.Exists(filePath)))
-                    //{
-                    //    Directory.CreateDirectory(filePath);
-                    //}
-                    //reportRequest.File.SaveAs(filePath + Path.GetFileName(reportRequest.File.FileName)) ;
-                    //ViewBag.Message = "File Uploaded Successfully"; // Put this in the view
-
                     foreach(var file in reportRequest.Files)
                     {
                         if(file != null)
                         {
                             var fileName = Path.GetFileName(file.FileName);
-                            var serverSavePath = Path.Combine(string.Format("{0}{1}/{2}/{3}",Server.MapPath("~/Uploads/"),reportRequest.StakeHolderOrganization,reportRequest.JobTitle,fileName) );
-                            file.SaveAs(serverSavePath);
+                            var serverSavePath = Path.Combine(string.Format("{0}{1}",Server.MapPath("~/Uploads/"),reportRequest.StakeHolderOrganization) );
+                            var jobFolderPath = Path.Combine(string.Format("{0}\\{1}", serverSavePath, reportRequest.JobTitle));
+
+                            if (!(Directory.Exists(jobFolderPath)))
+                            {
+                                     Directory.CreateDirectory(jobFolderPath);
+                            }
+
+                            file.SaveAs(Path.Combine(string.Format("{0}\\{1}", jobFolderPath, fileName)));                               
                             ViewBag.UploadStatus = reportRequest.Files.Count().ToString() + "Files Uploaded Successfully";
                         }
                     }
                 }
 
-                return RedirectToAction("CreateJob", "Job", new RouteValueDictionary(reportRequest));
+                var job = _jobBLL.CreateJob(reportRequest);
+                var stakeHolder = _stakeHolderBLL.GetStakeHolderById(reportRequest.StakeHolderId);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                ModelState.AddModelError("", "Fill in all the fields");
             }
             return View(reportRequest);
         }

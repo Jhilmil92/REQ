@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 using Req.Enums;
+using System.Web;
 
 namespace Domain.Classes.Req.Domain.ViewModels
 {
@@ -24,6 +25,10 @@ namespace Domain.Classes.Req.Domain.ViewModels
         public int EstimatedTimeInHours { get; set; }
 
         public int? AssignedTakerId { get; set; }
+
+        public HttpPostedFileBase[] Files { get; set; }
+
+        public string[] FileNames { get; set; }
 
         public string ReleaseVersion { get; set; }
     }
