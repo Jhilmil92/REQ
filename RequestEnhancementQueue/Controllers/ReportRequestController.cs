@@ -19,12 +19,14 @@ namespace RequestEnhancementQueue.Controllers
         private readonly IJobBLL _jobBLL;
         private readonly IStakeHolderBLL _stakeHolderBLL;
         private readonly ITakerBLL _takerBLL;
+        private readonly IFileBLL _fileBLL;
 
         public ReportRequestController()
         {
             _jobBLL = new JobBLL();
             _stakeHolderBLL = new StakeHolderBLL();
             _takerBLL = new TakerBLL();
+            _fileBLL = new FileBLL();
         }
         //public ReportRequestController(IJobBLL jobBLL)
         //{
@@ -54,15 +56,16 @@ namespace RequestEnhancementQueue.Controllers
 
             if (ModelState.IsValid)
             {
+                var job = _jobBLL.CreateJob(reportRequest);
+
                 if(reportRequest.Files != null)
                 {
                     foreach(var file in reportRequest.Files)
                     {
                         if(file != null)
                         {
-                            var fileName = Path.GetFileName(file.FileName);
-                            var serverSavePath = Path.Combine(string.Format("{0}{1}",Server.MapPath("~/Uploads/"),reportRequest.StakeHolderOrganization) );
-                            var jobFolderPath = Path.Combine(string.Format("{0}\\{1}", serverSavePath, reportRequest.JobTitle));
+                            var fileName = _fileBLL.GetFileName(file.FileName);
+                            var jobFolderPath = _fileBLL.GetFolderPath(job.JobId);
 
                             if (!(Directory.Exists(jobFolderPath)))
                             {
@@ -74,9 +77,6 @@ namespace RequestEnhancementQueue.Controllers
                         }
                     }
                 }
-
-                var job = _jobBLL.CreateJob(reportRequest);
-                var stakeHolder = _stakeHolderBLL.GetStakeHolderById(reportRequest.StakeHolderId);
                 return RedirectToAction("Index");
             }
             else

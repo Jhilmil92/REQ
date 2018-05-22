@@ -4,34 +4,33 @@
     ViewBag.Title = "Edit Job";
 }
 
-<h2>EditJob</h2>
+<h2>Edit Job</h2>
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("EditJob", "Job", FormMethod.Post, new { encType = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @*<div class="form-group">
-            @Html.LabelFor(model => model.JobId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.JobId, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.JobId, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
 
         <div class="form-group">
-            @Html.LabelFor(model => model.EstimatedTimeHrPart, "Estimated Time : Hours" ,htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.EstimatedTimeHrPart, new { htmlAttributes = new { @class = "form-control", @min = 0, @readonly = "readonly"} })
+                @Html.EditorFor(model => model.JobId, new { htmlAttributes = new { @class = "form-control", type = "hidden" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EstimatedTimeHrPart, "Estimated Time : Hours", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EstimatedTimeHrPart, new { htmlAttributes = new { @class = "form-control", @min = 0, @readonly = "readonly" } })
                 @Html.ValidationMessageFor(model => model.EstimatedTimeHrPart, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ActualTimeTakenHrPart, "Actual Time : Hours" , htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.ActualTimeTakenHrPart, "Actual Time : Hours", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.ActualTimeTakenHrPart, new { htmlAttributes = new { @class = "form-control", @min = "0" } })
                 @Html.ValidationMessageFor(model => model.ActualTimeTakenHrPart, "", new { @class = "text-danger" })
@@ -41,12 +40,73 @@
         <div class="form-group">
             @Html.LabelFor(model => model.JobStatus, "Job Status", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EnumDropDownListFor(model => model.JobStatus, new { htmlAttributes = new { @class = "form-control"} })
+                @Html.EnumDropDownListFor(model => model.JobStatus, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.JobStatus, "", new { @class = "text-danger" })
             </div>
         </div>
 
+        <div class="form-group">
+            @Html.LabelFor(model => model.Comments, "Comments", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Comments, new { htmlAttributes = new { @class = "form-control", type = "textarea" } })
+                @Html.ValidationMessageFor(model => model.Comments, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.Files, "Upload Files", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Files, new { @class = "form-control", type = "file", @multiple = "multiple" })
+                @Html.ValidationMessageFor(model => model.Files, "", new { @class = "text-danger" })
+                @ViewBag.UploadStatus
+            </div>
+        </div>
 
+
+        <br/>
+        <div class="fileNames">
+            <text><b><u>Uploaded Files :- </u></b></text>
+            <br/>
+            <br/>
+                @if (Model.FileNames != null && Model.FileNames.Count() != 0)
+                {
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>
+                                    <b>
+                                        Filename
+                                    </b>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var file in Model.FileNames)
+                            {
+                                var fileName = file.ToString().Split('\\');
+                                <tr>
+                                    <td>
+                                        @fileName[fileName.Length - 1]
+                                    </td>
+                                    <td> </td>
+                                    <td>
+                                        <u>@Html.ActionLink("View", "ViewFile", "File", new { jobId = Model.JobId, requiredFileName = fileName[fileName.Length - 1] }, null)</u>
+                                    </td>
+                                    <td></td>
+                                    <td>
+                                        <u>@Html.ActionLink("Download", "DownloadFile", "File", new { jobId = Model.JobId, requiredFileName = fileName[fileName.Length - 1] }, null)</u>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+                else
+                {
+                    @:<text>No uploaded files available</text>
+                }
+        </div>
+        <br/>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Save" class="btn btn-default" />
@@ -56,7 +116,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "UpdateJobs","Job")
+    @Html.ActionLink("Back to List", "ViewJobs","Job")
 </div>
 
 @section Scripts {

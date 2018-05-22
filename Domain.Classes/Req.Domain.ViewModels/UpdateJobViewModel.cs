@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using System.Web;
 
 
 namespace Domain.Classes.Req.Domain.ViewModels
@@ -19,5 +20,8 @@ namespace Domain.Classes.Req.Domain.ViewModels
         public int EstimatedTimeHrPart { get; set; }
         public int ActualTimeTakenHrPart { get; set; }
         public JobStatus JobStatus { get; set; }
+        public string Comments { get; set; }
+        public HttpPostedFileBase[] Files { get; set; }
+        public string[] FileNames { get; set; }
     }
 }

@@ -84,9 +84,8 @@ namespace BusinessLogicLayer
             if (currentJob != null)
             {
                 currentJob.ActualTimeTakenHour = job.ActualTimeTakenHrPart;
-                //currentJob.ActualTimeTakenMinute = job.ActualTimeTakenMinPart;
                 currentJob.EstimatedTimeHour = job.EstimatedTimeHrPart;
-                //currentJob.EstimatedTimeMinute = job.EstimatedTimeMinPart;
+                currentJob.Comments = job.Comments;
                 if (job.JobStatus != 0)
                 {
                     currentJob.Status = job.JobStatus;

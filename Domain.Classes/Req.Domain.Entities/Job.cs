@@ -30,6 +30,8 @@ namespace Domain.Classes
         [Display(Name = "Created On")]
         [Column(TypeName="date")]
         public DateTime? CreatedOn { get; set; }
+
+        [Display(Name = "Reported By")]
         public virtual StakeHolder ReportedBy { get; set; }
 
         [ForeignKey("ReportedBy")]
@@ -96,6 +98,8 @@ namespace Domain.Classes
 
         [Display(Name = "Release Version")]
         public string ReleaseVersion { get; set; }
+
+        public string Comments { get; set; }
 
         public int CompareTo(Job other)
         {

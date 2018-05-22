@@ -20,11 +20,13 @@ namespace RequestEnhancementQueue.Controllers
         private readonly IStakeHolderBLL _stakeHolderBLL;
         private readonly ITakerBLL _takerBLL;
         private readonly IJobQueueService _jobQueueService;
+        private readonly IFileBLL _fileBLL;
         public JobController()
         {
             _jobBLL = new JobBLL();
             _stakeHolderBLL = new StakeHolderBLL();
             _takerBLL = new TakerBLL();
+            _fileBLL = new FileBLL();
             //_jobQueueService = JobQueueService.GetInstance();
         }
         //public JobController(IJobBLL jobBLL)
@@ -63,13 +65,23 @@ namespace RequestEnhancementQueue.Controllers
 
         public ActionResult EditJob(int jobId)
         {
+            string[] files = null;
             var job = _jobBLL.GetJobById(jobId);
+            //Fetch uploaded files
+            var folderPath = _fileBLL.GetFolderPath(job.JobId);
+            if (Directory.Exists(folderPath))
+            {
+                files = Directory.GetFiles(folderPath);
+            }
+
             var model = new UpdateJobViewModel
             {
                 JobId = jobId,
                 ActualTimeTakenHrPart = job.ActualTimeTakenHour,
                 EstimatedTimeHrPart = job.EstimatedTimeHour,
-                JobStatus = job.Status
+                JobStatus = job.Status,
+                Comments = job.Comments,
+                FileNames = files
             };
 
             return View(model);
@@ -78,8 +90,34 @@ namespace RequestEnhancementQueue.Controllers
         [HttpPost]
         public ActionResult EditJob(UpdateJobViewModel viewModel)
         {
-            _jobBLL.UpdateJob(viewModel);
-            return RedirectToAction("TakerInformation", "Taker");
+            if(ModelState.IsValid)
+            {
+                if(viewModel.Files != null)
+                {
+                    foreach(var file in viewModel.Files)
+                    {
+                        if(file != null)
+                        {
+                            var fileName = _fileBLL.GetFileName(file.FileName);
+                            var filePath = _fileBLL.GetFolderPath(viewModel.JobId);
+                            if(!(Directory.Exists(filePath)))
+                            {
+                                Directory.CreateDirectory(filePath);
+                            }
+
+                            file.SaveAs(Path.Combine("{0}\\{1}",filePath,fileName));
+                            ViewBag.UploadStatus = string.Format("{0} {1}",viewModel.Files.Count().ToString(),"Files Uploaded Successfully");
+                        }
+                    }
+                }
+                _jobBLL.UpdateJob(viewModel);
+                return RedirectToAction("ViewJobs");
+            }
+            else
+            {
+                ModelState.AddModelError("", "Fill in all the fields");
+            }
+            return View(viewModel);
         }
 
         public ActionResult AssignJob()
@@ -100,7 +138,7 @@ namespace RequestEnhancementQueue.Controllers
             var stakeHolderId = (int)(Session[Constants.StakeHolderId]);
             var stakeHolder = _stakeHolderBLL.GetStakeHolderById(stakeHolderId);
             string[] files = null;
-            var filePath = Path.Combine(string.Format("{0}{1}\\{2}", Server.MapPath("~/Uploads/"), stakeHolder.StakeHolderOrganization, job.JobTitle));
+            var filePath = _fileBLL.GetFolderPath(job.JobId);
             if (Directory.Exists(filePath))
             {
                 files = Directory.GetFiles(filePath);
@@ -135,9 +173,8 @@ namespace RequestEnhancementQueue.Controllers
                     {
                         if (file != null)
                         {
-                            var fileName = Path.GetFileName(file.FileName);
-                            var serverSavePath = Path.Combine(string.Format("{0}{1}", Server.MapPath("~/Uploads/"), stakeHolder.StakeHolderOrganization));
-                            var jobFolderPath = Path.Combine(string.Format("{0}\\{1}", serverSavePath, viewModel.JobTitle));
+                            var fileName = _fileBLL.GetFileName(file.FileName);
+                            var jobFolderPath = _fileBLL.GetFolderPath(viewModel.JobId);
 
                             if (!(Directory.Exists(jobFolderPath)))
                             {
@@ -145,10 +182,12 @@ namespace RequestEnhancementQueue.Controllers
                             }
 
                             file.SaveAs(Path.Combine(string.Format("{0}\\{1}", jobFolderPath, fileName)));
-                            ViewBag.UploadStatus = viewModel.Files.Count().ToString() + "Files Uploaded Successfully";
+                            ViewBag.UploadStatus = string.Format("{0} {1}",viewModel.Files.Count().ToString(),"Files Uploaded Successfully");
                         }
                     }
+
                 }
+
                 var job = _jobBLL.UpdateJob(viewModel);
                 
                 return RedirectToAction("ViewReportedRequests", "ReportRequest");
