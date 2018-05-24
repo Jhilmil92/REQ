@@ -19,7 +19,7 @@ namespace RequestEnhancementQueue.Controllers
         // GET: File
         public ActionResult ViewFile(int jobId, string requiredFileName)
         {
-            return new DIsplayResult
+            return new DisplayResult
             {
                 VirtualPath = "~/Uploads/",
                 DisplayFileName = requiredFileName,

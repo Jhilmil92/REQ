@@ -12,6 +12,8 @@ namespace RequestEnhancementQueue
                         "~/Scripts/jquery-{version}.js",
                         "~/Scripts/jquery-ui-1.12.1.js",
                         "~/Scripts/jquery.unobtrusive-ajax.js"));
+            //,
+                        //"~/Scripts/datatables.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
@@ -28,7 +30,9 @@ namespace RequestEnhancementQueue
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
-                      "~/Content/jquery - ui.css"));
+                      "~/Content/themes/base/jquery-ui.css"));
+                      //,
+                      //"~/Content/datatables.css"));
         }
     }
 }

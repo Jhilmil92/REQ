@@ -8,14 +8,14 @@ using System.Web.Mvc;
 
 namespace Req.Enums.Req.Common.Utility
 {
-    public class DIsplayResult:ActionResult
+    public class DisplayResult:ActionResult
     {
-        public DIsplayResult()
+        public DisplayResult()
         {
 
         }
 
-        public DIsplayResult(string virtualPath)
+        public DisplayResult(string virtualPath)
         {
             VirtualPath = virtualPath;
         }

@@ -75,7 +75,7 @@
     <Compile Include="Req.Common.Enums\PriorityLevel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Req.Common.Utility\DownloadResult.cs" />
-    <Compile Include="Req.Common.Utility\DIsplayResult.cs" />
+    <Compile Include="Req.Common.Utility\DisplayResult.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

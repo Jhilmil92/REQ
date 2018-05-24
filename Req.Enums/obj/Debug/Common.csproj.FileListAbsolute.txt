@@ -19,4 +19,3 @@ E:\Source\Repos\REQ\Req.Enums\bin\Debug\System.Web.Razor.xml
 E:\Source\Repos\REQ\Req.Enums\bin\Debug\System.Web.WebPages.xml
 E:\Source\Repos\REQ\Req.Enums\bin\Debug\System.Web.WebPages.Deployment.xml
 E:\Source\Repos\REQ\Req.Enums\bin\Debug\System.Web.WebPages.Razor.xml
-E:\Source\Repos\REQ\Req.Enums\obj\Debug\Common.csprojResolveAssemblyReference.cache

@@ -3,11 +3,12 @@
 @{
     ViewBag.Title = "View Jobs";
 }
-
+@*<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css">*@
+<link href="~/Content/themes/datatables.css" rel="stylesheet" />
+<script src="~/Content/themes/datatables.js"></script>
 <h2>View Jobs</h2>
 
-<table class="table">
-
+<table id="example" class="table table-striped table-bordered hover" style="width:100%">
     <thead>
         <tr>
             <th>
@@ -15,6 +16,9 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.JobDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReleaseVersion)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.JobCategory)
@@ -40,54 +44,59 @@
             <th>
                 @Html.DisplayNameFor(model => model.Status)
             </th>
-</tr>
-    </thead>
-
-    @foreach (var item in Model)
-    {
-
-        var priorityLevel = ((Req.Enums.PriorityLevel)item.JobPriority).ToString();
-        var jobCategory = ((Req.Enums.JobCategory)item.JobCategory).ToString();
-        var jobStatus = ((Req.Enums.JobStatus)item.Status).ToString();
-        var createdOn = string.Format("{0:d-MMM-yyyy}", item.CreatedOn.Value);
-        <tbody class ="secondRowSet">
-        <tr >
-            <td>
-                @Html.DisplayFor(modelItem => item.JobTitle)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.JobDescription)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => jobCategory)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => createdOn)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => (item.ReportedBy.StakeHolderOrganization))
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EstimatedTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ActualTimeTaken)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AssignedTo.TakerName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => priorityLevel)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => jobStatus)
-            </td>
-            <td>
-                <u>@Html.ActionLink("Edit", "EditJob", "Job", new { jobId = item.JobId }, null)</u>
-            </td>
+            <th>
+            </th>
         </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+
+            var priorityLevel = ((Req.Enums.PriorityLevel)item.JobPriority).ToString();
+            var jobCategory = ((Req.Enums.JobCategory)item.JobCategory).ToString();
+            var jobStatus = ((Req.Enums.JobStatus)item.Status).ToString();
+            var createdOn = string.Format("{0:d-MMM-yyyy}", item.CreatedOn.Value);
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.JobTitle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.JobDescription)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReleaseVersion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => jobCategory)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => createdOn)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => (item.ReportedBy.StakeHolderOrganization))
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EstimatedTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ActualTimeTaken)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AssignedTo.TakerName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => priorityLevel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => jobStatus)
+                </td>
+                <td>
+                    <u>@Html.ActionLink("Edit", "EditJob", "Job", new { jobId = item.JobId }, null)</u>
+                </td>
+            </tr>
+        }
     </tbody>
-}
 
 </table>
 
@@ -96,6 +105,17 @@
 </div>
 
 <script>
-    $('.secondRowSet:nth-child(even)').css('background-color', '#a69de1')
-    $('.secondRowSet:nth-child(odd)').css('background-color', '#dcd8f3')
+    $(document).ready( function(){
+        $('#example').DataTable({
+            //"order": [[9, "asc"],[2,"asc"]]
+            "columnDefs" : [
+                { "orderData": [2,9], "targets": [2,9]},
+               // { "orderData" : [9] , "targets" : 2}
+            ]
+        });
+    }
+    );
+
+    //$('.secondRowSet:nth-child(even)').css('background-color', '#a69de1')
+    //$('.secondRowSet:nth-child(odd)').css('background-color', '#dcd8f3')
 </script>
