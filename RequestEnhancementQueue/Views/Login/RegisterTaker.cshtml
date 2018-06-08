@@ -52,7 +52,27 @@
         </div>
     </div>
 }
+<div class="footer">
+    <text>
+        Required Fields Necessary
+    </text>
+</div>
 
 <div>
     @Html.ActionLink("Back to Home Page", "Index", "Home")
 </div>
+
+<style>
+    label
+    {
+        font-weight : bold;
+    }
+
+    label:after,div .footer > text:before
+    {
+        color : red;
+        content : '*';
+        display : inline;
+    }
+    
+</style>

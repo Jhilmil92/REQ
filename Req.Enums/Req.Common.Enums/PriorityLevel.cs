@@ -11,5 +11,7 @@ namespace Req.Enums
         High = 1
        ,Medium = 2
        ,Low = 3
+       ,Urgent = 4
+       ,Immediate = 5
     }
 }

@@ -7,24 +7,44 @@
 <h2>Hi @Model.StakeHolderOrganization, Welcome to the Request Enhancement Queue System!</h2>
 
 <br/>
-<br/>
 
 <div>
-    <h4>
+    <h4 class="lead">
         What would you like to do today?
     </h4>
 </div>
-<div>
+
+<div class="container-fluid">
+    <div class="row">
+            <div class="col-md-3" style="background-color:aliceblue;">
+                <div class="applyPadding text-center hover">
+                    <h3>
+                        @Html.ActionLink("Report a Request", "ProcessRequest", "ReportRequest", new { stakeHolderId = Model.StakeHolderId, stakeHolderOrganization = Model.StakeHolderOrganization }, null)
+                    </h3>
+                </div>
+            </div>
+            <div class="col-md-4 col-md-offset-1" style="background-color:aliceblue;">
+                <div class="applyPadding text-center hover">
+                    <h3>
+                        @Html.ActionLink("View Reported Requests", "ViewReportedRequests", "ReportRequest", new { stakeHolderId = Model.StakeHolderId }, null)
+                    </h3>
+                </div>
+            </div>
+            @*<div class="col-md-5 col-md-offset-1" style="background-color:aliceblue;">
+                <h3>
+                    @Html.ActionLink("Log out", "Logout", "Login")
+                </h3>
+            </div>*@
+    </div>
+</div>
+
+<style>
+    .applyPadding{
+        margin: 15px;
+        padding: 15px;
+    }
     
-    @Html.ActionLink("Report a Request", "ProcessRequest", "ReportRequest", new { stakeHolderId = Model.StakeHolderId, stakeHolderOrganization = Model.StakeHolderOrganization }, null)
-</div>
-<br/>
-<div>
-    @Html.ActionLink("View Reported Requests","ViewReportedRequests","ReportRequest", new { stakeHolderId = Model.StakeHolderId},null)
-</div>
-<br/>
-<div>
-    @Html.ActionLink("Log out","Logout","Login")
-</div>
+</style>
+
 
 
