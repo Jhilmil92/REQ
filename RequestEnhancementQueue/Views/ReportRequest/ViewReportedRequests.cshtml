@@ -6,7 +6,7 @@
 
 <h2>Reported Requests</h2>
 
-<table class="table">
+<table id="example" class="table" style="width : 100%">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.JobTitle)
@@ -16,6 +16,9 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.CreatedOn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UpdatedOn)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.EstimatedTime)
@@ -45,7 +48,9 @@
     var priorityLevel = ((Req.Enums.PriorityLevel)item.JobPriority).ToString();
     var jobCategory = ((Req.Enums.JobCategory)item.JobCategory).ToString();
     var jobStatus = ((Req.Enums.JobStatus)item.Status).ToString();
-    var createdOn = string.Format("{0:d-MMM-yyyy}", (item.CreatedOn.Value));
+    var createdOn = string.Format("{0:d-MMM-yyyy h:mm tt}", (item.CreatedOn.Value));
+    var lastUpdatedOn = (item.UpdatedOn == null) ? string.Format("{0:d-MMM-yyyy h:mm tt}", DateTime.Now) : string.Format("{0:d-MMM-yyyy h:mm tt}", item.UpdatedOn.Value);
+
      
     <tr class="firstRowSet">
         <td>
@@ -58,6 +63,9 @@
             @Html.DisplayFor(modelItem => createdOn)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => lastUpdatedOn)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.EstimatedTime)
         </td>
         <td>
@@ -66,7 +74,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.ReleaseVersion)
         </td>
-        <td>
+        <td>k
             @Html.DisplayFor(modelItem => item.AssignedTo.TakerName)
         </td>
         <td>

@@ -40,7 +40,8 @@ namespace BusinessLogicLayer
                 JobTitle = requestViewModel.JobTitle,
                 JobDescription = requestViewModel.JobDescription,
                 JobCategory = requestViewModel.JobType,
-                CreatedOn = (DateTime.Now).Date,
+                CreatedOn = DateTime.Now,
+                UpdatedOn = DateTime.Now,
                 //ReportedBy = stakeHolder,
                 ReportedById = stakeHolder.StakeHolderId,
                 JobPriority = requestViewModel.JobPriority,
@@ -140,6 +141,7 @@ namespace BusinessLogicLayer
             currentJob.JobTitle = viewModel.JobTitle;
             currentJob.JobDescription = viewModel.JobDescription;
             currentJob.JobCategory = viewModel.JobType;
+            currentJob.UpdatedOn = DateTime.Now;
             return _jobRepository.Update(currentJob);
         }
     }

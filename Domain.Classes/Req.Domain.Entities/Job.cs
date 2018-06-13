@@ -28,8 +28,13 @@ namespace Domain.Classes
         public JobCategory JobCategory { get; set; }
 
         [Display(Name = "Created On")]
-        [Column(TypeName="date")]
+        //[Column(TypeName="datetime")]
+        [DataType(DataType.Date)]
         public DateTime? CreatedOn { get; set; }
+
+        [Display(Name = "Last Updated On")]
+        [DataType(DataType.Date)]
+        public DateTime? UpdatedOn { get; set; }
 
         [Display(Name = "Reported By")]
         public virtual StakeHolder ReportedBy { get; set; }

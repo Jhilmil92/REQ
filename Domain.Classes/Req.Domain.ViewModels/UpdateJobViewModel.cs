@@ -19,6 +19,7 @@ namespace Domain.Classes.Req.Domain.ViewModels
         [DisplayFormat(DataFormatString="{0}")]
         public int EstimatedTimeHrPart { get; set; }
         public int ActualTimeTakenHrPart { get; set; }
+        public DateTime? LastUpdatedOn { get; set; }
         public JobStatus JobStatus { get; set; }
         public string Comments { get; set; }
         public HttpPostedFileBase[] Files { get; set; }

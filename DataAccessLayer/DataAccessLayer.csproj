@@ -72,6 +72,14 @@
     <Compile Include="Migrations\201805211028271_commentscolumn_job.Designer.cs">
       <DependentUpon>201805211028271_commentscolumn_job.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806110702148_lastUpdatedOnColumn.cs" />
+    <Compile Include="Migrations\201806110702148_lastUpdatedOnColumn.Designer.cs">
+      <DependentUpon>201806110702148_lastUpdatedOnColumn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806111008175_DateToDateTimeInJob.cs" />
+    <Compile Include="Migrations\201806111008175_DateToDateTimeInJob.Designer.cs">
+      <DependentUpon>201806111008175_DateToDateTimeInJob.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Req.Data.Infrastructure\Classes\DataContext.cs" />
     <Compile Include="Req.Data.Infrastructure\Classes\JobRepository.cs" />
@@ -111,6 +119,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805211028271_commentscolumn_job.resx">
       <DependentUpon>201805211028271_commentscolumn_job.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806110702148_lastUpdatedOnColumn.resx">
+      <DependentUpon>201806110702148_lastUpdatedOnColumn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806111008175_DateToDateTimeInJob.resx">
+      <DependentUpon>201806111008175_DateToDateTimeInJob.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

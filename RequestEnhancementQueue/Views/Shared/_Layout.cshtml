@@ -7,7 +7,7 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
-
+    
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -39,6 +39,17 @@
     </div>
     
     @Scripts.Render("~/bundles/bootstrap")
+    
     @RenderSection("scripts", required: false)
 </body>
 </html>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: url('../../Content/Images/moraine-lake-canada-wallpaper.jpg');
+        background-size: cover;
+        font-family: sans-serif;
+    }
+</style>

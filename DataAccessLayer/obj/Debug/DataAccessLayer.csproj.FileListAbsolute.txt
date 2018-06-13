@@ -20,3 +20,5 @@ E:\Source\Repos\REQ\DataAccessLayer\obj\Debug\DataAccessLayer.Migrations.UploadF
 E:\Source\Repos\REQ\DataAccessLayer\obj\Debug\DataAccessLayer.Migrations.releaseversionfield.resources
 E:\Source\Repos\REQ\DataAccessLayer\obj\Debug\DataAccessLayer.Migrations.CreatedByColumnAlteration.resources
 E:\Source\Repos\REQ\DataAccessLayer\obj\Debug\DataAccessLayer.Migrations.commentscolumn_job.resources
+E:\Source\Repos\REQ\DataAccessLayer\obj\Debug\DataAccessLayer.Migrations.lastUpdatedOnColumn.resources
+E:\Source\Repos\REQ\DataAccessLayer\obj\Debug\DataAccessLayer.Migrations.DateToDateTimeInJob.resources

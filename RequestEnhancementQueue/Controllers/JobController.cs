@@ -110,6 +110,7 @@ namespace RequestEnhancementQueue.Controllers
                         }
                     }
                 }
+                viewModel.LastUpdatedOn = DateTime.Now;
                 _jobBLL.UpdateJob(viewModel);
                 return RedirectToAction("ViewJobs");
             }

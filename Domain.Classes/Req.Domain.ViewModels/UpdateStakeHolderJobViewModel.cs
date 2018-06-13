@@ -31,5 +31,7 @@ namespace Domain.Classes.Req.Domain.ViewModels
         public string[] FileNames { get; set; }
 
         public string ReleaseVersion { get; set; }
+
+        public DateTime? LastUpdatedOn { get; set; }
     }
 }

@@ -14,7 +14,7 @@
     <div class="carousel-inner" role="listbox">
         <div class="item active">
             <img src="~/Content/Images/Pixel_Mosaic.jpg" alt="Image"> 
-                <div class="carousel-caption">
+                <div class="carousel-caption apply-first-style">
                     <h3>
                         Amazing Features
                     </h3>
@@ -23,7 +23,7 @@
         </div>
         <div class="item">
             <img src="~/Content/Images/Home Page Image 2.jpg" alt="Image">
-                <div class="carousel-caption">
+                <div class="carousel-caption apply-second-style">
                     <h3>
                         Start using today!
                     </h3>
@@ -43,6 +43,7 @@
     </a>
 </div>
 <br/>
+<br/>s
 <div class="container-fluid" >
     <div id="navbar-two">
         <div class="row ">
@@ -82,41 +83,9 @@
                     </h3>
                 </div>
             </div>
-
-           @* <div class="col-md-12" style="height:10px">
-
-    </div>
-    <div class="col-md-12">
-        <ul class="nav navbar-two-list">
-            <li class="nav-item" style="background-color : aliceblue;width : 20%">
-                <a class="navbar-link" href="#">
-                    Dashboard bigger bigger even bigger
-                </a>
-            </li>
-            <li class="nav-item" style="width:5%;">
-
-            </li>
-            <li class="nav-item" style="width:20%; background-color : aliceblue">
-                <a class="nav-link" href="#">
-                    My portfolio bigger bigger even bigger
-                </a>
-            </li>
-            <li class="nav-item" style="width : 5%">
-
-            </li>
-            <li class="nav-item" style="width:20%; background-color : aliceblue;">
-                <a class="nav-link" href="#">
-                    Family bigger bigger even bigger
-                </a>
-            </li>
-        </ul>
-    </div>*@
-            @*Comment Till here*@
         </div>
     </div>
 </div>
-
-
 
 <script>
     //$(".rowOne,.rowTwo,.rowThree").css
@@ -149,6 +118,27 @@
         height : 200px;
     }*/
 
+    .apply-first-style
+    {
+        color : black;
+        font : bold 12px Sans-serif;
+    }
+
+    .apply-second-style
+    {
+        font : bold 12px Sans-serif;
+    }
+
+    .carousel .item {
+  height: 300px;
+}
+
+.item img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-height: 300px;
+}
 </style>
 
 @section scripts{

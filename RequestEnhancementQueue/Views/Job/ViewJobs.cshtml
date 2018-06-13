@@ -4,7 +4,7 @@
     ViewBag.Title = "View Jobs";
 }
 @*<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css">*@
-<link href="~/Content/themes/datatables.css" rel="stylesheet" />
+<link href="~/Content/themes/jobstyles.css" rel="stylesheet" />
 <script src="~/Content/themes/datatables.js"></script>
 <h2>View Jobs</h2>
 
@@ -25,6 +25,9 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.CreatedOn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UpdatedOn)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.ReportedBy)
@@ -56,7 +59,8 @@
             var priorityLevel = ((Req.Enums.PriorityLevel)item.JobPriority).ToString();
             var jobCategory = ((Req.Enums.JobCategory)item.JobCategory).ToString();
             var jobStatus = ((Req.Enums.JobStatus)item.Status).ToString();
-            var createdOn = string.Format("{0:d-MMM-yyyy}", item.CreatedOn.Value);
+            var createdOn = string.Format("{0:d-MMM-yyyy h:mm tt}", item.CreatedOn.Value);
+            var lastUpdatedOn = (item.UpdatedOn == null) ? string.Format("{0:d-MMM-yyyy h:mm tt}", (DateTime.Now)) : string.Format("{0:d-MMM-yyyy h:mm tt}", item.UpdatedOn.Value);
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.JobTitle)
@@ -72,6 +76,9 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => createdOn)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => lastUpdatedOn)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => (item.ReportedBy.StakeHolderOrganization))
