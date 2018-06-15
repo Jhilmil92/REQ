@@ -13,9 +13,9 @@ namespace RequestEnhancementQueue.Controllers
     public class TakerController : Controller
     {
         private readonly ITakerBLL _takerBLL;
-        public TakerController()
+        public TakerController(ITakerBLL takerBLL)
         {
-            _takerBLL = new TakerBLL();
+            _takerBLL = takerBLL;
         }
         // GET: Taker
         public ActionResult TakerInformation()

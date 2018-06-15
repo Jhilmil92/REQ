@@ -22,10 +22,11 @@ namespace DataAccessLayer.Infrastructure.Classes
         //    _dataContext = dataContext;
         //}
 
-        public void Create(StakeHolder stakeHolder)
+        public StakeHolder Create(StakeHolder stakeHolder)
         {
             ((DbSet<StakeHolder>)(_dataContext.StakeHolders)).Add(stakeHolder);
             _dataContext.Save();
+            return stakeHolder;
         }
 
         public IQueryable<StakeHolder> GetStakeHolders()

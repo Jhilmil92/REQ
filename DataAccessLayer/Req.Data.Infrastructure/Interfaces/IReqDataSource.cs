@@ -1,4 +1,5 @@
 ﻿using Domain.Classes;
+using Domain.Classes.Req.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace DataAccessLayer.Infrastructure.Interfaces
         IQueryable<Job> Jobs { get; }
         IQueryable<StakeHolder> StakeHolders { get;}
         IQueryable<Taker> Takers { get; }
+        IQueryable<User> Users { get; }
         void Save();
 
     }

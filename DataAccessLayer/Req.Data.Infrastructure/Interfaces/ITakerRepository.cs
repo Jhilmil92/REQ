@@ -9,7 +9,7 @@ namespace DataAccessLayer.Infrastructure.Interfaces
 {
     public interface ITakerRepository
     {
-        void Create(Taker taker);
+        Taker Create(Taker taker);
         void Update(Taker taker);
         Taker GetTakerById(int takerID);
         IQueryable<Taker> GetTakers();

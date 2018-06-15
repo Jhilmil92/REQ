@@ -17,6 +17,8 @@ namespace RequestEnhancementQueue
             builder.RegisterType<JobBLL>().As<IJobBLL>();
              builder.RegisterType<StakeHolderBLL>().As<IStakeHolderBLL>();
              builder.RegisterType<TakerBLL>().As<ITakerBLL>();
+             builder.RegisterType<LoginManager>().As<ILoginManager>();
+
             builder.RegisterModule<BusinessLayerModuleDependencies>();
 
         }

@@ -21,12 +21,12 @@ namespace RequestEnhancementQueue.Controllers
         private readonly ITakerBLL _takerBLL;
         private readonly IFileBLL _fileBLL;
 
-        public ReportRequestController(IJobBLL _jobBLL)
+        public ReportRequestController(IJobBLL jobBLL, IStakeHolderBLL stakeHolderBLL, ITakerBLL takerBLL, IFileBLL fileBLL)
         {
-            this._jobBLL = _jobBLL;
-            _stakeHolderBLL = new StakeHolderBLL();
-            _takerBLL = new TakerBLL();
-            _fileBLL = new FileBLL();
+            this._jobBLL = jobBLL;
+            _stakeHolderBLL = stakeHolderBLL;
+            _takerBLL = takerBLL;
+            _fileBLL = fileBLL;
         }
         //public ReportRequestController(IJobBLL jobBLL)
         //{

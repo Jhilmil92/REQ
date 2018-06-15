@@ -15,6 +15,5 @@ namespace BusinessLogicLayer.BLL.Interfaces
         StakeHolder GetStakeHolderById(int stakeHolderId);
         void UpdateStakeHolder(StakeHolder stakeHolder);
         void DeleteStakeHolder(int stakeHolderID);
-        StakeHolder ValidateLoginCredentials(LoginViewModel loginViewModel);
     }
 }

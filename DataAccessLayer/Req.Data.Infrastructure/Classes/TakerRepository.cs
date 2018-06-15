@@ -23,10 +23,11 @@ namespace DataAccessLayer.Infrastructure.Classes
         //    _dataContext = dataContext;
         //}
 
-        public void Create(Taker taker)
+        public Taker Create(Taker taker)
         {
             ((DbSet<Taker>)_dataContext.Takers).Add(taker);
             _dataContext.Save();
+            return taker;
         }
 
         public void Update(Domain.Classes.Taker taker)

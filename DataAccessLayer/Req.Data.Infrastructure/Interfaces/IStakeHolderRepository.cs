@@ -9,7 +9,7 @@ namespace DataAccessLayer.Infrastructure.Interfaces
 {
     public interface IStakeHolderRepository
     {
-        void Create(StakeHolder stakeHolder);
+        StakeHolder Create(StakeHolder stakeHolder);
         IQueryable<StakeHolder> GetStakeHolders();
         StakeHolder GetStakeHolderById(int stakeHolderID);
         void Update(StakeHolder stakeHolder);

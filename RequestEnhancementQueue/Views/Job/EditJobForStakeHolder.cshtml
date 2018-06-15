@@ -11,16 +11,16 @@
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
+    <div class="form-horizontal beige-color">
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        
 
-    <div class="form-group">
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.JobId, new { htmlAttributes = new { @class = "form-control", type = "hidden" } })
+
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.JobId, new { htmlAttributes = new { @class = "form-control", type = "hidden" } })
+            </div>
         </div>
-    </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.JobTitle, "Job Title", htmlAttributes: new { @class = "control-label col-md-2" })
@@ -39,9 +39,9 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.EstimatedTimeInHours,"Estimated Time", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.EstimatedTimeInHours, "Estimated Time", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.EstimatedTimeInHours, new { htmlAttributes = new { @class = "form-control", @type = "number" , @min = 0 } })
+                @Html.EditorFor(model => model.EstimatedTimeInHours, new { htmlAttributes = new { @class = "form-control", @type = "number", @min = 0 } })
                 @Html.ValidationMessageFor(model => model.EstimatedTimeInHours, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -55,9 +55,9 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.AssignedTakerId,"Assign/Reassign Taker", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.AssignedTakerId, "Assign/Reassign Taker", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model=>model.AssignedTakerId, new SelectList(ViewBag.Takers,"TakerId","TakerName"),"Select a Taker")
+                @Html.DropDownListFor(model => model.AssignedTakerId, new SelectList(ViewBag.Takers, "TakerId", "TakerName"), "Select a Taker")
                 @Html.ValidationMessageFor(model => model.AssignedTakerId, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -73,62 +73,62 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Files, "Upload Files", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextBoxFor(model => model.Files, new { @class = "form-control" , type = "file", @multiple = "multiple"})
+                @Html.TextBoxFor(model => model.Files, new { @class = "form-control", type = "file", @multiple = "multiple" })
                 @Html.ValidationMessageFor(model => model.Files, "", new { @class = "text-danger" })
                 @ViewBag.UploadStatus
             </div>
         </div>
 
-        <br/>
+        <br />
         <div class="fileNames">
             <text><b><u>Uploaded Files :- </u></b></text>
-            <br/>
-            <br/>
-                @if (Model.FileNames != null && Model.FileNames.Count() != 0)
-                {
-                    <table>
-                        <b>
+            <br />
+            <br />
+            @if (Model.FileNames != null && Model.FileNames.Count() != 0)
+            {
+                <table>
+                    <b>
                         <thead>
-                            <th>
-                                Filename
-                            </th>
-                        </thead>
-                        </b>
+                    <th>
+                        Filename
+                    </th>
+                    </thead>
+                    </b>
 
-                        <tbody>
-                            @foreach (var fileName in Model.FileNames)
-                            {
-                                var fileNameFromPath = fileName.Split('\\');
-                                <tr>
-                                    <td>
-                                        @fileNameFromPath[fileNameFromPath.Length - 1]
-                                    </td>
-                                    <td> </td>
-                                    <td>
-                                        <u>@Html.ActionLink("View", "ViewFile", "File", new { jobId = Model.JobId, requiredFileName = fileNameFromPath[fileNameFromPath.Length - 1] }, null)</u>
-                                    </td>
-                                    <td></td>
-                                    <td>
-                                        <u>@Html.ActionLink("Download", "DownloadFile", "File", new { jobId = Model.JobId, requiredFileName = fileNameFromPath[fileNameFromPath.Length - 1] }, null)</u>
-                                    </td>
-                                </tr>
-                            }
-                        </tbody>
-                    </table>
+                    <tbody>
+                        @foreach (var fileName in Model.FileNames)
+                        {
+                            var fileNameFromPath = fileName.Split('\\');
+                            <tr>
+                                <td>
+                                    @fileNameFromPath[fileNameFromPath.Length - 1]
+                                </td>
+                                <td> </td>
+                                <td>
+                                    <u>@Html.ActionLink("View", "ViewFile", "File", new { jobId = Model.JobId, requiredFileName = fileNameFromPath[fileNameFromPath.Length - 1] }, null)</u>
+                                </td>
+                                <td></td>
+                                <td>
+                                    <u>@Html.ActionLink("Download", "DownloadFile", "File", new { jobId = Model.JobId, requiredFileName = fileNameFromPath[fileNameFromPath.Length - 1] }, null)</u>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                @:<text>No uploaded files available</text>
                 }
-                else
-                {
-                    @:<text>No uploaded files available</text>
-                }
-                    
+
         </div>
-        <br/>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Save" class="btn btn-default" />
-                    </div>
-                </div>
-</div>
+        <br />
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
 }
 
 <div>

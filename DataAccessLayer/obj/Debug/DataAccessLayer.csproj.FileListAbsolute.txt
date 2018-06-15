@@ -22,3 +22,4 @@ E:\Source\Repos\REQ\DataAccessLayer\obj\Debug\DataAccessLayer.Migrations.DateToD
 E:\Source\Repos\REQ\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.GenerateResource.Cache
 E:\Source\Repos\REQ\DataAccessLayer\obj\Debug\DataAccessLayer.dll
 E:\Source\Repos\REQ\DataAccessLayer\obj\Debug\DataAccessLayer.pdb
+E:\Source\Repos\REQ\DataAccessLayer\obj\Debug\DataAccessLayer.Migrations.UserIdentitySeperation.resources

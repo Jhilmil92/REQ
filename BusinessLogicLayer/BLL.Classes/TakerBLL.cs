@@ -1,7 +1,9 @@
 ﻿using BusinessLogicLayer.BLL.Interfaces;
 using DataAccessLayer.Infrastructure.Classes;
 using DataAccessLayer.Infrastructure.Interfaces;
+using DataAccessLayer.Req.Data.Infrastructure.Interfaces;
 using Domain.Classes;
+using Domain.Classes.Req.Domain.Entities;
 using Domain.Classes.Req.Domain.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -14,9 +16,11 @@ namespace BusinessLogicLayer.BLL.Classes
     public class TakerBLL : ITakerBLL
     {
         private readonly ITakerRepository _takerRepository;
-        public TakerBLL()
+        private readonly IUserRepository _userRepository;
+        public TakerBLL(ITakerRepository takerRepository,IUserRepository userRepository)
         {
-            _takerRepository = new TakerRepository();
+            _takerRepository = takerRepository;
+            _userRepository = userRepository;
         }
 
         //public TakerBLL(ITakerRepository takerRepository)
@@ -27,11 +31,10 @@ namespace BusinessLogicLayer.BLL.Classes
         {
             var taker = new Taker
             {
-                TakerName = registrationViewModel.TakerName,
-                UserName = registrationViewModel.TakerUserName,
-                Password = registrationViewModel.TakerPassword
+                TakerName = registrationViewModel.TakerName
             };
-            _takerRepository.Create(taker);
+           var createdTaker = _takerRepository.Create(taker);
+           _userRepository.CreateUser(registrationViewModel.TakerUserName, registrationViewModel.TakerPassword,UserType.Taker,createdTaker.TakerId);
         }
 
         public IQueryable<Domain.Classes.Taker> GetTakers()
@@ -56,29 +59,5 @@ namespace BusinessLogicLayer.BLL.Classes
         }
 
 
-        public Domain.Classes.Taker ValidateLoginCredentials(Domain.Classes.Req.Domain.ViewModels.LoginViewModel loginViewModel)
-        {
-            //fetch login credentials from the database and check it against the view model.
-            //Return bool status accordingly.
-            bool isValid = false;
-            Taker taker = null;
-            IQueryable<Taker> takers = _takerRepository.GetTakers();
-            if (takers != null && takers.Count() != 0)
-            {
-                taker = takers.SingleOrDefault((d => (d.UserName == loginViewModel.UserName && d.Password == loginViewModel.Password)));
-                if (taker!= null)
-                {
-                    isValid = true;
-                }
-            }
-            if (isValid)
-            {
-                return taker;
-            }
-            else
-            {
-                return null;
-            }
-        }
     }
 }

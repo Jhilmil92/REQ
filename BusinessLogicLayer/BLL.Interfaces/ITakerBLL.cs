@@ -15,6 +15,6 @@ namespace BusinessLogicLayer.BLL.Interfaces
         Taker GetTakerById(int takerId);
         void UpdateTaker(Taker taker);
         void DeleteTaker(int takerId);
-        Taker ValidateLoginCredentials(LoginViewModel loginViewModel);
+        ///Taker ValidateLoginCredentials(LoginViewModel loginViewModel);
     }
 }

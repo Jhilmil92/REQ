@@ -1,7 +1,9 @@
 ﻿using BusinessLogicLayer.BLL.Interfaces;
 using DataAccessLayer.Infrastructure.Classes;
 using DataAccessLayer.Infrastructure.Interfaces;
+using DataAccessLayer.Req.Data.Infrastructure.Interfaces;
 using Domain.Classes;
+using Domain.Classes.Req.Domain.Entities;
 using Domain.Classes.Req.Domain.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -14,10 +16,12 @@ namespace BusinessLogicLayer.BLL.Classes
     public class StakeHolderBLL:IStakeHolderBLL
     {
         private readonly IStakeHolderRepository _stakeHolderRepository;
+        private readonly IUserRepository _userRepository;
 
-        public StakeHolderBLL()
+        public StakeHolderBLL(IUserRepository userRepository, IStakeHolderRepository _stakeHolderRepository)
         {
-            _stakeHolderRepository = new StakeHolderRepository();
+            this._stakeHolderRepository = _stakeHolderRepository;
+            this._userRepository = userRepository;
         }
 
         //public StakeHolderBLL(IStakeHolderRepository stakeHolderRepository)
@@ -30,10 +34,12 @@ namespace BusinessLogicLayer.BLL.Classes
             var stakeHolder = new StakeHolder
             {
                 StakeHolderOrganization = registrationViewModel.StakeHolderOrganization,
-                UserName = registrationViewModel.StakeHolderUserName,
-                Password = registrationViewModel.StakeHolderPassword
+                
             };
-            _stakeHolderRepository.Create(stakeHolder);
+
+          var createdStakeHolder =  _stakeHolderRepository.Create(stakeHolder);
+
+          _userRepository.CreateUser(registrationViewModel.StakeHolderUserName, registrationViewModel.StakeHolderPassword, UserType.StakeHolder, createdStakeHolder.StakeHolderId);
         }
 
         public IQueryable<StakeHolder> GetStakeHolders()
@@ -57,12 +63,5 @@ namespace BusinessLogicLayer.BLL.Classes
             _stakeHolderRepository.Delete(stakeHolderID);
         }
 
-        public StakeHolder ValidateLoginCredentials(LoginViewModel loginViewModel)
-        {
-            //fetch login credentials from the database and check it against the view model.
-            //Return bool status accordingly.
-            var stakeHolders = _stakeHolderRepository.GetStakeHolders();
-            return stakeHolders.SingleOrDefault((d => (d.UserName == loginViewModel.UserName && d.Password == loginViewModel.Password)));
-        }
     }
 }
