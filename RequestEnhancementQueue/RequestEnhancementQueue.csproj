@@ -310,6 +310,7 @@
     <Content Include="Content\themes\ColReorder-1.4.1\css\colReorder.semanticui.min.css" />
     <Content Include="Content\themes\ColReorder-1.4.1\js\dataTables.colReorder.js" />
     <Content Include="Content\themes\ColReorder-1.4.1\js\dataTables.colReorder.min.js" />
+    <Content Include="Content\themes\CustomTableStyles.css" />
     <Content Include="Content\themes\DataTables-1.10.16\css\dataTables.bootstrap.css" />
     <Content Include="Content\themes\DataTables-1.10.16\css\dataTables.bootstrap.min.css" />
     <Content Include="Content\themes\DataTables-1.10.16\css\dataTables.bootstrap4.css" />
