@@ -53,12 +53,13 @@ e:\visual studio 2013\Projects\RequestEnhancementQueueSystem\RequestEnhancementQ
 e:\visual studio 2013\Projects\RequestEnhancementQueueSystem\RequestEnhancementQueue\obj\Debug\RequestEnhancementQueue.dll
 e:\visual studio 2013\Projects\RequestEnhancementQueueSystem\RequestEnhancementQueue\obj\Debug\RequestEnhancementQueue.pdb
 e:\visual studio 2013\Projects\RequestEnhancementQueueSystem\RequestEnhancementQueue\obj\Debug\RequestEnhancementQueue.csprojResolveAssemblyReference.cache
-E:\Source\Repos\REQ\RequestEnhancementQueue\obj\Debug\RequestEnhancementQueue.csprojResolveAssemblyReference.cache
-E:\Source\Repos\REQ\RequestEnhancementQueue\obj\Debug\RequestEnhancementQueue.dll
 E:\Source\Repos\REQ\RequestEnhancementQueue\bin\RequestEnhancementQueue.dll.config
 E:\Source\Repos\REQ\RequestEnhancementQueue\bin\RequestEnhancementQueue.dll
 E:\Source\Repos\REQ\RequestEnhancementQueue\bin\RequestEnhancementQueue.pdb
 E:\Source\Repos\REQ\RequestEnhancementQueue\bin\Antlr3.Runtime.dll
+E:\Source\Repos\REQ\RequestEnhancementQueue\bin\Autofac.dll
+E:\Source\Repos\REQ\RequestEnhancementQueue\bin\Autofac.Integration.Mvc.dll
+E:\Source\Repos\REQ\RequestEnhancementQueue\bin\BusinessLogicLayer.dll
 E:\Source\Repos\REQ\RequestEnhancementQueue\bin\Domain.Classes.dll
 E:\Source\Repos\REQ\RequestEnhancementQueue\bin\EntityFramework.dll
 E:\Source\Repos\REQ\RequestEnhancementQueue\bin\EntityFramework.SqlServer.dll
@@ -77,6 +78,7 @@ E:\Source\Repos\REQ\RequestEnhancementQueue\bin\Microsoft.Owin.Security.Twitter.
 E:\Source\Repos\REQ\RequestEnhancementQueue\bin\Microsoft.Web.Infrastructure.dll
 E:\Source\Repos\REQ\RequestEnhancementQueue\bin\Newtonsoft.Json.dll
 E:\Source\Repos\REQ\RequestEnhancementQueue\bin\Owin.dll
+E:\Source\Repos\REQ\RequestEnhancementQueue\bin\Req.Enums.dll
 E:\Source\Repos\REQ\RequestEnhancementQueue\bin\System.Web.Helpers.dll
 E:\Source\Repos\REQ\RequestEnhancementQueue\bin\System.Web.Mvc.dll
 E:\Source\Repos\REQ\RequestEnhancementQueue\bin\System.Web.Optimization.dll
@@ -85,15 +87,18 @@ E:\Source\Repos\REQ\RequestEnhancementQueue\bin\System.Web.WebPages.Deployment.d
 E:\Source\Repos\REQ\RequestEnhancementQueue\bin\System.Web.WebPages.dll
 E:\Source\Repos\REQ\RequestEnhancementQueue\bin\System.Web.WebPages.Razor.dll
 E:\Source\Repos\REQ\RequestEnhancementQueue\bin\WebGrease.dll
-E:\Source\Repos\REQ\RequestEnhancementQueue\bin\Req.Enums.dll
+E:\Source\Repos\REQ\RequestEnhancementQueue\bin\DataAccessLayer.dll
 E:\Source\Repos\REQ\RequestEnhancementQueue\bin\Domain.Classes.pdb
+E:\Source\Repos\REQ\RequestEnhancementQueue\bin\Req.Enums.pdb
+E:\Source\Repos\REQ\RequestEnhancementQueue\bin\Autofac.xml
+E:\Source\Repos\REQ\RequestEnhancementQueue\bin\Autofac.Integration.Mvc.xml
 E:\Source\Repos\REQ\RequestEnhancementQueue\bin\System.Web.Helpers.xml
 E:\Source\Repos\REQ\RequestEnhancementQueue\bin\System.Web.Mvc.xml
-E:\Source\Repos\REQ\RequestEnhancementQueue\bin\System.Web.Optimization.xml
 E:\Source\Repos\REQ\RequestEnhancementQueue\bin\System.Web.Razor.xml
 E:\Source\Repos\REQ\RequestEnhancementQueue\bin\System.Web.WebPages.xml
 E:\Source\Repos\REQ\RequestEnhancementQueue\bin\System.Web.WebPages.Deployment.xml
 E:\Source\Repos\REQ\RequestEnhancementQueue\bin\System.Web.WebPages.Razor.xml
+E:\Source\Repos\REQ\RequestEnhancementQueue\bin\System.Web.Optimization.xml
 E:\Source\Repos\REQ\RequestEnhancementQueue\bin\Antlr3.Runtime.pdb
 E:\Source\Repos\REQ\RequestEnhancementQueue\bin\Newtonsoft.Json.xml
 E:\Source\Repos\REQ\RequestEnhancementQueue\bin\EntityFramework.xml
@@ -110,16 +115,8 @@ E:\Source\Repos\REQ\RequestEnhancementQueue\bin\Microsoft.Owin.Security.OAuth.xm
 E:\Source\Repos\REQ\RequestEnhancementQueue\bin\Microsoft.Owin.Security.Google.xml
 E:\Source\Repos\REQ\RequestEnhancementQueue\bin\Microsoft.Owin.Security.Twitter.xml
 E:\Source\Repos\REQ\RequestEnhancementQueue\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-E:\Source\Repos\REQ\RequestEnhancementQueue\bin\Req.Enums.pdb
-E:\Source\Repos\REQ\RequestEnhancementQueue\obj\Debug\RequestEnhancementQueue.pdb
-E:\Source\Repos\REQ\RequestEnhancementQueue\bin\BusinessLogicLayer.dll
-E:\Source\Repos\REQ\RequestEnhancementQueue\bin\DataAccessLayer.dll
-E:\Source\Repos\REQ\RequestEnhancementQueue\bin\BusinessLogicLayer.pdb
 E:\Source\Repos\REQ\RequestEnhancementQueue\bin\DataAccessLayer.pdb
-E:\Source\Repos\REQ\RequestEnhancementQueue\bin\Ninject.dll
-E:\Source\Repos\REQ\RequestEnhancementQueue\bin\Ninject.Web.Common.dll
-E:\Source\Repos\REQ\RequestEnhancementQueue\bin\Ninject.Web.Mvc.dll
-E:\Source\Repos\REQ\RequestEnhancementQueue\bin\WebActivatorEx.dll
-E:\Source\Repos\REQ\RequestEnhancementQueue\bin\Ninject.xml
-E:\Source\Repos\REQ\RequestEnhancementQueue\bin\Ninject.Web.Common.xml
-E:\Source\Repos\REQ\RequestEnhancementQueue\bin\Ninject.Web.Mvc.xml
+E:\Source\Repos\REQ\RequestEnhancementQueue\obj\Debug\RequestEnhancementQueue.csprojResolveAssemblyReference.cache
+E:\Source\Repos\REQ\RequestEnhancementQueue\obj\Debug\RequestEnhancementQueue.dll
+E:\Source\Repos\REQ\RequestEnhancementQueue\obj\Debug\RequestEnhancementQueue.pdb
+E:\Source\Repos\REQ\RequestEnhancementQueue\bin\BusinessLogicLayer.pdb

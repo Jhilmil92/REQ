@@ -17,10 +17,10 @@ namespace BusinessLogicLayer.BLL.Classes
         private const int jobQueueCount = 50;
         private IJobBLL _jobBLL;
 
-        private JobQueueService()
+        private JobQueueService(IJobBLL _jobBLL)
         {
             _priorityQueue = new PriorityQueue<Job>(jobQueueCount,true);
-            _jobBLL = new JobBLL();
+            this._jobBLL = _jobBLL;
             InitializeQueue();
         }
 
@@ -28,7 +28,7 @@ namespace BusinessLogicLayer.BLL.Classes
         {
             if (instance == null)
             {
-                instance = new JobQueueService();
+                instance = new JobQueueService(_jobBLL);
             }
 
             return instance;

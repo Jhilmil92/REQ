@@ -2,26 +2,28 @@ e:\visual studio 2013\Projects\RequestEnhancementQueueSystem\BusinessLogicLayer\
 e:\visual studio 2013\Projects\RequestEnhancementQueueSystem\BusinessLogicLayer\bin\Debug\BusinessLogicLayer.pdb
 e:\visual studio 2013\Projects\RequestEnhancementQueueSystem\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.dll
 e:\visual studio 2013\Projects\RequestEnhancementQueueSystem\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.pdb
-E:\Source\Repos\REQ\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.csprojResolveAssemblyReference.cache
-E:\Source\Repos\REQ\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.dll
-E:\Source\Repos\REQ\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.pdb
 E:\Source\Repos\REQ\BusinessLogicLayer\bin\Debug\BusinessLogicLayer.dll
-E:\Source\Repos\REQ\BusinessLogicLayer\bin\Debug\BusinessLogicLayer.pdb
+E:\Source\Repos\REQ\BusinessLogicLayer\bin\Debug\Autofac.dll
 E:\Source\Repos\REQ\BusinessLogicLayer\bin\Debug\DataAccessLayer.dll
 E:\Source\Repos\REQ\BusinessLogicLayer\bin\Debug\Domain.Classes.dll
-E:\Source\Repos\REQ\BusinessLogicLayer\bin\Debug\EntityFramework.dll
 E:\Source\Repos\REQ\BusinessLogicLayer\bin\Debug\Req.Enums.dll
-E:\Source\Repos\REQ\BusinessLogicLayer\bin\Debug\DataAccessLayer.pdb
-E:\Source\Repos\REQ\BusinessLogicLayer\bin\Debug\Domain.Classes.pdb
-E:\Source\Repos\REQ\BusinessLogicLayer\bin\Debug\EntityFramework.xml
-E:\Source\Repos\REQ\BusinessLogicLayer\bin\Debug\Req.Enums.pdb
+E:\Source\Repos\REQ\BusinessLogicLayer\bin\Debug\EntityFramework.dll
 E:\Source\Repos\REQ\BusinessLogicLayer\bin\Debug\System.Web.Mvc.dll
 E:\Source\Repos\REQ\BusinessLogicLayer\bin\Debug\System.Web.WebPages.dll
 E:\Source\Repos\REQ\BusinessLogicLayer\bin\Debug\System.Web.WebPages.Razor.dll
 E:\Source\Repos\REQ\BusinessLogicLayer\bin\Debug\System.Web.Razor.dll
 E:\Source\Repos\REQ\BusinessLogicLayer\bin\Debug\System.Web.WebPages.Deployment.dll
+E:\Source\Repos\REQ\BusinessLogicLayer\bin\Debug\DataAccessLayer.pdb
+E:\Source\Repos\REQ\BusinessLogicLayer\bin\Debug\Domain.Classes.pdb
+E:\Source\Repos\REQ\BusinessLogicLayer\bin\Debug\Req.Enums.pdb
+E:\Source\Repos\REQ\BusinessLogicLayer\bin\Debug\Autofac.xml
+E:\Source\Repos\REQ\BusinessLogicLayer\bin\Debug\EntityFramework.xml
 E:\Source\Repos\REQ\BusinessLogicLayer\bin\Debug\System.Web.Mvc.xml
 E:\Source\Repos\REQ\BusinessLogicLayer\bin\Debug\System.Web.WebPages.xml
 E:\Source\Repos\REQ\BusinessLogicLayer\bin\Debug\System.Web.WebPages.Razor.xml
 E:\Source\Repos\REQ\BusinessLogicLayer\bin\Debug\System.Web.Razor.xml
 E:\Source\Repos\REQ\BusinessLogicLayer\bin\Debug\System.Web.WebPages.Deployment.xml
+E:\Source\Repos\REQ\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.csprojResolveAssemblyReference.cache
+E:\Source\Repos\REQ\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.dll
+E:\Source\Repos\REQ\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.pdb
+E:\Source\Repos\REQ\BusinessLogicLayer\bin\Debug\BusinessLogicLayer.pdb

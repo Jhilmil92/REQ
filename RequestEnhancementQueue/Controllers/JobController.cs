@@ -19,15 +19,17 @@ namespace RequestEnhancementQueue.Controllers
         private readonly IJobBLL _jobBLL;
         private readonly IStakeHolderBLL _stakeHolderBLL;
         private readonly ITakerBLL _takerBLL;
-        private readonly IJobQueueService _jobQueueService;
+        //private readonly IJobQueueService _jobQueueService;
         private readonly IFileBLL _fileBLL;
-        public JobController()
+        public JobController(IJobBLL _jobBLL, IStakeHolderBLL _stakeHolderBLL, ITakerBLL _takerBLL, 
+            //IJobQueueService _jobQueueService, 
+            IFileBLL _fileBLL)
         {
-            _jobBLL = new JobBLL();
-            _stakeHolderBLL = new StakeHolderBLL();
-            _takerBLL = new TakerBLL();
-            _fileBLL = new FileBLL();
-            //_jobQueueService = JobQueueService.GetInstance();
+            this._jobBLL = _jobBLL;
+            this._stakeHolderBLL = _stakeHolderBLL;
+            this._takerBLL = _takerBLL;
+            this._fileBLL = _fileBLL;
+            //this._jobQueueService = _jobQueueService;
         }
         //public JobController(IJobBLL jobBLL)
         //{
@@ -121,17 +123,16 @@ namespace RequestEnhancementQueue.Controllers
             return View(viewModel);
         }
 
-        public ActionResult AssignJob()
-        {
-            var queueInstance = JobQueueService.GetInstance();
-            var priorityJob = (Job)queueInstance.PriorityQue.Dequeue();
-            var takerId = (int)(Session[Constants.TakerId]);
-            priorityJob.AssignedToId = takerId;
-            priorityJob.Status = Req.Enums.JobStatus.Assigned;
-            _jobBLL.UpdateJob(priorityJob);
-            var jobs = _jobBLL.GetJobsByTakerId(takerId).ToList();
-            return View("ViewJobs", jobs);
-        }
+        //public ActionResult AssignJob()
+        //{
+        //    var priorityJob = (Job)_jobQueueService.PriorityQue.Dequeue();
+        //    var takerId = (int)(Session[Constants.TakerId]);
+        //    priorityJob.AssignedToId = takerId;
+        //    priorityJob.Status = Req.Enums.JobStatus.Assigned;
+        //    _jobBLL.UpdateJob(priorityJob);
+        //    var jobs = _jobBLL.GetJobsByTakerId(takerId).ToList();
+        //    return View("ViewJobs", jobs);
+        //}
 
         public ActionResult EditJobForStakeHolder(int jobId)
         {

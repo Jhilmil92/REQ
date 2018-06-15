@@ -12,9 +12,9 @@ namespace RequestEnhancementQueue.Controllers
     public class FileController : Controller
     {
         private readonly IFileBLL _fileBLL;
-        public FileController()
+        public FileController(IFileBLL _fileBLL)
         {
-            _fileBLL = new FileBLL();
+            this._fileBLL = _fileBLL;
         }
         // GET: File
         public ActionResult ViewFile(int jobId, string requiredFileName)

@@ -61,22 +61,8 @@ namespace BusinessLogicLayer.BLL.Classes
         {
             //fetch login credentials from the database and check it against the view model.
             //Return bool status accordingly.
-            bool isValid = false;
-            StakeHolder stakeHolder = null;
-            var stakeHolders = _stakeHolderRepository.GetStakeHolders().ToArray();
-            stakeHolder = stakeHolders.SingleOrDefault((d => (d.UserName == loginViewModel.UserName && d.Password == loginViewModel.Password)));
-            if(stakeHolder != null)
-            {
-                    isValid = true;
-            }
-            if (isValid)
-            {
-                return stakeHolder;
-            }
-            else
-            {
-                return null;
-            }
+            var stakeHolders = _stakeHolderRepository.GetStakeHolders();
+            return stakeHolders.SingleOrDefault((d => (d.UserName == loginViewModel.UserName && d.Password == loginViewModel.Password)));
         }
     }
 }

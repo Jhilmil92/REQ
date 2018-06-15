@@ -4,8 +4,6 @@ e:\visual studio 2013\Projects\RequestEnhancementQueueSystem\Req.Enums\obj\Debug
 e:\visual studio 2013\Projects\RequestEnhancementQueueSystem\Req.Enums\obj\Debug\Req.Enums.pdb
 E:\Source\Repos\REQ\Req.Enums\bin\Debug\Req.Enums.dll
 E:\Source\Repos\REQ\Req.Enums\bin\Debug\Req.Enums.pdb
-E:\Source\Repos\REQ\Req.Enums\obj\Debug\Req.Enums.dll
-E:\Source\Repos\REQ\Req.Enums\obj\Debug\Req.Enums.pdb
 E:\Source\Repos\REQ\Req.Enums\bin\Debug\Microsoft.Web.Infrastructure.dll
 E:\Source\Repos\REQ\Req.Enums\bin\Debug\System.Web.Helpers.dll
 E:\Source\Repos\REQ\Req.Enums\bin\Debug\System.Web.Mvc.dll
@@ -19,4 +17,6 @@ E:\Source\Repos\REQ\Req.Enums\bin\Debug\System.Web.Razor.xml
 E:\Source\Repos\REQ\Req.Enums\bin\Debug\System.Web.WebPages.xml
 E:\Source\Repos\REQ\Req.Enums\bin\Debug\System.Web.WebPages.Deployment.xml
 E:\Source\Repos\REQ\Req.Enums\bin\Debug\System.Web.WebPages.Razor.xml
+E:\Source\Repos\REQ\Req.Enums\obj\Debug\Req.Enums.dll
+E:\Source\Repos\REQ\Req.Enums\obj\Debug\Req.Enums.pdb
 E:\Source\Repos\REQ\Req.Enums\obj\Debug\Common.csprojResolveAssemblyReference.cache

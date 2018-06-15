@@ -1,4 +1,5 @@
 ﻿using Domain.Classes;
+using Req.Enums.Req.Common.Datastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,5 +13,11 @@ namespace BusinessLogicLayer.BLL.Interfaces
         void Enqueue(Job job);
 
         Job Dequeue();
+
+        PriorityQueue<Job> PriorityQue
+        {
+            get;
+
+        }
     }
 }

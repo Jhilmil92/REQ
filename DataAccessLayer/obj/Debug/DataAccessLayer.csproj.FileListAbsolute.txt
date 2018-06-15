@@ -11,10 +11,7 @@ E:\Source\Repos\REQ\DataAccessLayer\bin\Debug\EntityFramework.xml
 E:\Source\Repos\REQ\DataAccessLayer\bin\Debug\EntityFramework.SqlServer.xml
 E:\Source\Repos\REQ\DataAccessLayer\bin\Debug\Req.Enums.pdb
 E:\Source\Repos\REQ\DataAccessLayer\obj\Debug\DataAccessLayer.csprojResolveAssemblyReference.cache
-E:\Source\Repos\REQ\DataAccessLayer\obj\Debug\DataAccessLayer.dll
-E:\Source\Repos\REQ\DataAccessLayer\obj\Debug\DataAccessLayer.pdb
 E:\Source\Repos\REQ\DataAccessLayer\obj\Debug\DataAccessLayer.Migrations.InitialCreate.resources
-E:\Source\Repos\REQ\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.GenerateResource.Cache
 E:\Source\Repos\REQ\DataAccessLayer\obj\Debug\DataAccessLayer.Migrations.estimatedandactualtime.resources
 E:\Source\Repos\REQ\DataAccessLayer\obj\Debug\DataAccessLayer.Migrations.UploadFileField.resources
 E:\Source\Repos\REQ\DataAccessLayer\obj\Debug\DataAccessLayer.Migrations.releaseversionfield.resources
@@ -22,3 +19,6 @@ E:\Source\Repos\REQ\DataAccessLayer\obj\Debug\DataAccessLayer.Migrations.Created
 E:\Source\Repos\REQ\DataAccessLayer\obj\Debug\DataAccessLayer.Migrations.commentscolumn_job.resources
 E:\Source\Repos\REQ\DataAccessLayer\obj\Debug\DataAccessLayer.Migrations.lastUpdatedOnColumn.resources
 E:\Source\Repos\REQ\DataAccessLayer\obj\Debug\DataAccessLayer.Migrations.DateToDateTimeInJob.resources
+E:\Source\Repos\REQ\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.GenerateResource.Cache
+E:\Source\Repos\REQ\DataAccessLayer\obj\Debug\DataAccessLayer.dll
+E:\Source\Repos\REQ\DataAccessLayer\obj\Debug\DataAccessLayer.pdb

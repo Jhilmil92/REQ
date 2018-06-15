@@ -18,11 +18,11 @@ namespace BusinessLogicLayer
         private readonly IStakeHolderRepository _stakeHolderRepository;
         private readonly ITakerRepository _takerRepository;
 
-        public JobBLL()
+        public JobBLL(IJobRepository _jobRepository, IStakeHolderRepository _stakeHolderRepository, ITakerRepository _takerRepository)
         {
-            _jobRepository = new JobRepository();
-            _stakeHolderRepository = new StakeHolderRepository();
-            _takerRepository = new TakerRepository();
+            this._jobRepository = _jobRepository;
+            this._stakeHolderRepository = _stakeHolderRepository;
+            this._takerRepository = _takerRepository;
         }
 
         //public JobBLL(IJobRepository jobRepository, IStakeHolderRepository stakeHolderRepository,ITakerRepository takerRepository)

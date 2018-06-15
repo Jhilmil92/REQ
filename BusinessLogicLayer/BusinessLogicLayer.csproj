@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac, Version=4.8.1.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.8.1\lib\net45\Autofac.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
@@ -42,14 +46,13 @@
   <ItemGroup>
     <Compile Include="BLL.Classes\FileBLL.cs" />
     <Compile Include="BLL.Classes\JobBLL.cs" />
-    <Compile Include="BLL.Classes\JobQueueService.cs" />
     <Compile Include="BLL.Classes\StakeHolderBLL.cs" />
     <Compile Include="BLL.Classes\TakerBLL.cs" />
     <Compile Include="BLL.Interfaces\IFileBLL.cs" />
     <Compile Include="BLL.Interfaces\IJobBLL.cs" />
-    <Compile Include="BLL.Interfaces\IJobQueueService.cs" />
     <Compile Include="BLL.Interfaces\IStakeHolderBLL.cs" />
     <Compile Include="BLL.Interfaces\ITakerBLL.cs" />
+    <Compile Include="BusinessLayerModuleDependencies.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -65,6 +68,9 @@
       <Project>{4106437c-3e7e-4181-ad32-245c56c19f57}</Project>
       <Name>Common</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
