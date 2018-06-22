@@ -41,6 +41,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -85,17 +86,23 @@
       <DependentUpon>201806151817099_UserIdentitySeperation.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Req.Data.Infrastructure\Classes\ChangeLogDataContext.cs" />
     <Compile Include="Req.Data.Infrastructure\Classes\DataContext.cs" />
     <Compile Include="Req.Data.Infrastructure\Classes\JobRepository.cs" />
+    <Compile Include="Req.Data.Infrastructure\Classes\LogChangeRepository.cs" />
     <Compile Include="Req.Data.Infrastructure\Classes\StakeHolderRepository.cs" />
     <Compile Include="Req.Data.Infrastructure\Classes\TakerRepository.cs" />
     <Compile Include="Req.Data.Infrastructure\Classes\UserRepository.cs" />
+    <Compile Include="Req.Data.Infrastructure\Interfaces\IChangeLogDataSource.cs" />
     <Compile Include="Req.Data.Infrastructure\Interfaces\IJobRepository.cs" />
+    <Compile Include="Req.Data.Infrastructure\Interfaces\ILogChangeRepository.cs" />
     <Compile Include="Req.Data.Infrastructure\Interfaces\IReqDataSource.cs" />
     <Compile Include="Req.Data.Infrastructure\Interfaces\IStakeHolderRepository.cs" />
     <Compile Include="Req.Data.Infrastructure\Interfaces\ITakerRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Req.Data.Infrastructure\Interfaces\IUserRepository.cs" />
+    <Compile Include="Req.Data.Services\Classes\LogChangeService.cs" />
+    <Compile Include="Req.Data.Services\Interfaces\ILogChangeService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Domain.Classes\Domain.Classes.csproj">
@@ -136,6 +143,7 @@
       <DependentUpon>201806151817099_UserIdentitySeperation.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -6,23 +6,29 @@
 
 <h2>Hi @Model.TakerName, Welcome to the Request Enhancement Queue System!</h2>
 
-<div class="informationList">
-    <div>
-        @Html.ActionLink("View Your Jobs", "ViewJobs", "Job")
-    </div>
-    <br/>
-    @*<div>
-        @Html.ActionLink("Update Job", "UpdateJobs", "Job")
-    </div>
-    <br/>*@
-    @*<div>
-        @Html.ActionLink("Assign Jobs", "AssignJob","Job")
-    </div>*@
-    @*<br/>*@
-    <div>
-        @Html.ActionLink("Log out","Logout","Login")
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3" style="background-color:aliceblue">
+            <div class="applyPadding text-center hover">
+                <h3>@Html.ActionLink("View Your Jobs", "ViewJobs", "Job")</h3>
+            </div>
+        </div>
+        <div class="col-md-4 col-md-offset-1" style="background-color:aliceblue">
+            <div class="applyPadding text-center hover">
+                <h3> @Html.ActionLink("Log out", "Logout", "Login") </h3>
+            </div>
+        </div>
     </div>
 </div>
+
+<style>
+    .applyPadding {
+        margin: 15px;
+        padding: 15px;
+    }
+</style>
+
+
 
 
 

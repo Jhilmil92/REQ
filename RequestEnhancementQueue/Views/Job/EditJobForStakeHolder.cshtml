@@ -105,11 +105,11 @@
                                 </td>
                                 <td> </td>
                                 <td>
-                                    <u>@Html.ActionLink("View", "ViewFile", "File", new { jobId = Model.JobId, requiredFileName = fileNameFromPath[fileNameFromPath.Length - 1] }, null)</u>
+                                    <u>@Html.ActionLink("View", "ViewFile", "File", new { jobId = Model.JobId, requiredFileName = fileNameFromPath[fileNameFromPath.Length - 1] }, new { @class = "view-file" })</u>
                                 </td>
                                 <td></td>
                                 <td>
-                                    <u>@Html.ActionLink("Download", "DownloadFile", "File", new { jobId = Model.JobId, requiredFileName = fileNameFromPath[fileNameFromPath.Length - 1] }, null)</u>
+                                    <u>@Html.ActionLink("Download", "DownloadFile", "File", new { jobId = Model.JobId, requiredFileName = fileNameFromPath[fileNameFromPath.Length - 1] }, new { @class = "download-file" })</u>
                                 </td>
                             </tr>
                         }
@@ -132,8 +132,18 @@
 }
 
 <div>
-    @Html.ActionLink("Back to Reported Jobs List", "ViewReportedRequests","ReportRequest")
+    @Html.ActionLink("Back to Reported Jobs List", "ViewReportedRequests", "ReportRequest", null, new { @class = "footer-style" })
 </div>
+
+<style>
+.view-file,.download-file,.footer-style
+    {
+        color : beige;
+        font-weight : bold;
+        font-size : large;
+        text-shadow : 3px 3px 0px #000;
+    }
+</style>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

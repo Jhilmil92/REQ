@@ -53,14 +53,14 @@
     </div>
 }
 
-<div class="footer">
+<div class="footer footer-style">
     <text>Required Fields</text>
 </div>
 
 <br />
 
 <div>
-    @Html.ActionLink("Back to Home Page", "Index","Home")
+    @Html.ActionLink("Back to Home Page", "Index", "Home", null, new { @class = "footer-style" })
 </div>
 
 <style>
@@ -83,5 +83,12 @@
         color : red;
         content : '*';
         display : inline;
+    }
+    .footer-style
+    {
+        color : beige;
+        font-weight : bold;
+        font-size : large;
+        text-shadow : 3px 3px 0px #000;
     }
 </style>

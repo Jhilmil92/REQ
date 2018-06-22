@@ -1,4 +1,6 @@
 ﻿using DataAccessLayer.Infrastructure.Interfaces;
+using DataAccessLayer.Req.Data.Services.Classes;
+using DataAccessLayer.Req.Data.Services.Interfaces;
 using Domain.Classes;
 using System;
 using System.Collections.Generic;
@@ -13,10 +15,12 @@ namespace DataAccessLayer.Infrastructure.Classes
     public class JobRepository:IJobRepository
     {
         private readonly IReqDataSource _dataContext;
+        private readonly ILogChangeService _logChangeRepository;
 
         public JobRepository()
         {
             _dataContext = new DataContext();
+            //_logChangeRepository = new LogChangeService();
         }
         //public JobRepository(IReqDataSource dataContext)
         //{
@@ -26,8 +30,8 @@ namespace DataAccessLayer.Infrastructure.Classes
         public Job Create(Job job)
         {
             ((DbSet<Job>)_dataContext.Jobs).Add(job);
-            _dataContext.Save();
-
+            //_logChangeRepository.LogChanges((DbContext)_dataContext,job);
+            this._dataContext.Save();
             return job;
         }
 
@@ -36,8 +40,8 @@ namespace DataAccessLayer.Infrastructure.Classes
             var dataContext = _dataContext as DataContext;
             var entity = dataContext.Jobs.Find(job.JobId);
             dataContext.Entry(entity).CurrentValues.SetValues(job);
+            //_logChangeRepository.LogChanges((DbContext)_dataContext, job);
             this._dataContext.Save();
-
             return entity;
         }
 

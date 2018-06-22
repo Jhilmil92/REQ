@@ -84,7 +84,6 @@
                     @Html.DisplayFor(modelItem => item.ReleaseVersion)
                 </td>
                 <td>
-                    k
                     @Html.DisplayFor(modelItem => item.AssignedTo.TakerName)
                 </td>
                 <td>
@@ -107,7 +106,7 @@
 </table>
 
 <div>
-    @Html.ActionLink("Back","Index","ReportRequest")
+    @Html.ActionLink("Back", "Index", "ReportRequest", null, new  { @class = "footer-style" })
 </div>
 
 <script>
@@ -126,3 +125,13 @@
     //$('.firstRowSet:nth-child(odd)').css('background-color', '#f5ccff')
 
 </script>
+
+<style>
+    .footer-style
+    {
+        color : beige;
+        font-weight : bold;
+        font-size : large;
+        text-shadow : 3px 3px 0px #000;
+    }
+</style>

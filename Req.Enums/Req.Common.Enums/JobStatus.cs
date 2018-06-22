@@ -8,12 +8,13 @@ namespace Req.Enums
 {
     public enum JobStatus
     {
-        Queued = 1,
-        Unassigned = 2,
+        Queued = 1, //New.
+        Unassigned = 2, //Remove.
         Assigned = 3,
-        InProcess = 4,
-        Completed = 5,
-        UAT = 6,
+        InProcess = 4,//In Progress.
+        //Incubate - new status to be added.
+        Completed = 5, //ready
+        UAT = 6,//remove.
         Released = 7
     }
 }
