@@ -31,6 +31,11 @@ namespace DataAccessLayer.Req.Data.Infrastructure.Classes
             SaveChanges();
         }
 
+        public async void SaveAsync()
+        {
+           await SaveChangesAsync();
+        }
+
         
     }
 }   

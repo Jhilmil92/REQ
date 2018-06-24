@@ -13,6 +13,7 @@ namespace DataAccessLayer.Req.Data.Services.Interfaces
     {
         void LogChanges(DbContext dbContext, Job job);
 
-        object GetPrimaryKeyValue(DbEntityEntry entry);
+        void LogAddChanges(Job job);
+
     }
 }

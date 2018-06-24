@@ -56,7 +56,7 @@ namespace BusinessLogicLayer
             }
             else
             {
-                job.Status = JobStatus.Unassigned;
+                job.Status = JobStatus.Queued;
             }
 
             return _jobRepository.Create(job);

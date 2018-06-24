@@ -24,7 +24,9 @@ namespace DataAccessLayer.Req.Data.Infrastructure.Classes
 
         public void Save()
         {
-            _changeLogDataSource.Save();
+            Task.Run(() => {
+                _changeLogDataSource.Save();
+            });
         }
     }
 }

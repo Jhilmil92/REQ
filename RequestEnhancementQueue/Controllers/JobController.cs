@@ -1,4 +1,5 @@
-﻿using BusinessLogicLayer;
+﻿using AutoMapper;
+using BusinessLogicLayer;
 using BusinessLogicLayer.BLL.Classes;
 using BusinessLogicLayer.BLL.Interfaces;
 using Domain.Classes;
@@ -21,6 +22,7 @@ namespace RequestEnhancementQueue.Controllers
         private readonly ITakerBLL _takerBLL;
         //private readonly IJobQueueService _jobQueueService;
         private readonly IFileBLL _fileBLL;
+        private IMapper _viewModelToModelMapper;
         public JobController(IJobBLL _jobBLL, IStakeHolderBLL _stakeHolderBLL, ITakerBLL _takerBLL, 
             //IJobQueueService _jobQueueService, 
             IFileBLL _fileBLL)
@@ -31,6 +33,7 @@ namespace RequestEnhancementQueue.Controllers
             this._fileBLL = _fileBLL;
             //this._jobQueueService = _jobQueueService;
         }
+
         //public JobController(IJobBLL jobBLL)
         //{
         //    _jobBLL = jobBLL;
@@ -79,10 +82,18 @@ namespace RequestEnhancementQueue.Controllers
             var model = new UpdateJobViewModel
             {
                 JobId = jobId,
+                JobTitle = job.JobTitle,
+                JobDescription = job.JobDescription,
+                JobType = job.JobCategory,
                 ActualTimeTakenHrPart = job.ActualTimeTakenHour,
                 EstimatedTimeHrPart = job.EstimatedTimeHour,
+                ReportedBy = job.ReportedById,
+                CreatedOn = job.CreatedOn,
                 JobStatus = job.Status,
                 Comments = job.Comments,
+                LastUpdatedOn = job.UpdatedOn,
+                JobPriority = job.JobPriority,
+                ReleaseVersion = job.ReleaseVersion,
                 FileNames = files
             };
 
@@ -150,11 +161,18 @@ namespace RequestEnhancementQueue.Controllers
             {
                 JobId = jobId,
                 EstimatedTimeInHours = job.EstimatedTimeHour,
+                ActualTimeTakenHrPart = job.ActualTimeTakenHour,
                 AssignedTakerId = job.AssignedToId,
+                ReportedBy = job.ReportedById,
+                CreatedOn = job.CreatedOn,
                 JobTitle = job.JobTitle,
                 JobType = job.JobCategory,
+                JobStatus = job.Status,
                 JobDescription = job.JobDescription,
                 ReleaseVersion = job.ReleaseVersion,
+                Comments = job.Comments,
+                LastUpdatedOn = job.UpdatedOn,
+                JobPriority = job.JobPriority,
                 FileNames = files
             };
 

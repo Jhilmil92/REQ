@@ -11,5 +11,6 @@ namespace DataAccessLayer.Req.Data.Infrastructure.Interfaces
     {
         IQueryable<ChangeLog> ChangeLogs {get;}
         void Save();
+        void SaveAsync();
     }
 }

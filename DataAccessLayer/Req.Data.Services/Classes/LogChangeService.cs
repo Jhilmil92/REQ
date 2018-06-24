@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Req.Data.Services.Classes
 {
-    class LogChangeService:ILogChangeService
+    public class LogChangeService:ILogChangeService
     {
         private readonly ILogChangeRepository _logChangeRepository;
         public LogChangeService()
@@ -26,19 +26,19 @@ namespace DataAccessLayer.Req.Data.Services.Classes
             var currentDateTime = DateTime.UtcNow;
             foreach(var change in modifiedEntities)
             {
-                var entityName = change.Entity.GetType().Name;
-                var primaryKey = GetPrimaryKeyValue(change);
+                var entityName = job.GetType().Name;
+                var primaryKey = job.JobId;
                 foreach(var prop in change.OriginalValues.PropertyNames)
                 {
-                    //var originalValue = change.OriginalValues[prop].ToString();
-                    var originalValue = change.GetDatabaseValues().GetValue<object>(prop).ToString();
-                    var currentValue = change.CurrentValues[prop].ToString();
+                    var originalValue = change.OriginalValues[prop] == null ? string.Empty : change.OriginalValues[prop].ToString();
+                    //var originalValue = change.GetDatabaseValues().GetValue<object>(prop).ToString();
+                    var currentValue = change.CurrentValues[prop] == null ? string.Empty : change.CurrentValues[prop].ToString();
                     if(originalValue != currentValue)
                     {
                         ChangeLog log = new ChangeLog
                         {
                             EntityName = entityName,
-                            //PrimaryKeyValue = primaryKey.ToString(),
+                            PrimaryKeyValue = (int)primaryKey,
                             PropertyName = prop,
                             OldValue = originalValue,
                             NewValue = currentValue,
@@ -47,13 +47,40 @@ namespace DataAccessLayer.Req.Data.Services.Classes
                         _logChangeRepository.AddChangeLog(log);
                     }
                 }
+                _logChangeRepository.Save();
             }
         }
 
-        public object GetPrimaryKeyValue(DbEntityEntry entry)
+        public object GetPrimaryKeyValue(DbEntityEntry entry, DbContext dbContext)
         {
-            var objectStateEntry = ((IObjectContextAdapter)this).ObjectContext.ObjectStateManager.GetObjectStateEntry(entry);
+            var objectStateEntry = ((IObjectContextAdapter)dbContext).ObjectContext.ObjectStateManager.GetObjectStateEntry(entry);
             return objectStateEntry.EntityKey.EntityKeyValues[0].Value;
+        }
+
+
+        public void LogAddChanges(Job job)
+        {
+            foreach (var prop in job.GetType().GetProperties())
+            {
+                var originalValue = string.Empty;
+                //var originalValue = change.GetDatabaseValues().GetValue<object>(prop).ToString();
+                var currentValue = prop.GetValue(job);
+                if (originalValue != currentValue)
+                {
+                    ChangeLog log = new ChangeLog
+                    {
+                        EntityName = typeof(Job).GetType().Name,
+                        PrimaryKeyValue = job.JobId,
+                        PropertyName = prop.Name,
+                        OldValue = originalValue,
+                        NewValue = currentValue.ToString(),
+                        DateChanged = DateTime.Now
+                    };
+                    _logChangeRepository.AddChangeLog(log);
+                }
+            }
+
+            _logChangeRepository.Save();
         }
     }
 }

@@ -64,9 +64,12 @@ E:\Source\Repos\REQ\RequestEnhancementQueue.Tests\bin\Debug\Microsoft.AspNet.Ide
 E:\Source\Repos\REQ\RequestEnhancementQueue.Tests\bin\Debug\System.Web.Optimization.dll
 E:\Source\Repos\REQ\RequestEnhancementQueue.Tests\bin\Debug\Microsoft.Owin.dll
 E:\Source\Repos\REQ\RequestEnhancementQueue.Tests\bin\Debug\Owin.dll
+E:\Source\Repos\REQ\RequestEnhancementQueue.Tests\bin\Debug\AutoMapper.dll
 E:\Source\Repos\REQ\RequestEnhancementQueue.Tests\bin\Debug\Microsoft.Owin.Security.dll
 E:\Source\Repos\REQ\RequestEnhancementQueue.Tests\bin\Debug\Microsoft.Owin.Security.Cookies.dll
 E:\Source\Repos\REQ\RequestEnhancementQueue.Tests\bin\Debug\Autofac.Integration.Mvc.dll
+E:\Source\Repos\REQ\RequestEnhancementQueue.Tests\bin\Debug\System.ValueTuple.dll
+E:\Source\Repos\REQ\RequestEnhancementQueue.Tests\bin\Debug\BusinessLogicLayer.pdb
 E:\Source\Repos\REQ\RequestEnhancementQueue.Tests\bin\Debug\DataAccessLayer.pdb
 E:\Source\Repos\REQ\RequestEnhancementQueue.Tests\bin\Debug\Domain.Classes.pdb
 E:\Source\Repos\REQ\RequestEnhancementQueue.Tests\bin\Debug\Req.Enums.pdb
@@ -86,10 +89,12 @@ E:\Source\Repos\REQ\RequestEnhancementQueue.Tests\bin\Debug\Microsoft.AspNet.Ide
 E:\Source\Repos\REQ\RequestEnhancementQueue.Tests\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
 E:\Source\Repos\REQ\RequestEnhancementQueue.Tests\bin\Debug\System.Web.Optimization.xml
 E:\Source\Repos\REQ\RequestEnhancementQueue.Tests\bin\Debug\Microsoft.Owin.xml
+E:\Source\Repos\REQ\RequestEnhancementQueue.Tests\bin\Debug\AutoMapper.pdb
+E:\Source\Repos\REQ\RequestEnhancementQueue.Tests\bin\Debug\AutoMapper.xml
 E:\Source\Repos\REQ\RequestEnhancementQueue.Tests\bin\Debug\Microsoft.Owin.Security.xml
 E:\Source\Repos\REQ\RequestEnhancementQueue.Tests\bin\Debug\Microsoft.Owin.Security.Cookies.xml
 E:\Source\Repos\REQ\RequestEnhancementQueue.Tests\bin\Debug\Autofac.Integration.Mvc.xml
+E:\Source\Repos\REQ\RequestEnhancementQueue.Tests\bin\Debug\System.ValueTuple.xml
 E:\Source\Repos\REQ\RequestEnhancementQueue.Tests\obj\Debug\RequestEnhancementQueue.Tests.csprojResolveAssemblyReference.cache
 E:\Source\Repos\REQ\RequestEnhancementQueue.Tests\obj\Debug\RequestEnhancementQueue.Tests.dll
 E:\Source\Repos\REQ\RequestEnhancementQueue.Tests\obj\Debug\RequestEnhancementQueue.Tests.pdb
-E:\Source\Repos\REQ\RequestEnhancementQueue.Tests\bin\Debug\BusinessLogicLayer.pdb
