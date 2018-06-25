@@ -15,16 +15,18 @@ namespace Domain.Classes.Req.Domain.ViewModels
         [HiddenInput(DisplayValue = false)]
         public int JobId { get; set; }
         public string JobTitle { get; set; }
+
+        [DataType(DataType.MultilineText)]
         public string JobDescription { get; set; }
         public JobCategory JobType { get; set; }
         public JobStatus JobStatus { get; set; }
         public PriorityLevel JobPriority { get; set; }
-        public int ReportedBy { get; set; }
+        public string ReportedBy { get; set; }
         public DateTime? CreatedOn { get; set; }
 
-        [DisplayFormat(DataFormatString = "{0}")]
-        public int EstimatedTimeInHours { get; set; }
-        public int ActualTimeTakenHrPart { get; set; }
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:N}")]
+        public decimal EstimatedTimeInHours { get; set; }
+        public decimal ActualTimeTakenHrPart { get; set; }
         public int? AssignedTakerId { get; set; }
 
         public HttpPostedFileBase[] Files { get; set; }
@@ -35,6 +37,7 @@ namespace Domain.Classes.Req.Domain.ViewModels
 
         public DateTime? LastUpdatedOn { get; set; }
 
+        [DataType(DataType.MultilineText)]
         public string Comments { get; set; }
     }
 }

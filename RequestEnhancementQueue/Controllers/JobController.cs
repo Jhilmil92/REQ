@@ -87,7 +87,8 @@ namespace RequestEnhancementQueue.Controllers
                 JobType = job.JobCategory,
                 ActualTimeTakenHrPart = job.ActualTimeTakenHour,
                 EstimatedTimeHrPart = job.EstimatedTimeHour,
-                ReportedBy = job.ReportedById,
+                ReportedBy = job.ReportedBy.StakeHolderOrganization,
+                AssignedTo = job.AssignedTo.TakerName,
                 CreatedOn = job.CreatedOn,
                 JobStatus = job.Status,
                 Comments = job.Comments,
@@ -163,7 +164,7 @@ namespace RequestEnhancementQueue.Controllers
                 EstimatedTimeInHours = job.EstimatedTimeHour,
                 ActualTimeTakenHrPart = job.ActualTimeTakenHour,
                 AssignedTakerId = job.AssignedToId,
-                ReportedBy = job.ReportedById,
+                ReportedBy = job.ReportedBy.StakeHolderOrganization,
                 CreatedOn = job.CreatedOn,
                 JobTitle = job.JobTitle,
                 JobType = job.JobCategory,
@@ -187,7 +188,7 @@ namespace RequestEnhancementQueue.Controllers
 
             if (ModelState.IsValid)
             {
-                if (viewModel.Files != null)
+                if (viewModel.Files != null) 
                 {
                     foreach (var file in viewModel.Files)
                     {

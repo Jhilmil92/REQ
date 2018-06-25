@@ -23,6 +23,7 @@ namespace Domain.Classes.Req.Domain.ViewModels
         public string JobTitle { get; set; }
 
         [Required]
+        [DataType(DataType.MultilineText)]
         public string JobDescription { get; set; }
         [Required]
         public JobCategory JobType { get; set; }

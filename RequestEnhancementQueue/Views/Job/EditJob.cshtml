@@ -4,6 +4,7 @@
     ViewBag.Title = "Edit Job";
 }
 
+<link href="~/Content/themes/EditJobPageStyles.css" rel="stylesheet" />
 <h2>Edit Job</h2>
 
 
@@ -54,6 +55,15 @@
         </div>
 
         <div class="form-group">
+            @Html.LabelFor(model => model.AssignedTo, "Job Assigned To", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.AssignedTo, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.AssignedTo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
             @Html.LabelFor(model => model.EstimatedTimeHrPart, "Estimated Time : Hours", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.EstimatedTimeHrPart, new { htmlAttributes = new { @class = "form-control", @min = 0, @readonly = "readonly" } })
@@ -64,23 +74,31 @@
         <div class="form-group">
             @Html.LabelFor(model => model.ActualTimeTakenHrPart, "Actual Time : Hours", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.ActualTimeTakenHrPart, new { htmlAttributes = new { @class = "form-control", @min = "0" } })
+                @Html.EditorFor(model => model.ActualTimeTakenHrPart, new { htmlAttributes = new { @class = "form-control"} })
                 @Html.ValidationMessageFor(model => model.ActualTimeTakenHrPart, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.JobType,"Job Type", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EnumDropDownListFor(model => model.JobType, "Select a Job Type", new { @class = "form-control" , @readonly = "readonly"})
+                @Html.ValidationMessageFor(model => model.JobType, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.JobStatus, "Job Status", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EnumDropDownListFor(model => model.JobStatus, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EnumDropDownListFor(model => model.JobStatus, "Select a Job Status",  new {@class = "form-control" })
                 @Html.ValidationMessageFor(model => model.JobStatus, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.JobPriority, "Job Priority", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.JobPriority,"Job Priority", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EnumDropDownListFor(model => model.JobPriority, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                @Html.EnumDropDownListFor(model => model.JobPriority, "Select a Job Priority" ,new { @class = "form-control", @readonly = "readonly" })
                 @Html.ValidationMessageFor(model => model.JobPriority, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -142,15 +160,14 @@
                             var fileName = file.ToString().Split('\\');
                             <tr>
                                 <td>
-                                    @fileName[fileName.Length - 1]
-                                </td>
-                                <td> </td>
-                                <td>
-                                    <u>@Html.ActionLink("View", "ViewFile", "File", new { jobId = Model.JobId, requiredFileName = fileName[fileName.Length - 1] }, new { @class = "view-file" })</u>
+                                    <u>@Html.ActionLink(@fileName[fileName.Length - 1], "ViewFile", "File", new { jobId = Model.JobId, requiredFileName = fileName[fileName.Length - 1] }, new { @class = "view-file" })</u>
                                 </td>
                                 <td></td>
                                 <td class="download-file">
-                                    <u>@Html.ActionLink("Download", "DownloadFile", "File", new { jobId = Model.JobId, requiredFileName = fileName[fileName.Length - 1] }, new { @class = "download-file"})</u>
+                                    @*<u>@Html.ActionLink("Download", "DownloadFile", "File", new { jobId = Model.JobId, requiredFileName = fileName[fileName.Length - 1] }, new { @class = "download-file"})</u>*@
+                                    <a href="@Url.Action("DownloadFile", "File", new { jobId = Model.JobId, requiredFileName = fileName[fileName.Length - 1] })">
+                                        <img width="20" height="20" src="~/Content/Images/Martz90-Circle-Addon2-Downloads.ico" />
+                                    </a>
                                 </td>
                             </tr>
                         }

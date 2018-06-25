@@ -46,7 +46,7 @@ namespace Domain.Classes
         public string EstimatedTime { get; set; }
 
         [NotMapped]
-        public int EstimatedTimeHour 
+        public decimal EstimatedTimeHour 
         {
             get
             {
@@ -56,7 +56,7 @@ namespace Domain.Classes
                 }
                 else
                 {
-                    return Convert.ToInt32(EstimatedTime);
+                    return Convert.ToDecimal(EstimatedTime);
                 }
             }
             set
@@ -70,7 +70,7 @@ namespace Domain.Classes
         public string ActualTimeTaken { get; set; }
 
         [NotMapped]
-        public int ActualTimeTakenHour
+        public decimal ActualTimeTakenHour
         {
             get
             {
@@ -80,7 +80,7 @@ namespace Domain.Classes
                 }
                 else
                 {
-                    return Convert.ToInt32(ActualTimeTaken);
+                    return Convert.ToDecimal(ActualTimeTaken);
                 }
             }
             set
