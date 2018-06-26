@@ -5,13 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccessLayer.Req.Data.Infrastructure.Interfaces
+namespace BusinessLogicLayer.BLL.Interfaces
 {
-    public interface ILogChangeRepository
+    public interface ILogChangeBLL
     {
         IQueryable<ChangeLog> GetChangeLogsByJobId(int jobId);
-        void AddChangeLog(ChangeLog changeLog);
-
-        void Save();
     }
 }

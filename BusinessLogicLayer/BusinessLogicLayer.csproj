@@ -47,11 +47,13 @@
   <ItemGroup>
     <Compile Include="BLL.Classes\FileBLL.cs" />
     <Compile Include="BLL.Classes\JobBLL.cs" />
+    <Compile Include="BLL.Classes\LogChangeBLL.cs" />
     <Compile Include="BLL.Classes\LoginManager.cs" />
     <Compile Include="BLL.Classes\StakeHolderBLL.cs" />
     <Compile Include="BLL.Classes\TakerBLL.cs" />
     <Compile Include="BLL.Interfaces\IFileBLL.cs" />
     <Compile Include="BLL.Interfaces\IJobBLL.cs" />
+    <Compile Include="BLL.Interfaces\ILogChangeBLL.cs" />
     <Compile Include="BLL.Interfaces\ILoginManager.cs" />
     <Compile Include="BLL.Interfaces\IStakeHolderBLL.cs" />
     <Compile Include="BLL.Interfaces\ITakerBLL.cs" />

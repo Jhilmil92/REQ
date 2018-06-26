@@ -561,6 +561,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="DependencyResolution\" />
+    <Folder Include="Views\ChangeLog\" />
     <Folder Include="Views\File\" />
     <Folder Include="Views\ReportIssue\" />
   </ItemGroup>

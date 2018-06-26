@@ -23,6 +23,7 @@ namespace RequestEnhancementQueue.Controllers
         //private readonly IJobQueueService _jobQueueService;
         private readonly IFileBLL _fileBLL;
         private IMapper _viewModelToModelMapper;
+        private readonly ILogChangeBLL _logChangeBLL;
         public JobController(IJobBLL _jobBLL, IStakeHolderBLL _stakeHolderBLL, ITakerBLL _takerBLL, 
             //IJobQueueService _jobQueueService, 
             IFileBLL _fileBLL)
@@ -31,6 +32,7 @@ namespace RequestEnhancementQueue.Controllers
             this._stakeHolderBLL = _stakeHolderBLL;
             this._takerBLL = _takerBLL;
             this._fileBLL = _fileBLL;
+            this._logChangeBLL = new LogChangeBLL();
             //this._jobQueueService = _jobQueueService;
         }
 
@@ -220,5 +222,11 @@ namespace RequestEnhancementQueue.Controllers
 
             return View(viewModel);
     }
+
+        public ActionResult ChangeLog(int jobId)
+        {
+            var changeLogs = _logChangeBLL.GetChangeLogsByJobId(jobId);
+            return PartialView("_ChangeTrackingLogViewPartial", changeLogs);
+        }
   }
 }
