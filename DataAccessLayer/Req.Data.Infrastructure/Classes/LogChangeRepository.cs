@@ -31,7 +31,7 @@ namespace DataAccessLayer.Req.Data.Infrastructure.Classes
 
         public IQueryable<ChangeLog> GetChangeLogsByJobId(int jobId)
         {
-            var changeLogs =_changeLogDataSource.ChangeLogs.SingleOrDefault(d => (d.PrimaryKeyValue == jobId)) as IQueryable<ChangeLog>;
+            var changeLogs =_changeLogDataSource.ChangeLogs.Where(d => (d.PrimaryKeyValue == jobId)) as IQueryable<ChangeLog>;
             return changeLogs;
         }
     }

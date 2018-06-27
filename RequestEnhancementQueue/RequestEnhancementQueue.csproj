@@ -409,6 +409,7 @@
     <Content Include="Content\themes\KeyTable-2.3.2\css\keyTable.semanticui.min.css" />
     <Content Include="Content\themes\KeyTable-2.3.2\js\dataTables.keyTable.js" />
     <Content Include="Content\themes\KeyTable-2.3.2\js\dataTables.keyTable.min.js" />
+    <Content Include="Content\themes\ModalStyles.css" />
     <Content Include="Content\themes\pdfmake-0.1.32\pdfmake.js" />
     <Content Include="Content\themes\pdfmake-0.1.32\pdfmake.min.js" />
     <Content Include="Content\themes\pdfmake-0.1.32\vfs_fonts.js" />
@@ -582,6 +583,9 @@
       <Project>{4106437c-3e7e-4181-ad32-245c56c19f57}</Project>
       <Name>Common</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\REQ Scripts\ModalScript.ts" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

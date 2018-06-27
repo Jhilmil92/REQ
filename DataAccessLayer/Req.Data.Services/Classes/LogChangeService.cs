@@ -26,7 +26,7 @@ namespace DataAccessLayer.Req.Data.Services.Classes
             var currentDateTime = DateTime.UtcNow;
             foreach(var change in modifiedEntities)
             {
-                var entityName = job.GetType().Name;
+                var entityName = job.GetType().Name.Split('_')[0];
                 var primaryKey = job.JobId;
                 foreach(var prop in change.OriginalValues.PropertyNames)
                 {

@@ -4,6 +4,7 @@
     ViewBag.Title = "Edit Job For StakeHolder";
 }
 <link href="~/Content/themes/EditJobPageStyles.css" rel="stylesheet" />
+
 <h2>Edit Job</h2>
 
             @using (Html.BeginForm("EditJobForStakeHolder", "Job", FormMethod.Post, new { encType = "multipart/form-data" }))
@@ -81,7 +82,7 @@
                     <div class="form-group">
                         @Html.LabelFor(model => model.JobStatus, "Job Status", htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
-                            @Html.EnumDropDownListFor(model => model.JobStatus, "Select a Job Status", new { @class = "form-control", @readonly = "readonly" })
+                            @Html.EnumDropDownListFor(model => model.JobStatus, "Select a Job Status", new { @class = "form-control",  @disabled ="disabled" })
                             @Html.ValidationMessageFor(model => model.JobStatus, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -125,6 +126,10 @@
                             <button type="button" class="btn btn-info btn lg change-log-button" data-id="@Model.JobId">View Change History</button>
                             @Html.ValidationMessageFor(model => model.LastUpdatedOn, "", new { @class = "text-danger" })
                         </div>
+                    </div>
+
+                    <div id="showLog">
+
                     </div>
 
                     <div class="form-group">
@@ -206,29 +211,6 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-    <script>
-    var postBackURL = '/Job/ChangeLog';
-    $('change-log-button').click(function () {
-        var $buttonClicked = $(this);
-        var id = $('buttonClicked').attr('data-id');
-        var options = { "backdrop": "static", keyboard: "true" };
-        $.ajax({
-            type: "GET",
-            url: postBackURL,
-            contentType: "application/json; charset = utf-8",
-            data: { "id": id },
-            datatype: "json",
-            success: function (data) {
-                $('#logModal').modal(options);
-                $('#logModal').modal('show');
-            },
-            error: function () {
-                alert("Dynamic content load failed!");
-            }
-        }
-            );
-    });
-    </script>
+    <script src="~/Scripts/REQ Scripts/ModalScript.js"></script>
 }
-
 

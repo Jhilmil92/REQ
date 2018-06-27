@@ -1,71 +1,73 @@
 ﻿@model IEnumerable<Domain.Classes.Req.Domain.Entities.ChangeLog>
-
-<div id="#logModal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-    <div class="modal-content">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Modal Header</h4>
-        </div>
-        <div class="modal-body">
-            <table class="table">
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.EntityName)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.PropertyName)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.PrimaryKeyValue)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.OldValue)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.NewValue)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.DateChanged)
-                    </th>
-                    <th></th>
-                </tr>
-
-                @foreach (var item in Model)
+<link href="~/Content/themes/ModalStyles.css" rel="stylesheet" />
+<div id="logModal" class="modal fade modal-custom-style modal-text-color" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content modal-text-color">
+            <div class="modal-header modal-text-color">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Change History</h4>
+            </div>
+            <div class="modal-body modal-text-color">
+                @if (Model != null && Model.Count() != 0)
                 {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.EntityName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.PropertyName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.PrimaryKeyValue)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.OldValue)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.NewValue)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.DateChanged)
-                        </td>
-                        <td>
-                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                        </td>
-                    </tr>
-                }
+                    <table class="table" >
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.EntityName)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.PropertyName)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.PrimaryKeyValue)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.OldValue)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.NewValue)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.DateChanged)
+                            </th>
+                            <th></th>
+                        </tr>
 
-            </table>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.EntityName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PropertyName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PrimaryKeyValue)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.OldValue)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.NewValue)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DateChanged)
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+                }
+                else
+                {
+                    <strong> There is no change history! </strong>
+                }
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
         </div>
     </div>
-</div>
 </div>
 

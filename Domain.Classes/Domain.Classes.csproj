@@ -79,6 +79,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Req.Domain.Entities\ChangeLog.cs" />
+    <Compile Include="Req.Domain.Entities\Client.cs" />
     <Compile Include="Req.Domain.Entities\Job.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Req.Domain.Entities\StakeHolder.cs" />

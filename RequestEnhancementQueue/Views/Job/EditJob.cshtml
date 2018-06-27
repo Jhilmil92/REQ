@@ -1,6 +1,7 @@
 ﻿@model Domain.Classes.Req.Domain.ViewModels.UpdateJobViewModel
 
 @{
+    Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "Edit Job";
 }
 
@@ -82,7 +83,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.JobType,"Job Type", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EnumDropDownListFor(model => model.JobType, "Select a Job Type", new { @class = "form-control" , @readonly = "readonly"})
+                @Html.EnumDropDownListFor(model => model.JobType, "Select a Job Type", new { @class = "form-control" , @disabled = "disabled"})
                 @Html.ValidationMessageFor(model => model.JobType, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -98,7 +99,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.JobPriority,"Job Priority", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EnumDropDownListFor(model => model.JobPriority, "Select a Job Priority" ,new { @class = "form-control", @readonly = "readonly" })
+                @Html.EnumDropDownListFor(model => model.JobPriority, "Select a Job Priority" ,new { @class = "form-control", @disabled = "disabled" })
                 @Html.ValidationMessageFor(model => model.JobPriority, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -123,6 +124,7 @@
             @Html.LabelFor(model => model.LastUpdatedOn, "Last Updated On", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.LastUpdatedOn, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                <button type="button" class="btn btn-info btn lg change-log-button" data-id="@Model.JobId">View Change History</button>
                 @Html.ValidationMessageFor(model => model.LastUpdatedOn, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -134,6 +136,10 @@
                 @Html.ValidationMessageFor(model => model.Files, "", new { @class = "text-danger" })
                 @ViewBag.UploadStatus
             </div>
+        </div>
+
+        <div id="showLog">
+
         </div>
 
 
@@ -204,4 +210,5 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/REQ Scripts/ModalScript.js"></script>
 }
