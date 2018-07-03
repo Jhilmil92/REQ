@@ -132,6 +132,7 @@ namespace BusinessLogicLayer
                 currentJob.ActualTimeTakenHour = job.ActualTimeTakenHrPart;
                 currentJob.EstimatedTimeHour = job.EstimatedTimeHrPart;
                 currentJob.Comments = job.Comments;
+                currentJob.ReleaseVersion = job.ReleaseVersion;
                 if (job.JobStatus != 0)
                 {
                     currentJob.Status = job.JobStatus;
@@ -166,7 +167,7 @@ namespace BusinessLogicLayer
 
         public IEnumerable<Job> GetJobsByTakerId(int takerID)
         {
-            var jobsByTakerId = _jobRepository.GetJobs().Where(d=>d.AssignedTo.TakerId == takerID);
+            var jobsByTakerId = _jobRepository.GetJobs().Where(d=>d.AssignedTo.TakerId == takerID).ToList();
             return jobsByTakerId;
         }
 

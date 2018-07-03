@@ -60,7 +60,7 @@ namespace RequestEnhancementQueue.Controllers
 
         public ActionResult ViewJobs()
         {
-            var jobs = _jobBLL.GetJobsByTakerId((int)(Session[Constants.TakerId])).ToList();
+            var jobs = _jobBLL.GetJobsByTakerId((int)(Session[Constants.TakerId]));
             return View(jobs);
         }
 
