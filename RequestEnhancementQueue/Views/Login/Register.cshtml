@@ -13,11 +13,19 @@
     <div class="form-horizontal beige-color">
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.StakeHolderOrganization,"Organization", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.StakeHolderOrganization, new { htmlAttributes = new { @class = "form-control" , style = "height : 30px"} })
                 @Html.ValidationMessageFor(model => model.StakeHolderOrganization, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.StakeholderClientId, "Choose a Client", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.StakeholderClientId, new SelectList(ViewBag.Clients, "ClientId ", "ClientOrganization"), "Select a Client", new { @class = "form-control ", required = "required" }))
+                @Html.ValidationMessageFor(model => model.StakeholderClientId, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -90,5 +98,9 @@
         font-weight : bold;
         font-size : large;
         text-shadow : 3px 3px 0px #000;
+    }
+    button, input, optgroup, select, textarea
+    {
+        color : black;
     }
 </style>

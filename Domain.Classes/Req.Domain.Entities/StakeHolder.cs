@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Domain.Classes.Req.Domain.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -13,8 +14,10 @@ namespace Domain.Classes
         [Key]
         public int StakeHolderId { get; set; }
 
-        [Display(Name = "Stakeholder Organization")]
-        public string StakeHolderOrganization { get; set; }
+        public int ClientId { get; set; }
+
+        [ForeignKey("ClientId")]
+        public virtual Client ClientDetails { get; set; }
 
         //[Display(Name = "Username")]
         //public string UserName { get; set; }

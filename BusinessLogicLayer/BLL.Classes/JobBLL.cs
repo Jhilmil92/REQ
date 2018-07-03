@@ -1,7 +1,10 @@
 ﻿using BusinessLogicLayer.BLL.Interfaces;
 using DataAccessLayer.Infrastructure.Classes;
 using DataAccessLayer.Infrastructure.Interfaces;
+using DataAccessLayer.Req.Data.Infrastructure.Classes;
+using DataAccessLayer.Req.Data.Infrastructure.Interfaces;
 using Domain.Classes;
+using Domain.Classes.Req.Domain.Entities;
 using Domain.Classes.Req.Domain.ViewModels;
 using Req.Enums;
 using System;
@@ -17,12 +20,18 @@ namespace BusinessLogicLayer
         private readonly IJobRepository _jobRepository;
         private readonly IStakeHolderRepository _stakeHolderRepository;
         private readonly ITakerRepository _takerRepository;
+        private readonly IUserRepository _userRepository;
+        private readonly IStaffRepository _staffRepository;
+        private readonly IClientRepository _clientRepository;
 
         public JobBLL(IJobRepository _jobRepository, IStakeHolderRepository _stakeHolderRepository, ITakerRepository _takerRepository)
         {
             this._jobRepository = _jobRepository;
             this._stakeHolderRepository = _stakeHolderRepository;
             this._takerRepository = _takerRepository;
+            this._userRepository = new UserRepository();
+            this._staffRepository = new StaffRepository();
+            this._clientRepository = new ClientRepository();
         }
 
         //public JobBLL(IJobRepository jobRepository, IStakeHolderRepository stakeHolderRepository,ITakerRepository takerRepository)
@@ -35,6 +44,7 @@ namespace BusinessLogicLayer
         public Job CreateJob(ReportRequestViewModel requestViewModel)
         {
             var stakeHolder = _stakeHolderRepository.GetStakeHolderById(requestViewModel.StakeHolderId);
+            var user = _userRepository.GetAllUsers().SingleOrDefault(d => d.UserType == UserType.StakeHolder && d.TargetUserID == requestViewModel.StakeHolderId);
             var job = new Job 
             { 
                 JobTitle = requestViewModel.JobTitle,
@@ -42,8 +52,43 @@ namespace BusinessLogicLayer
                 JobCategory = requestViewModel.JobType,
                 CreatedOn = DateTime.Now,
                 UpdatedOn = DateTime.Now,
-                //ReportedBy = stakeHolder,
-                ReportedById = stakeHolder.StakeHolderId,
+                ReportedBy = stakeHolder.ClientDetails,
+                ReportedById = stakeHolder.ClientId,
+                CreatedBy = user,
+                CreatedById = stakeHolder.StakeHolderId,
+                JobPriority = requestViewModel.JobPriority,
+                EstimatedTimeHour = requestViewModel.EstimatedTimeInHours,
+                ReleaseVersion = requestViewModel.ReleaseVersion
+            };
+
+            if (requestViewModel.JobTakerId != 0)
+            {
+                job.AssignedToId = requestViewModel.JobTakerId;
+                job.Status = JobStatus.Assigned;
+            }
+            else
+            {
+                job.Status = JobStatus.Queued;
+            }
+
+            return _jobRepository.Create(job);
+        }
+
+
+        public Job CreateJob(ClientReportRequestViewModel requestViewModel)
+        {
+            var staff = _staffRepository.GetStaffById(requestViewModel.StaffId);
+            var user = _userRepository.GetAllUsers().SingleOrDefault(d => d.UserType == UserType.Staff && d.TargetUserID == requestViewModel.StaffId);
+            var client = _clientRepository.GetClientById(requestViewModel.StakeholderClientId);
+            var job = new Job
+            {
+                JobTitle = requestViewModel.JobTitle,
+                JobDescription = requestViewModel.JobDescription,
+                JobCategory = requestViewModel.JobType,
+                CreatedOn = DateTime.Now,
+                UpdatedOn = DateTime.Now,
+                ReportedById = requestViewModel.StakeholderClientId,
+                CreatedById = requestViewModel.StaffId,
                 JobPriority = requestViewModel.JobPriority,
                 EstimatedTimeHour = requestViewModel.EstimatedTimeInHours,
                 ReleaseVersion = requestViewModel.ReleaseVersion
@@ -118,11 +163,17 @@ namespace BusinessLogicLayer
             return jobsByStakeHolderId;
         }
 
-        
-        public IQueryable<Job> GetJobsByTakerId(int takerID)
+
+        public IEnumerable<Job> GetJobsByTakerId(int takerID)
         {
             var jobsByTakerId = _jobRepository.GetJobs().Where(d=>d.AssignedTo.TakerId == takerID);
             return jobsByTakerId;
+        }
+
+        public IEnumerable<Job> GetJobsByClientId(int clientId)
+        {
+            var jobsByClientId = _jobRepository.GetJobs().Where(d => d.ReportedById == clientId).ToList();
+            return jobsByClientId;
         }
 
 
@@ -144,5 +195,7 @@ namespace BusinessLogicLayer
             currentJob.UpdatedOn = DateTime.Now;
             return _jobRepository.Update(currentJob);
         }
+
+
     }
 }

@@ -50,62 +50,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201805061633392_InitialCreate.cs" />
-    <Compile Include="Migrations\201805061633392_InitialCreate.Designer.cs">
-      <DependentUpon>201805061633392_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805062021518_estimatedandactualtime.cs" />
-    <Compile Include="Migrations\201805062021518_estimatedandactualtime.Designer.cs">
-      <DependentUpon>201805062021518_estimatedandactualtime.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805080748118_UploadFileField.cs" />
-    <Compile Include="Migrations\201805080748118_UploadFileField.Designer.cs">
-      <DependentUpon>201805080748118_UploadFileField.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805081045151_releaseversionfield.cs" />
-    <Compile Include="Migrations\201805081045151_releaseversionfield.Designer.cs">
-      <DependentUpon>201805081045151_releaseversionfield.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805100925219_CreatedByColumnAlteration.cs" />
-    <Compile Include="Migrations\201805100925219_CreatedByColumnAlteration.Designer.cs">
-      <DependentUpon>201805100925219_CreatedByColumnAlteration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805211028271_commentscolumn_job.cs" />
-    <Compile Include="Migrations\201805211028271_commentscolumn_job.Designer.cs">
-      <DependentUpon>201805211028271_commentscolumn_job.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201806110702148_lastUpdatedOnColumn.cs" />
-    <Compile Include="Migrations\201806110702148_lastUpdatedOnColumn.Designer.cs">
-      <DependentUpon>201806110702148_lastUpdatedOnColumn.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201806111008175_DateToDateTimeInJob.cs" />
-    <Compile Include="Migrations\201806111008175_DateToDateTimeInJob.Designer.cs">
-      <DependentUpon>201806111008175_DateToDateTimeInJob.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201806151817099_UserIdentitySeperation.cs" />
-    <Compile Include="Migrations\201806151817099_UserIdentitySeperation.Designer.cs">
-      <DependentUpon>201806151817099_UserIdentitySeperation.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201806241415501_ChangeTracking.cs" />
-    <Compile Include="Migrations\201806241415501_ChangeTracking.Designer.cs">
-      <DependentUpon>201806241415501_ChangeTracking.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201806241450059_ChangeTracking_Final.cs" />
-    <Compile Include="Migrations\201806241450059_ChangeTracking_Final.Designer.cs">
-      <DependentUpon>201806241450059_ChangeTracking_Final.cs</DependentUpon>
+    <Compile Include="Migrations\201807031034593_initial.cs" />
+    <Compile Include="Migrations\201807031034593_initial.Designer.cs">
+      <DependentUpon>201807031034593_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Req.Data.Infrastructure\Classes\ChangeLogDataContext.cs" />
+    <Compile Include="Req.Data.Infrastructure\Classes\ClientRepository.cs" />
     <Compile Include="Req.Data.Infrastructure\Classes\DataContext.cs" />
     <Compile Include="Req.Data.Infrastructure\Classes\JobRepository.cs" />
     <Compile Include="Req.Data.Infrastructure\Classes\LogChangeRepository.cs" />
+    <Compile Include="Req.Data.Infrastructure\Classes\StaffRepository.cs" />
     <Compile Include="Req.Data.Infrastructure\Classes\StakeHolderRepository.cs" />
     <Compile Include="Req.Data.Infrastructure\Classes\TakerRepository.cs" />
     <Compile Include="Req.Data.Infrastructure\Classes\UserRepository.cs" />
     <Compile Include="Req.Data.Infrastructure\Interfaces\IChangeLogDataSource.cs" />
+    <Compile Include="Req.Data.Infrastructure\Interfaces\IClientRepository.cs" />
     <Compile Include="Req.Data.Infrastructure\Interfaces\IJobRepository.cs" />
     <Compile Include="Req.Data.Infrastructure\Interfaces\ILogChangeRepository.cs" />
     <Compile Include="Req.Data.Infrastructure\Interfaces\IReqDataSource.cs" />
+    <Compile Include="Req.Data.Infrastructure\Interfaces\IStaffRepository.cs" />
     <Compile Include="Req.Data.Infrastructure\Interfaces\IStakeHolderRepository.cs" />
     <Compile Include="Req.Data.Infrastructure\Interfaces\ITakerRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -124,41 +88,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201805061633392_InitialCreate.resx">
-      <DependentUpon>201805061633392_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805062021518_estimatedandactualtime.resx">
-      <DependentUpon>201805062021518_estimatedandactualtime.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805080748118_UploadFileField.resx">
-      <DependentUpon>201805080748118_UploadFileField.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805081045151_releaseversionfield.resx">
-      <DependentUpon>201805081045151_releaseversionfield.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805100925219_CreatedByColumnAlteration.resx">
-      <DependentUpon>201805100925219_CreatedByColumnAlteration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805211028271_commentscolumn_job.resx">
-      <DependentUpon>201805211028271_commentscolumn_job.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201806110702148_lastUpdatedOnColumn.resx">
-      <DependentUpon>201806110702148_lastUpdatedOnColumn.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201806111008175_DateToDateTimeInJob.resx">
-      <DependentUpon>201806111008175_DateToDateTimeInJob.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201806151817099_UserIdentitySeperation.resx">
-      <DependentUpon>201806151817099_UserIdentitySeperation.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201806241415501_ChangeTracking.resx">
-      <DependentUpon>201806241415501_ChangeTracking.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201806241450059_ChangeTracking_Final.resx">
-      <DependentUpon>201806241450059_ChangeTracking_Final.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201807031034593_initial.resx">
+      <DependentUpon>201807031034593_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

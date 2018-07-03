@@ -38,6 +38,7 @@ e:\visual studio 2013\Projects\RequestEnhancementQueueSystem\RequestEnhancementQ
 e:\visual studio 2013\Projects\RequestEnhancementQueueSystem\RequestEnhancementQueue.Tests\bin\Debug\Microsoft.Owin.Security.Cookies.xml
 e:\visual studio 2013\Projects\RequestEnhancementQueueSystem\RequestEnhancementQueue.Tests\obj\Debug\RequestEnhancementQueue.Tests.dll
 e:\visual studio 2013\Projects\RequestEnhancementQueueSystem\RequestEnhancementQueue.Tests\obj\Debug\RequestEnhancementQueue.Tests.pdb
+E:\Source\Repos\REQ\RequestEnhancementQueue.Tests\obj\Debug\RequestEnhancementQueue.Tests.csprojResolveAssemblyReference.cache
 E:\Source\Repos\REQ\RequestEnhancementQueue.Tests\bin\Debug\GenericTest1.GenericTest
 E:\Source\Repos\REQ\RequestEnhancementQueue.Tests\bin\Debug\RequestEnhancementQueue.Tests.dll.config
 E:\Source\Repos\REQ\RequestEnhancementQueue.Tests\bin\Debug\RequestEnhancementQueue.Tests.dll
@@ -95,6 +96,5 @@ E:\Source\Repos\REQ\RequestEnhancementQueue.Tests\bin\Debug\Microsoft.Owin.Secur
 E:\Source\Repos\REQ\RequestEnhancementQueue.Tests\bin\Debug\Microsoft.Owin.Security.Cookies.xml
 E:\Source\Repos\REQ\RequestEnhancementQueue.Tests\bin\Debug\Autofac.Integration.Mvc.xml
 E:\Source\Repos\REQ\RequestEnhancementQueue.Tests\bin\Debug\System.ValueTuple.xml
-E:\Source\Repos\REQ\RequestEnhancementQueue.Tests\obj\Debug\RequestEnhancementQueue.Tests.csprojResolveAssemblyReference.cache
 E:\Source\Repos\REQ\RequestEnhancementQueue.Tests\obj\Debug\RequestEnhancementQueue.Tests.dll
 E:\Source\Repos\REQ\RequestEnhancementQueue.Tests\obj\Debug\RequestEnhancementQueue.Tests.pdb

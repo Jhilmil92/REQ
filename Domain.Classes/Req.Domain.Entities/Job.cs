@@ -1,4 +1,5 @@
-﻿using Req.Enums;
+﻿using Domain.Classes.Req.Domain.Entities;
+using Req.Enums;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -37,10 +38,16 @@ namespace Domain.Classes
         public DateTime? UpdatedOn { get; set; }
 
         [Display(Name = "Reported By")]
-        public virtual StakeHolder ReportedBy { get; set; }
+        public virtual Client ReportedBy { get; set; } //change type to user
 
         [ForeignKey("ReportedBy")]
         public int ReportedById { get; set; }
+
+        [Display(Name = "Created By")]
+        public virtual User CreatedBy { get; set; }
+
+        [ForeignKey("CreatedBy")]
+        public int CreatedById { get; set; }
 
         [Display(Name = "Estimated Time")]
         public string EstimatedTime { get; set; }

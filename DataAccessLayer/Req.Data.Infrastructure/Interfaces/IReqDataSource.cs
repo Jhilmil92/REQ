@@ -11,9 +11,12 @@ namespace DataAccessLayer.Infrastructure.Interfaces
     public interface IReqDataSource
     {
         IQueryable<Job> Jobs { get; }
-        IQueryable<StakeHolder> StakeHolders { get;}
+        IQueryable<StakeHolder> StakeHolders { get; }
         IQueryable<Taker> Takers { get; }
         IQueryable<User> Users { get; }
+        IQueryable<Staff> Staff { get; }
+
+        IQueryable<Client> Clients { get; }
         void Save();
 
     }

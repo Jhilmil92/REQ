@@ -1,0 +1,22 @@
+﻿@model Domain.Classes.Req.Domain.Entities.Staff
+
+@{
+    ViewBag.Title = "StaffInformation";
+}
+
+<h2>Hi @Model.StaffName, Welcome to the Request Enhancement Queue System!</h2>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3" style="background-color:aliceblue">
+            <div class="applyPadding text-center hover">
+                <h3>@Html.ActionLink("Register Client", "RegisterClient", "Login")</h3>
+            </div>
+        </div>
+        <div class="col-md-4 col-md-offset-1" style="background-color:aliceblue">
+            <div class="applyPadding text-center hover">
+                <h3> @Html.ActionLink("Report a Request", "ReportClientRequest", "ReportRequest") </h3>
+            </div>
+        </div>
+    </div>
+</div>

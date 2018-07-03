@@ -22,6 +22,11 @@ namespace DataAccessLayer.Infrastructure.Classes
 
         public DbSet<User> Users { get; set; }
 
+        public DbSet<Staff> Staff { get; set; }
+
+        public DbSet<Client> Clients { get; set; }
+
+
 
         IQueryable<Job> IReqDataSource.Jobs
         {
@@ -55,9 +60,29 @@ namespace DataAccessLayer.Infrastructure.Classes
             }
         }
 
+        IQueryable<Staff> IReqDataSource.Staff
+        {
+            get
+            {
+                return Staff;
+            }
+        }
+
+        IQueryable<Client> IReqDataSource.Clients
+        {
+            get
+            {
+                return Clients;
+            }
+        }
+
         public void Save()
         {
             SaveChanges();
         }
+
+
+
+        
     }
 }

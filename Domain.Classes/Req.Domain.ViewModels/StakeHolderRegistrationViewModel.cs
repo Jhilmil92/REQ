@@ -9,8 +9,11 @@ namespace Domain.Classes.Req.Domain.ViewModels
 {
     public class StakeHolderRegistrationViewModel
     {
-        [Required(ErrorMessage="Please Enter your Organization Name")]
-        public string StakeHolderOrganization { get; set; }
+        //[Required(ErrorMessage="Please Enter your Organization Name")]
+        //public string StakeHolderOrganization { get; set; }
+
+        [Required(ErrorMessage = "Please Enter a Client")]
+        public int StakeholderClientId { get; set; }
         [Required(ErrorMessage = "Please Enter a UserName")]
         public string StakeHolderUserName { get; set; }
         [Required(ErrorMessage = "Please Enter a Password")]

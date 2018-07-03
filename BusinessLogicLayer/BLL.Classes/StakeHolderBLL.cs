@@ -1,6 +1,7 @@
 ﻿using BusinessLogicLayer.BLL.Interfaces;
 using DataAccessLayer.Infrastructure.Classes;
 using DataAccessLayer.Infrastructure.Interfaces;
+using DataAccessLayer.Req.Data.Infrastructure.Classes;
 using DataAccessLayer.Req.Data.Infrastructure.Interfaces;
 using Domain.Classes;
 using Domain.Classes.Req.Domain.Entities;
@@ -17,11 +18,13 @@ namespace BusinessLogicLayer.BLL.Classes
     {
         private readonly IStakeHolderRepository _stakeHolderRepository;
         private readonly IUserRepository _userRepository;
+        private readonly IClientRepository _clientRepository;
 
         public StakeHolderBLL(IUserRepository userRepository, IStakeHolderRepository _stakeHolderRepository)
         {
             this._stakeHolderRepository = _stakeHolderRepository;
             this._userRepository = userRepository;
+            this._clientRepository = new ClientRepository();
         }
 
         //public StakeHolderBLL(IStakeHolderRepository stakeHolderRepository)
@@ -31,15 +34,10 @@ namespace BusinessLogicLayer.BLL.Classes
 
         public void CreateStakeHolder(StakeHolderRegistrationViewModel registrationViewModel)
         {
-            var stakeHolder = new StakeHolder
-            {
-                StakeHolderOrganization = registrationViewModel.StakeHolderOrganization,
-                
-            };
-
-          var createdStakeHolder =  _stakeHolderRepository.Create(stakeHolder);
-
-          _userRepository.CreateUser(registrationViewModel.StakeHolderUserName, registrationViewModel.StakeHolderPassword, UserType.StakeHolder, createdStakeHolder.StakeHolderId);
+            var stakeHolder = new StakeHolder();
+            stakeHolder.ClientId = registrationViewModel.StakeholderClientId;
+            var createdStakeHolder = _stakeHolderRepository.Create(stakeHolder);
+            _userRepository.CreateUser(registrationViewModel.StakeHolderUserName, registrationViewModel.StakeHolderPassword, UserType.StakeHolder, createdStakeHolder.StakeHolderId);
         }
 
         public IQueryable<StakeHolder> GetStakeHolders()

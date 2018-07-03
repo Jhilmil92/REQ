@@ -21,7 +21,7 @@ namespace RequestEnhancementQueue.Controllers
         public ActionResult TakerInformation()
         {
             var taker = _takerBLL.GetTakerById((int)Session[Constants.TakerId]);
-            return View(taker);
+            return View(taker); //Add view.
         }
 
     }

@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Hi @Model.StakeHolderOrganization, Welcome to the Request Enhancement Queue System!</h2>
+<h2>Hi @Model.ClientDetails.ClientOrganization, Welcome to the Request Enhancement Queue System!</h2>
 
 <br/>
 
@@ -19,7 +19,7 @@
             <div class="col-md-3" style="background-color:aliceblue;">
                 <div class="applyPadding text-center hover">
                     <h3>
-                        @Html.ActionLink("Report a Request", "ProcessRequest", "ReportRequest", new { stakeHolderId = Model.StakeHolderId, stakeHolderOrganization = Model.StakeHolderOrganization }, null)
+                        @Html.ActionLink("Report a Request", "ProcessRequest", "ReportRequest", new { stakeHolderId = Model.StakeHolderId, stakeHolderOrganization = Model.ClientDetails.ClientOrganization}, null)
                     </h3>
                 </div>
             </div>

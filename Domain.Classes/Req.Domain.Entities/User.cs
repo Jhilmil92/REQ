@@ -30,6 +30,7 @@ namespace Domain.Classes.Req.Domain.Entities
     public enum UserType
     {
         StakeHolder,
-        Taker
+        Taker,
+        Staff
     }
 }

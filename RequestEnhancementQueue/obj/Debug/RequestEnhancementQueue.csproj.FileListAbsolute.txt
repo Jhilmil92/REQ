@@ -53,6 +53,7 @@ e:\visual studio 2013\Projects\RequestEnhancementQueueSystem\RequestEnhancementQ
 e:\visual studio 2013\Projects\RequestEnhancementQueueSystem\RequestEnhancementQueue\obj\Debug\RequestEnhancementQueue.dll
 e:\visual studio 2013\Projects\RequestEnhancementQueueSystem\RequestEnhancementQueue\obj\Debug\RequestEnhancementQueue.pdb
 e:\visual studio 2013\Projects\RequestEnhancementQueueSystem\RequestEnhancementQueue\obj\Debug\RequestEnhancementQueue.csprojResolveAssemblyReference.cache
+E:\Source\Repos\REQ\RequestEnhancementQueue\obj\Debug\RequestEnhancementQueue.csprojResolveAssemblyReference.cache
 E:\Source\Repos\REQ\RequestEnhancementQueue\bin\RequestEnhancementQueue.dll.config
 E:\Source\Repos\REQ\RequestEnhancementQueue\bin\RequestEnhancementQueue.dll
 E:\Source\Repos\REQ\RequestEnhancementQueue\bin\RequestEnhancementQueue.pdb
@@ -122,6 +123,5 @@ E:\Source\Repos\REQ\RequestEnhancementQueue\bin\Microsoft.AspNet.Identity.Core.x
 E:\Source\Repos\REQ\RequestEnhancementQueue\bin\Microsoft.AspNet.Identity.Owin.xml
 E:\Source\Repos\REQ\RequestEnhancementQueue\bin\Microsoft.AspNet.Identity.EntityFramework.xml
 E:\Source\Repos\REQ\RequestEnhancementQueue\bin\DataAccessLayer.pdb
-E:\Source\Repos\REQ\RequestEnhancementQueue\obj\Debug\RequestEnhancementQueue.csprojResolveAssemblyReference.cache
 E:\Source\Repos\REQ\RequestEnhancementQueue\obj\Debug\RequestEnhancementQueue.dll
 E:\Source\Repos\REQ\RequestEnhancementQueue\obj\Debug\RequestEnhancementQueue.pdb

@@ -10,7 +10,6 @@ namespace DataAccessLayer.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "DataAccessLayer.Infrastructure.Classes.DataContext";
         }
 
         protected override void Seed(DataAccessLayer.Infrastructure.Classes.DataContext context)

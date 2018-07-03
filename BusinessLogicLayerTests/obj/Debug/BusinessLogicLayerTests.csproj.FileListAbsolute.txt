@@ -1,3 +1,4 @@
+E:\Source\Repos\REQ\BusinessLogicLayerTests\obj\Debug\BusinessLogicLayerTests.csprojResolveAssemblyReference.cache
 E:\Source\Repos\REQ\BusinessLogicLayerTests\bin\Debug\BusinessLogicLayerTests.dll
 E:\Source\Repos\REQ\BusinessLogicLayerTests\bin\Debug\BusinessLogicLayerTests.pdb
 E:\Source\Repos\REQ\BusinessLogicLayerTests\bin\Debug\BusinessLogicLayer.dll
@@ -22,6 +23,5 @@ E:\Source\Repos\REQ\BusinessLogicLayerTests\bin\Debug\System.Web.WebPages.xml
 E:\Source\Repos\REQ\BusinessLogicLayerTests\bin\Debug\System.Web.WebPages.Razor.xml
 E:\Source\Repos\REQ\BusinessLogicLayerTests\bin\Debug\System.Web.Razor.xml
 E:\Source\Repos\REQ\BusinessLogicLayerTests\bin\Debug\System.Web.WebPages.Deployment.xml
-E:\Source\Repos\REQ\BusinessLogicLayerTests\obj\Debug\BusinessLogicLayerTests.csprojResolveAssemblyReference.cache
 E:\Source\Repos\REQ\BusinessLogicLayerTests\obj\Debug\BusinessLogicLayerTests.dll
 E:\Source\Repos\REQ\BusinessLogicLayerTests\obj\Debug\BusinessLogicLayerTests.pdb

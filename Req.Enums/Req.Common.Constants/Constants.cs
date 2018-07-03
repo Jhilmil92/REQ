@@ -10,5 +10,6 @@ namespace Req.Enums.Req.Common.Constants
     {
         public const string StakeHolderId = "StakeHolderId";
         public const string TakerId = "TakerId";
+        public const string StaffId = "StaffId";
     }
 }

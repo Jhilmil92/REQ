@@ -195,11 +195,13 @@
     <Compile Include="Controllers\JobController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ReportRequestController.cs" />
+    <Compile Include="Controllers\StaffController.cs" />
     <Compile Include="Controllers\TakerController.cs" />
     <Compile Include="DefaultDependencyModule.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -499,10 +501,13 @@
     <Content Include="Content\Site.css" />
     <Content Include="Content\themes\Buttons-1.5.1\css\common.scss" />
     <Content Include="Content\themes\Buttons-1.5.1\css\mixins.scss" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Content\datatables.css" />
@@ -527,12 +532,15 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\ProcessRequestScript.js" />
+    <Content Include="Scripts\REQ Scripts\ModalScript.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -558,6 +566,10 @@
     <Content Include="Views\Job\EditJob.cshtml" />
     <Content Include="Views\Job\EditJobForStakeHolder.cshtml" />
     <Content Include="Views\Shared\_ChangeTrackingLogViewPartial.cshtml" />
+    <Content Include="Views\Login\RegisterStaff.cshtml" />
+    <Content Include="Views\Staff\StaffInformation.cshtml" />
+    <Content Include="Views\Login\RegisterClient.cshtml" />
+    <Content Include="Views\ReportRequest\ReportClientRequest.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -583,9 +595,6 @@
       <Project>{4106437c-3e7e-4181-ad32-245c56c19f57}</Project>
       <Name>Common</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <TypeScriptCompile Include="Scripts\REQ Scripts\ModalScript.ts" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
