@@ -4,7 +4,7 @@
     ViewBag.Title = "RegisterClient";
 }
 
-<h2>RegisterClient</h2>
+<h2>Register Client</h2>
 
 
 @using (Html.BeginForm()) 
@@ -12,22 +12,22 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>ClientRegistrationViewModel</h4>
+        <h4 class ="header-style">Client Registration</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(model => model.ClientOrganization, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.ClientOrganization, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ClientOrganization, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.ClientOrganization, new { htmlAttributes = new { @class = "form-control", required = "required"} })
+                @Html.ValidationMessageFor(model => model.ClientOrganization, "", new { @class = "text-danger message-color" })
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.JoinDate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.JoinDate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.JoinDate, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.JoinDate, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly"} })
+                @Html.ValidationMessageFor(model => model.JoinDate, "", new { @class = "text-danger message-color" })
             </div>
         </div>
 
@@ -40,13 +40,28 @@
 }
 
 <div>
-    @Html.ActionLink("Back", "StaffInformation","Staff")
+    @Html.ActionLink("Back", "StaffInformation", "Staff", null, new { @class = "footer-style" })
 </div>
 
 <style>
-    label 
+    label,.message-color
     {
         color : white;
+    }
+    .footer-style
+    {
+        color : beige;
+        font-weight : bold;
+        font-size : large;
+        text-shadow : 3px 3px 0px #000;
+    }
+
+    .header-style
+    {
+        color : yellow;
+        font-weight : bold;
+        font-size : large;
+        text-shadow : 3px 3px 0px #000;
     }
 </style>
 

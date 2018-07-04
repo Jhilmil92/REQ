@@ -52,10 +52,8 @@ namespace BusinessLogicLayer
                 JobCategory = requestViewModel.JobType,
                 CreatedOn = DateTime.Now,
                 UpdatedOn = DateTime.Now,
-                ReportedBy = stakeHolder.ClientDetails,
                 ReportedById = stakeHolder.ClientId,
-                CreatedBy = user,
-                CreatedById = stakeHolder.StakeHolderId,
+                CreatedById = user.UserId,
                 JobPriority = requestViewModel.JobPriority,
                 EstimatedTimeHour = requestViewModel.EstimatedTimeInHours,
                 ReleaseVersion = requestViewModel.ReleaseVersion
@@ -88,7 +86,7 @@ namespace BusinessLogicLayer
                 CreatedOn = DateTime.Now,
                 UpdatedOn = DateTime.Now,
                 ReportedById = requestViewModel.StakeholderClientId,
-                CreatedById = requestViewModel.StaffId,
+                CreatedById = user.UserId ,
                 JobPriority = requestViewModel.JobPriority,
                 EstimatedTimeHour = requestViewModel.EstimatedTimeInHours,
                 ReleaseVersion = requestViewModel.ReleaseVersion
@@ -107,10 +105,11 @@ namespace BusinessLogicLayer
             return _jobRepository.Create(job);
         }
 
-        public IQueryable<Domain.Classes.Job> GetJobs()
+        public IEnumerable<Domain.Classes.Job> GetJobs()
         {
-            IQueryable<Job> jobs = _jobRepository.GetJobs();
-            return jobs;
+            //IQueryable<Job> jobs = _jobRepository.GetJobs();
+            //return jobs;
+            return _jobRepository.GetJobs().ToList();
         }
 
         public Domain.Classes.Job GetJobById(int jobID)
@@ -193,7 +192,9 @@ namespace BusinessLogicLayer
             currentJob.JobTitle = viewModel.JobTitle;
             currentJob.JobDescription = viewModel.JobDescription;
             currentJob.JobCategory = viewModel.JobType;
+            currentJob.JobPriority = viewModel.JobPriority;
             currentJob.UpdatedOn = DateTime.Now;
+            currentJob.AssignedToId = viewModel.AssignedTakerId;
             return _jobRepository.Update(currentJob);
         }
 

@@ -1,7 +1,6 @@
 ﻿using Req.Enums;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
@@ -11,33 +10,34 @@ using System.Web.Mvc;
 
 namespace Domain.Classes.Req.Domain.ViewModels
 {
-    public class ReportRequestViewModel
+    public class UpdateClientJobViewModel
     {
         [HiddenInput(DisplayValue = false)]
-        public int StakeHolderId { get; set; }
-
-        public string StakeHolderOrganization { get; set; }
-
-        [Required]
-        [MaxLength(255)]
+        public int JobId { get; set; }
         public string JobTitle { get; set; }
 
-        [Required]
         [DataType(DataType.MultilineText)]
         public string JobDescription { get; set; }
-        [Required]
         public JobCategory JobType { get; set; }
-        //public string ReportedBy { get; set; }
-        [Required]
+        public JobStatus JobStatus { get; set; }
         public PriorityLevel JobPriority { get; set; }
+        public string ReportedBy { get; set; }
+        public DateTime? CreatedOn { get; set; }
+
+        //[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:N}")]
         public decimal EstimatedTimeInHours { get; set; }
+        public decimal ActualTimeTakenHrPart { get; set; }
+        public int? AssignedTakerId { get; set; }
 
-        public int JobTakerId { get; set; }
-
-       // [DataType(DataType.Upload)]
         public HttpPostedFileBase[] Files { get; set; }
 
-        [Required]
+        public string[] FileNames { get; set; }
+
         public string ReleaseVersion { get; set; }
+
+        public DateTime? LastUpdatedOn { get; set; }
+
+        [DataType(DataType.MultilineText)]
+        public string Comments { get; set; }
     }
 }

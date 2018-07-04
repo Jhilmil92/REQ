@@ -24,7 +24,7 @@ namespace Domain.Classes.Req.Domain.ViewModels
         public string ReportedBy { get; set; }
         public DateTime? CreatedOn { get; set; }
 
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:N}")]
+        //[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:N}")]
         public decimal EstimatedTimeInHours { get; set; }
         public decimal ActualTimeTakenHrPart { get; set; }
         public int? AssignedTakerId { get; set; }

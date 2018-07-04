@@ -12,5 +12,7 @@ namespace BusinessLogicLayer.BLL.Interfaces
         User ValidateCredentials(string userName,string password);
 
         User GetUserByUserName(string userName);
+
+        Client GetClientByClientName(string clientName);
     }
 }

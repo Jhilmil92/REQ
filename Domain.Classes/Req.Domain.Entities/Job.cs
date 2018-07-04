@@ -38,7 +38,7 @@ namespace Domain.Classes
         public DateTime? UpdatedOn { get; set; }
 
         [Display(Name = "Reported By")]
-        public virtual Client ReportedBy { get; set; } //change type to user
+        public virtual Client ReportedBy { get; set; } 
 
         [ForeignKey("ReportedBy")]
         public int ReportedById { get; set; }

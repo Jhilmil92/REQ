@@ -20,8 +20,6 @@ namespace Domain.Classes.Req.Domain.ViewModels
         [DataType(DataType.MultilineText)]
         public string JobDescription { get; set; }
         public JobCategory JobType { get; set; }
-
-        [DisplayFormat(DataFormatString="{0}")]
         public decimal EstimatedTimeHrPart { get; set; }
         public decimal ActualTimeTakenHrPart { get; set; }
         public string ReportedBy { get; set; }

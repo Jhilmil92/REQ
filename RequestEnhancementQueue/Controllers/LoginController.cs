@@ -137,6 +137,12 @@ namespace RequestEnhancementQueue.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (_loginManager.GetClientByClientName(registrationViewModel.ClientOrganization) != null)
+                {
+                    ModelState.AddModelError("ClientOrganization", "Client organization already exists!");
+                    return View();
+                }
+
                 _clientBLL.CreateClient(registrationViewModel);
                 return RedirectToAction("StaffInformation","Staff");
             }

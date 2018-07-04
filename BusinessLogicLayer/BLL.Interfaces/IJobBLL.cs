@@ -12,7 +12,7 @@ namespace BusinessLogicLayer.BLL.Interfaces
     {
         Job CreateJob(ReportRequestViewModel requestViewModel);
         Job CreateJob(ClientReportRequestViewModel requestViewModel);
-        IQueryable<Job> GetJobs();
+        IEnumerable<Job> GetJobs();
         Job GetJobById(int jobID);
         IEnumerable<Job> GetJobsByTakerId(int takerID);
         Job UpdateJob(Job job);

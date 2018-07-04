@@ -1,4 +1,5 @@
 ﻿using BusinessLogicLayer.BLL.Interfaces;
+using DataAccessLayer.Req.Data.Infrastructure.Classes;
 using DataAccessLayer.Req.Data.Infrastructure.Interfaces;
 using Domain.Classes.Req.Domain.Entities;
 using System;
@@ -12,9 +13,11 @@ namespace BusinessLogicLayer.BLL.Classes
     public class LoginManager : ILoginManager
     {
         IUserRepository userRepo;
+        private readonly IClientRepository _clientRepository;
         public LoginManager(IUserRepository userRepo)
         {
             this.userRepo = userRepo;
+            this._clientRepository = new ClientRepository();
         }
 
         public User ValidateCredentials(string userName, string password)
@@ -29,6 +32,12 @@ namespace BusinessLogicLayer.BLL.Classes
         {
             return userRepo.GetAllUsers().SingleOrDefault(x =>
                 x.UserName.Equals(userName, StringComparison.InvariantCultureIgnoreCase));
+        }
+
+
+        public Client GetClientByClientName(string clientName)
+        {
+            return _clientRepository.GetClients().SingleOrDefault(x => x.ClientOrganization.Equals(clientName, StringComparison.InvariantCultureIgnoreCase));
         }
     }
 }

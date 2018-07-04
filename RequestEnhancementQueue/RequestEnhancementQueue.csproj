@@ -570,6 +570,8 @@
     <Content Include="Views\Staff\StaffInformation.cshtml" />
     <Content Include="Views\Login\RegisterClient.cshtml" />
     <Content Include="Views\ReportRequest\ReportClientRequest.cshtml" />
+    <Content Include="Views\ReportRequest\ViewClientReportedRequests.cshtml" />
+    <Content Include="Views\Job\EditJobForClient.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

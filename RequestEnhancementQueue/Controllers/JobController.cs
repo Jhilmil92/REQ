@@ -179,7 +179,7 @@ namespace RequestEnhancementQueue.Controllers
                 FileNames = files
             };
 
-            ViewBag.Takers = _takerBLL.GetTakers().ToList();
+            ViewBag.Takers = _takerBLL.GetTakers();
             return View(model);
         }
 
@@ -222,6 +222,81 @@ namespace RequestEnhancementQueue.Controllers
 
             return View(viewModel);
     }
+
+        public ActionResult EditJobForClient(int jobId)
+        {
+            var job = _jobBLL.GetJobById(jobId);
+            //var clientId = (int)(Session[Constants.]);
+            //var stakeHolder = _stakeHolderBLL.GetStakeHolderById(stakeHolderId);
+            string[] files = null;
+            var filePath = _fileBLL.GetFolderPath(job.JobId);
+            if (Directory.Exists(filePath))
+            {
+                files = Directory.GetFiles(filePath);
+            }
+
+            var model = new UpdateClientJobViewModel
+            {
+                JobId = jobId,
+                EstimatedTimeInHours = job.EstimatedTimeHour,
+                ActualTimeTakenHrPart = job.ActualTimeTakenHour,
+                AssignedTakerId = job.AssignedToId,
+                ReportedBy = job.ReportedBy.ClientOrganization,
+                CreatedOn = job.CreatedOn,
+                JobTitle = job.JobTitle,
+                JobType = job.JobCategory,
+                JobStatus = job.Status,
+                JobDescription = job.JobDescription,
+                ReleaseVersion = job.ReleaseVersion,
+                Comments = job.Comments,
+                LastUpdatedOn = job.UpdatedOn,
+                JobPriority = job.JobPriority,
+                FileNames = files
+            };
+
+            ViewBag.Takers = _takerBLL.GetTakers();
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult EditJobForClient(UpdateStakeHolderJobViewModel viewModel)
+        {
+            //var stakeHolder = _stakeHolderBLL.GetStakeHolderById((int)(Session[Constants.StakeHolderId]));
+
+            if (ModelState.IsValid)
+            {
+                if (viewModel.Files != null)
+                {
+                    foreach (var file in viewModel.Files)
+                    {
+                        if (file != null)
+                        {
+                            var fileName = _fileBLL.GetFileName(file.FileName);
+                            var jobFolderPath = _fileBLL.GetFolderPath(viewModel.JobId);
+
+                            if (!(Directory.Exists(jobFolderPath)))
+                            {
+                                Directory.CreateDirectory(jobFolderPath);
+                            }
+
+                            file.SaveAs(Path.Combine(string.Format("{0}\\{1}", jobFolderPath, fileName)));
+                            ViewBag.UploadStatus = string.Format("{0} {1}", viewModel.Files.Count().ToString(), "Files Uploaded Successfully");
+                        }
+                    }
+
+                }
+
+                var job = _jobBLL.UpdateJob(viewModel);
+
+                return RedirectToAction("ViewClientReportedRequests", "ReportRequest");
+            }
+            else
+            {
+                ModelState.AddModelError("", "Fill in all the fields");
+            }
+
+            return View(viewModel);
+        }
 
         public ActionResult ChangeLog(int jobId)
         {

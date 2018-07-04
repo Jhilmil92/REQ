@@ -93,6 +93,7 @@
     <Compile Include="Req.Domain.ViewModels\StakeHolderRegistrationViewModel.cs" />
     <Compile Include="Req.Domain.ViewModels\ReportRequestViewModel.cs" />
     <Compile Include="Req.Domain.ViewModels\TakerRegistrationViewModel.cs" />
+    <Compile Include="Req.Domain.ViewModels\UpdateClientJobViewModel.cs" />
     <Compile Include="Req.Domain.ViewModels\UpdateJobViewModel.cs" />
     <Compile Include="Req.Domain.ViewModels\UpdateStakeHolderJobViewModel.cs" />
   </ItemGroup>

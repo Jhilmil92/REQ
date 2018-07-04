@@ -11,7 +11,7 @@ namespace BusinessLogicLayer.BLL.Interfaces
     public interface ITakerBLL
     {
         void CreateTaker(TakerRegistrationViewModel registrationViewModel);
-        IQueryable<Taker> GetTakers();
+        IEnumerable<Taker> GetTakers();
         Taker GetTakerById(int takerId);
         void UpdateTaker(Taker taker);
         void DeleteTaker(int takerId);

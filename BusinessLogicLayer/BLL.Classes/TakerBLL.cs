@@ -37,9 +37,9 @@ namespace BusinessLogicLayer.BLL.Classes
            _userRepository.CreateUser(registrationViewModel.TakerUserName, registrationViewModel.TakerPassword,UserType.Taker,createdTaker.TakerId);
         }
 
-        public IQueryable<Domain.Classes.Taker> GetTakers()
+        public IEnumerable<Domain.Classes.Taker> GetTakers()
         {
-            return _takerRepository.GetTakers();
+            return _takerRepository.GetTakers().ToList();
         }
 
         public Domain.Classes.Taker GetTakerById(int takerId)

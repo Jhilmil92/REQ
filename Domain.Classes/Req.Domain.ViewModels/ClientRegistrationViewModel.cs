@@ -9,10 +9,10 @@ namespace Domain.Classes.Req.Domain.ViewModels
 {
     public class ClientRegistrationViewModel
     {
-        [Required]
+        [Display(Name="Client Organization")]
         public string ClientOrganization { get; set; }
 
-        [Required]
+        [Display(Name = "Join Date")]
         public DateTime? JoinDate { get; set; }
     }
 }

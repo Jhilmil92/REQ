@@ -21,6 +21,7 @@ namespace RequestEnhancementQueue.Controllers
         private readonly ITakerBLL _takerBLL;
         private readonly IFileBLL _fileBLL;
         private readonly IClientBLL _clientBLL;
+        private readonly IStaffBLL _staffBLL;
 
         public ReportRequestController(IJobBLL jobBLL, IStakeHolderBLL stakeHolderBLL, ITakerBLL takerBLL, IFileBLL fileBLL)
         {
@@ -29,6 +30,7 @@ namespace RequestEnhancementQueue.Controllers
             _takerBLL = takerBLL;
             _fileBLL = fileBLL;
             _clientBLL = new ClientBLL();
+            _staffBLL = new StaffBLL();
         }
         //public ReportRequestController(IJobBLL jobBLL)
         //{
@@ -47,7 +49,7 @@ namespace RequestEnhancementQueue.Controllers
             var model = new ReportRequestViewModel();
             model.StakeHolderId = stakeHolderId;
             model.StakeHolderOrganization = stakeHolderOrganization;
-            ViewBag.Takers = _takerBLL.GetTakers().ToList();
+            ViewBag.Takers = _takerBLL.GetTakers();
             return View(model);
         }
 
@@ -96,6 +98,13 @@ namespace RequestEnhancementQueue.Controllers
             return View(reportedRequests);
         }
 
+        public ActionResult ViewClientReportedRequests()
+        {
+            //var staff = _staffBLL.GetStaffById((int)Session[Constants.StaffId]);
+            var reportedRequests = _jobBLL.GetJobs();
+            return View(reportedRequests);
+        }
+
         public ActionResult ReportClientRequest()
         {
             var model = new ClientReportRequestViewModel()
@@ -103,7 +112,7 @@ namespace RequestEnhancementQueue.Controllers
                 StaffId = (int)Session[Constants.StaffId]
             };
             ViewBag.Clients = _clientBLL.GetClients().ToList();
-            ViewBag.Takers = _takerBLL.GetTakers().ToList();
+            ViewBag.Takers = _takerBLL.GetTakers();
             return View(model);
         }
 
