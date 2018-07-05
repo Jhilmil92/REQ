@@ -24,7 +24,11 @@ namespace Domain.Classes.Req.Domain.ViewModels
         public decimal ActualTimeTakenHrPart { get; set; }
         public string ReportedBy { get; set; }
         public string AssignedTo { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:d-MMM-yyyy h:mm tt}", ApplyFormatInEditMode = true)]
         public DateTime? CreatedOn { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:d-MMM-yyyy h:mm tt}", ApplyFormatInEditMode = true)]
         public DateTime? LastUpdatedOn { get; set; }
         public JobStatus JobStatus { get; set; }
         public PriorityLevel JobPriority { get; set; }
