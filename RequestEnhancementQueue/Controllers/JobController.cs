@@ -94,7 +94,7 @@ namespace RequestEnhancementQueue.Controllers
                 CreatedOn = job.CreatedOn,
                 JobStatus = job.Status,
                 Comments = job.Comments,
-                LastUpdatedOn =  DateTime.Now,
+                LastUpdatedOn =  job.UpdatedOn,
                 JobPriority = job.JobPriority,
                 ReleaseVersion = job.ReleaseVersion,
                 FileNames = files

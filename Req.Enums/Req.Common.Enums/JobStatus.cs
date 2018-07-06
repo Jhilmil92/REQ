@@ -8,7 +8,7 @@ namespace Req.Enums
 {
     public enum JobStatus
     {
-        Queued = 1, 
+        New = 1, 
         Assigned = 2,
         InProcess = 3,
         Incubate = 4, 

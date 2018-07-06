@@ -572,6 +572,7 @@
     <Content Include="Views\ReportRequest\ReportClientRequest.cshtml" />
     <Content Include="Views\ReportRequest\ViewClientReportedRequests.cshtml" />
     <Content Include="Views\Job\EditJobForClient.cshtml" />
+    <Content Include="Views\Shared\_EditJob.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

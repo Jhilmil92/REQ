@@ -8,191 +8,271 @@
 <link href="~/Content/themes/EditJobPageStyles.css" rel="stylesheet" />
 
 @using (Html.BeginForm("EditJobForClient", "Job", FormMethod.Post, new { encType = "multipart/form-data" }))
-{
-    @Html.AntiForgeryToken()
-
-    <div class="form-horizontal beige-color">
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
-
-        <div class="form-group">
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.JobId, new { htmlAttributes = new { @class = "form-control ", type = "hidden" } })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.JobTitle, "Job Title", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.JobTitle, new { htmlAttributes = new { @class = "form-control " } })
-                @Html.ValidationMessageFor(model => model.JobTitle, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.JobDescription, "Job Description", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.JobDescription, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.JobDescription, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.CreatedOn, "Created On", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CreatedOn, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
-                @Html.ValidationMessageFor(model => model.CreatedOn, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ReportedBy, "Reported By", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ReportedBy, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
-                @Html.ValidationMessageFor(model => model.ReportedBy, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.EstimatedTimeInHours, "Estimated Time", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.EstimatedTimeInHours, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.EstimatedTimeInHours, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ActualTimeTakenHrPart, "Actual Time : Hours", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ActualTimeTakenHrPart, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
-                @Html.ValidationMessageFor(model => model.ActualTimeTakenHrPart, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.JobType, "Job Type", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EnumDropDownListFor(model => model.JobType, "Select a Job Type", new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.JobType, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.JobStatus, "Job Status", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EnumDropDownListFor(model => model.JobStatus, "Select a Job Status", new { @class = "form-control", @disabled = "disabled" })
-                @Html.ValidationMessageFor(model => model.JobStatus, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.JobPriority, "Job Priority", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EnumDropDownListFor(model => model.JobPriority, "Select a Job Priority", new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.JobPriority, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.AssignedTakerId, "Assign/Reassign Taker", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownListFor(model => model.AssignedTakerId, new SelectList(ViewBag.Takers, "TakerId", "TakerName"), "Select a Taker", new { @class = "form-control " }))
-                @Html.ValidationMessageFor(model => model.AssignedTakerId, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ReleaseVersion, "Release Version", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ReleaseVersion, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ReleaseVersion, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Comments, "Comments", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Comments, new { htmlAttributes = new { @class = "form-control", type = "textarea", @readonly = "readonly" } })
-                @Html.ValidationMessageFor(model => model.Comments, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.LastUpdatedOn, "Last Updated On", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.LastUpdatedOn, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
-                <button type="button" class="btn btn-info btn lg change-log-button" data-id="@Model.JobId">View Change History</button>
-                @Html.ValidationMessageFor(model => model.LastUpdatedOn, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div id="showLog">
-
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Files, "Upload Files", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(model => model.Files, new { @class = "form-control", type = "file", @multiple = "multiple" })
-                @Html.ValidationMessageFor(model => model.Files, "", new { @class = "text-danger" })
-                @ViewBag.UploadStatus
-            </div>
-        </div>
-
-        <br />
-        <div class="fileNames">
-            <text><b><u>Uploaded Files :- </u></b></text>
-            <br />
-            <br />
-            @if (Model.FileNames != null && Model.FileNames.Count() != 0)
             {
-                <table>
-                    <b>
-                        <thead>
-                    <th>
-                        Filename
-                    </th>
-                    </thead>
-                    </b>
+@Html.AntiForgeryToken()
 
-                    <tbody>
-                        @foreach (var fileName in Model.FileNames)
-                        {
-                            var fileNameFromPath = fileName.Split('\\');
-                            <tr>
-                                <td>
-                                    @Html.ActionLink(fileNameFromPath[fileNameFromPath.Length - 1], "ViewFile", "File", new { jobId = Model.JobId, requiredFileName = fileNameFromPath[fileNameFromPath.Length - 1] }, new { @class = "view-file" })
-                                </td>
-                                <td></td>
-                                <td>
-                                    <a href="@Url.Action("DownloadFile", "File", new { jobId = Model.JobId, requiredFileName = fileNameFromPath[fileNameFromPath.Length - 1] })">
-                                        <img width="20" height="20" src="~/Content/Images/Martz90-Circle-Addon2-Downloads.ico" />
-                                    </a>
-                                    @*<u>
-                                        @Html.ActionLink("Download", "DownloadFile", "File", new { jobId = Model.JobId, requiredFileName = fileNameFromPath[fileNameFromPath.Length - 1] }, new { @class = "download-file" })</u>*@
+<div class="form-horizontal">
+    <h4>Edit Job</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-            }
-            else
-            {
-                @:<text>No uploaded files available</text>
+
+    <div class="form-group">
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.JobId, new { htmlAttributes = new { @class = "form-control ", type = "hidden" } })
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="panel-group">
+            <div class="panel panel-default">
+                <div class="panel-heading">Edit Job for @Model.ReportedBy</div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-xs-12" style="border:1px solid #ddd;padding:10px 15px;">
+
+                                <div class="col-xs-6">
+                                    <div class="mini-box">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.JobTitle, "Job Title", htmlAttributes: new { @class = "control-label col-md-4" })
+                                            <div class="col-md-8">
+                                                @Html.EditorFor(model => model.JobTitle, new { htmlAttributes = new { @class = "form-control " } })
+                                                @Html.ValidationMessageFor(model => model.JobTitle, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-6">
+                                    <div class="mini-box">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.JobDescription, "Job Description", htmlAttributes: new { @class = "control-label col-md-4" })
+                                            <div class="col-md-8">
+                                                @Html.EditorFor(model => model.JobDescription, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.JobDescription, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-6">
+                                    <div class="mini-box">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.CreatedOn, "Created On", htmlAttributes: new { @class = "control-label col-md-4" })
+                                            <div class="col-md-8">
+                                                @Html.EditorFor(model => model.CreatedOn, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                                @Html.ValidationMessageFor(model => model.CreatedOn, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-6">
+                                    <div class="mini-box">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.ReportedBy, "Reported By", htmlAttributes: new { @class = "control-label col-md-4" })
+                                            <div class="col-md-8">
+                                                @Html.EditorFor(model => model.ReportedBy, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                                @Html.ValidationMessageFor(model => model.ReportedBy, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-6">
+                                    <div class="mini-box">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.EstimatedTimeInHours, "Estimated Time", htmlAttributes: new { @class = "control-label col-md-4" })
+                                            <div class="col-md-8">
+                                                @Html.EditorFor(model => model.EstimatedTimeInHours, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.EstimatedTimeInHours, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-6">
+                                    <div class="mini-box">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.ActualTimeTakenHrPart, "Actual Time : Hours", htmlAttributes: new { @class = "control-label col-md-4" })
+                                            <div class="col-md-8">
+                                                @Html.EditorFor(model => model.ActualTimeTakenHrPart, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                                @Html.ValidationMessageFor(model => model.ActualTimeTakenHrPart, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-6">
+                                    <div class="mini-box">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.JobType, "Job Type", htmlAttributes: new { @class = "control-label col-md-4" })
+                                            <div class="col-md-8">
+                                                @Html.EnumDropDownListFor(model => model.JobType, "Select a Job Type", new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.JobType, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-6">
+                                    <div class="mini-box">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.JobStatus, "Job Status", htmlAttributes: new { @class = "control-label col-md-4" })
+                                            <div class="col-md-8">
+                                                @Html.EnumDropDownListFor(model => model.JobStatus, "Select a Job Status", new { @class = "form-control", @disabled = "disabled" })
+                                                @Html.ValidationMessageFor(model => model.JobStatus, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-6">
+                                    <div class="mini-box">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.JobPriority, "Job Priority", htmlAttributes: new { @class = "control-label col-md-4" })
+                                            <div class="col-md-8">
+                                                @Html.EnumDropDownListFor(model => model.JobPriority, "Select a Job Priority", new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.JobPriority, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-6">
+                                    <div class="mini-box">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.AssignedTakerId, "Assign/Reassign Taker", htmlAttributes: new { @class = "control-label col-md-4" })
+                                            <div class="col-md-8">
+                                                @Html.DropDownListFor(model => model.AssignedTakerId, new SelectList(ViewBag.Takers, "TakerId", "TakerName"), "Select a Taker", new { @class = "form-control " })
+                                                @Html.ValidationMessageFor(model => model.AssignedTakerId, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-6">
+                                    <div class="mini-box">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.ReleaseVersion, "Release Version", htmlAttributes: new { @class = "control-label col-md-4" })
+                                            <div class="col-md-8">
+                                                @Html.EditorFor(model => model.ReleaseVersion, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.ReleaseVersion, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-6">
+                                    <div class="mini-box">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Comments, "Comments", htmlAttributes: new { @class = "control-label col-md-4" })
+                                            <div class="col-md-8">
+                                                @Html.EditorFor(model => model.Comments, new { htmlAttributes = new { @class = "form-control", type = "textarea", @readonly = "readonly" } })
+                                                @Html.ValidationMessageFor(model => model.Comments, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-6">
+                                    <div class="mini-box">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.LastUpdatedOn, "Last Updated On", htmlAttributes: new { @class = "control-label col-md-4" })
+                                            <div class="col-md-8">
+                                                @Html.EditorFor(model => model.LastUpdatedOn, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                                @Html.ValidationMessageFor(model => model.LastUpdatedOn, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12">
+                                    <button type="button" class="btn btn-info btn lg change-log-button" data-id="@Model.JobId">View Change History</button>
+                                </div>
+
+                            </div>@*First xs-12 ends*@
+
+
+                            <div class="col-xs-12" style="border:1px solid #ddd;padding:10px 15px;">
+                                <div class="col-xs-6">
+                                    <div class="mini-box">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Files, "Upload Files", htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-10">
+                                                @Html.TextBoxFor(model => model.Files, new { @class = "form-control", type = "file", @multiple = "multiple" })
+                                                @Html.ValidationMessageFor(model => model.Files, "", new { @class = "text-danger" })
+                                                @ViewBag.UploadStatus
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div id="showLog">
+
+                                </div>
+
+                                <br />
+                                <div class="fileNames">
+                                    <text><b><u>Uploaded Files :- </u></b></text>
+                                    <br />
+                                    <br />
+                                    @if (Model.FileNames != null && Model.FileNames.Count() != 0)
+                                    {
+                                        <table>
+                                            <b>
+                                                <thead>
+                                            <th>
+                                                Filename
+                                            </th>
+                                            </thead>
+                                            </b>
+
+                                            <tbody>
+                                                @foreach (var fileName in Model.FileNames)
+                                                {
+                                                    var fileNameFromPath = fileName.Split('\\');
+                                                    <tr>
+                                                        <td>
+                                                            @Html.ActionLink(fileNameFromPath[fileNameFromPath.Length - 1], "ViewFile", "File", new { jobId = Model.JobId, requiredFileName = fileNameFromPath[fileNameFromPath.Length - 1] }, new { @class = "view-file" })
+                                                        </td>
+                                                        <td></td>
+                                                        <td>
+                                                            <a href="@Url.Action("DownloadFile", "File", new { jobId = Model.JobId, requiredFileName = fileNameFromPath[fileNameFromPath.Length - 1] })">
+                                                                <img width="20" height="20" src="~/Content/Images/Martz90-Circle-Addon2-Downloads.ico" />
+                                                            </a>
+                                                            @*<u>
+                                                                @Html.ActionLink("Download", "DownloadFile", "File", new { jobId = Model.JobId, requiredFileName = fileNameFromPath[fileNameFromPath.Length - 1] }, new { @class = "download-file" })</u>*@
+
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                    }
+                                    else
+                                    {
+                                        @:<text>No uploaded files available</text>
                 }
 
-        </div>
-        <br />
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                                </div>
+                            </div>
+                            <br />
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Save" class="btn btn-default" />
+                                </div>
+                            </div>
+                        </div> @*Cal-md-12*@
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-}
+
+</div>
+            }
 
 <div>
     @Html.ActionLink("Back to Reported Jobs List", "ViewClientReportedRequests", "ReportRequest", null, new { @class = "footer-style" })
@@ -200,14 +280,12 @@
 
 <style>
     .view-file, .download-file, .footer-style {
-        color: beige;
+        color: black;
         font-weight: bold;
         font-size: large;
-        text-shadow: 3px 3px 0px #000;
+        /*text-shadow: 3px 3px 0px #000;*/
     }
 </style>
-
-
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

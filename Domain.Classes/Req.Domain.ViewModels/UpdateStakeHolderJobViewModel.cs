@@ -22,6 +22,8 @@ namespace Domain.Classes.Req.Domain.ViewModels
         public JobStatus JobStatus { get; set; }
         public PriorityLevel JobPriority { get; set; }
         public string ReportedBy { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:d-MMM-yyyy h:mm tt}", ApplyFormatInEditMode = true)]
         public DateTime? CreatedOn { get; set; }
 
         //[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:N}")]
@@ -35,6 +37,7 @@ namespace Domain.Classes.Req.Domain.ViewModels
 
         public string ReleaseVersion { get; set; }
 
+        [DisplayFormat(DataFormatString = "{0:d-MMM-yyyy h:mm tt}", ApplyFormatInEditMode = true)]
         public DateTime? LastUpdatedOn { get; set; }
 
         [DataType(DataType.MultilineText)]

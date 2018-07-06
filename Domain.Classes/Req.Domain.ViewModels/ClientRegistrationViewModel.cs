@@ -13,6 +13,7 @@ namespace Domain.Classes.Req.Domain.ViewModels
         public string ClientOrganization { get; set; }
 
         [Display(Name = "Join Date")]
+        [DisplayFormat(DataFormatString = "{0:d-MMM-yyyy h:mm tt}", ApplyFormatInEditMode = true)]
         public DateTime? JoinDate { get; set; }
     }
 }

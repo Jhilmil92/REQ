@@ -5,93 +5,146 @@
 }
 <script src="~/Scripts/ProcessRequestScript.js"></script>
 
-<h2>Process Request</h2>
+<h2>Hi @Model.StakeHolderOrganization</h2>
 
 @using (Html.BeginForm("ProcessRequest", "ReportRequest",FormMethod.Post, new { encType = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     <div class="form-horizontal">
-        <div class="container">
-            <div class="row">
-                <hr />
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <div class="form-group">
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.StakeHolderId, new { htmlAttributes = new { @class = "form-control", type = "hidden" } })
-                    </div>
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(model => model.JobTitle, "Job Title", htmlAttributes: new { @class = "control-label col-md-2 label-style color-label" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.JobTitle, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.JobTitle, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(model => model.JobDescription, htmlAttributes: new { @class = "control-label col-md-2 label-style color-label" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.JobDescription, new { htmlAttributes = new { @class = "form-control", type = "textarea" } })
-                        @Html.ValidationMessageFor(model => model.JobDescription, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(model => model.JobType, htmlAttributes: new { @class = "control-label col-md-2 label-style color-label" })
-                    <div class="col-md-10">
-                        @Html.EnumDropDownListFor(model => model.JobType, "Select a Job Type", new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.JobType, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(model => model.StakeHolderOrganization, "Reported By", htmlAttributes: new { @class = "control-label col-md-2 label-style color-label" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.StakeHolderOrganization, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
-                    </div>
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(model => model.JobPriority, htmlAttributes: new { @class = "control-label col-md-2 label-style color-label" })
-                    <div class="col-md-10">
-                        @Html.EnumDropDownListFor(model => model.JobPriority, "Select a Job Priority", new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.JobPriority, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(model => model.EstimatedTimeInHours, "Estimated Time", new { @class = "control-label col-md-2 label-style color-label" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.EstimatedTimeInHours, new { htmlAttributes = new { @class = "form-control", @min = 0 } })
-                        @Html.ValidationMessageFor(model => model.EstimatedTimeInHours, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(model => model.JobTakerId, "Choose a Taker", new { @class = "control-label col-md-2 label-style color-label" })
-                    <div class="col-md-10">
-                        @Html.DropDownListFor(model => model.JobTakerId, new SelectList(ViewBag.Takers, "TakerId", "TakerName"), "Select a Taker")
-                    </div>
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(model => model.ReleaseVersion, "Release Version", htmlAttributes: new { @class = "control-label col-md-2 label-style color-label" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.ReleaseVersion, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.ReleaseVersion, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Files, "Upload File", htmlAttributes: new { @class = "control-label col-md-2 label-style color-label" })
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(model => model.Files, new { type = "file", @multiple = "multiple", @class = "color-footer .upload-file-text-size" })
-                        @Html.ValidationMessageFor(model => model.Files, "", new { @class = "text-danger" })
-                        @ViewBag.UploadStatus
-                    </div>
-                </div>
-
-
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Create" class="btn btn-default" />
-                    </div>
+        <h4>Hi @Model.StakeHolderOrganization, Report a Request</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.StakeHolderId, new { htmlAttributes = new { @class = "form-control", type = "hidden" } })
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="panel-group">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Report a Request</div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="col-xs-12" style="border:1px solid #ddd;padding:10px 15px;">
+    <div class="col-xs-6">
+        <div class="mini-box">
+            <div class="form-group">
+                @Html.LabelFor(model => model.JobTitle, "Job Title", htmlAttributes: new { @class = "control-label col-md-4 label-style color-label" })
+                <div class="col-md-8">
+                    @Html.EditorFor(model => model.JobTitle, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.JobTitle, "", new { @class = "text-danger" })
                 </div>
             </div>
-
         </div>
+    </div>
+
+    <div class="col-xs-6">
+        <div class="mini-box">
+            <div class="form-group">
+                @Html.LabelFor(model => model.JobDescription, htmlAttributes: new { @class = "control-label col-md-4 label-style color-label" })
+                <div class="col-md-8">
+                    @Html.EditorFor(model => model.JobDescription, new { htmlAttributes = new { @class = "form-control", type = "textarea" } })
+                    @Html.ValidationMessageFor(model => model.JobDescription, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-6">
+        <div class="mini-box">
+            <div class="form-group">
+                @Html.LabelFor(model => model.JobType, htmlAttributes: new { @class = "control-label col-md-4 label-style color-label" })
+                <div class="col-md-8">
+                    @Html.EnumDropDownListFor(model => model.JobType, "Select a Job Type", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.JobType, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-6">
+        <div class="mini-box">
+            <div class="form-group">
+                @Html.LabelFor(model => model.StakeHolderOrganization, "Reported By", htmlAttributes: new { @class = "control-label col-md-4 label-style color-label" })
+                <div class="col-md-8">
+                    @Html.EditorFor(model => model.StakeHolderOrganization, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-6">
+        <div class="mini-box">
+            <div class="form-group">
+                @Html.LabelFor(model => model.JobPriority, htmlAttributes: new { @class = "control-label col-md-4 label-style color-label" })
+                <div class="col-md-8">
+                    @Html.EnumDropDownListFor(model => model.JobPriority, "Select a Job Priority", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.JobPriority, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-6">
+        <div class="mini-box">
+            <div class="form-group">
+                @Html.LabelFor(model => model.EstimatedTimeInHours, "Estimated Time", new { @class = "control-label col-md-4 label-style color-label" })
+                <div class="col-md-8">
+                    @Html.EditorFor(model => model.EstimatedTimeInHours, new { htmlAttributes = new { @class = "form-control", @min = 0 } })
+                    @Html.ValidationMessageFor(model => model.EstimatedTimeInHours, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-6">
+        <div class="mini-box">
+            <div class="form-group">
+                @Html.LabelFor(model => model.JobTakerId, "Choose a Taker", new { @class = "control-label col-md-4 label-style color-label" })
+                <div class="col-md-8">
+                    @Html.DropDownListFor(model => model.JobTakerId, new SelectList(ViewBag.Takers, "TakerId", "TakerName"), "Select a Taker")
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-xs-6">
+        <div class="mini-box">
+            <div class="form-group">
+                @Html.LabelFor(model => model.ReleaseVersion, "Release Version", htmlAttributes: new { @class = "control-label col-md-4 label-style color-label" })
+                <div class="col-md-8">
+                    @Html.EditorFor(model => model.ReleaseVersion, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ReleaseVersion, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-6">
+        <div class="mini-box">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Files, "Upload File", htmlAttributes: new { @class = "control-label col-md-4 label-style color-label" })
+                <div class="col-md-8">
+                    @Html.TextBoxFor(model => model.Files, new { type = "file", @multiple = "multiple", @class = "color-footer .upload-file-text-size" })
+                    @Html.ValidationMessageFor(model => model.Files, "", new { @class = "text-danger" })
+                    @ViewBag.UploadStatus
+                </div>
+            </div>
+        </div>
+    </div>
+        </div> @*col-xs-12*@
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>@*col-md-12*@
+</div>@*row*@
+                    </div>@*panel-body*@
+                </div>@*panel*@
+            </div>@*panelgroup*@
+        </div>@*container fluid*@
     </div>
 }
 
@@ -104,18 +157,18 @@
     .label-style
     {
         font-weight : bold;
-        font-size : large;
-        text-shadow : 3px 3px 0px #000;
+        font-size : medium;
+        /*text-shadow : 3px 3px 0px #000;*/
     }
 
     .color-label
     {
-        color : aquamarine;
+        color : black;
     }
 
     .color-footer
     {
-        color : beige;
+        color : black;
     }
 
     .upload-file-text-size
