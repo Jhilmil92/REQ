@@ -20,5 +20,10 @@ namespace BusinessLogicLayer.BLL.Classes
         {
             return Path.Combine(string.Format("{0}{1}", HttpContext.Current.Server.MapPath("~/Uploads/"), jobId));
         }
+
+        public string GetFolderPath(string sessionId)
+        {
+            return Path.Combine(string.Format("{0}{1}", HttpContext.Current.Server.MapPath("~/Uploads/"), sessionId));            
+        }
     }
 }

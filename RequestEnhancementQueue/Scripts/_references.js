@@ -56,3 +56,4 @@
 /// <reference path="respond.matchmedia.addlistener.min.js" />
 /// <reference path="bootstrap.min.js" />
 /// <reference path="req scripts/modalscript.js" />
+/// <reference path="req scripts/uploadfiles.js" />

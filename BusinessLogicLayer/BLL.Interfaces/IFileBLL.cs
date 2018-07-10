@@ -10,5 +10,7 @@ namespace BusinessLogicLayer.BLL.Interfaces
     {
         string GetFileName(string fileName);
         string GetFolderPath(int jobId);
+
+        string GetFolderPath(string sessionId);
     }
 }

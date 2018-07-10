@@ -533,6 +533,7 @@
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\ProcessRequestScript.js" />
     <Content Include="Scripts\REQ Scripts\ModalScript.js" />
+    <Content Include="Scripts\REQ Scripts\UploadFiles.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
