@@ -169,6 +169,7 @@ namespace RequestEnhancementQueue.Controllers
                 {
                     ModelState.AddModelError("","The Username or Password provided is Incorrect");
                 }
+                Session[Constants.CurrentUserId] = currentUser.UserId;
                 if (currentUser.UserType == UserType.StakeHolder)
                 {
                     Session[Constants.StakeHolderId] = currentUser.TargetUserID;

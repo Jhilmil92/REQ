@@ -1,8 +1,11 @@
-﻿using DataAccessLayer.Req.Data.Infrastructure.Classes;
+﻿using DataAccessLayer.Infrastructure.Classes;
+using DataAccessLayer.Infrastructure.Interfaces;
+using DataAccessLayer.Req.Data.Infrastructure.Classes;
 using DataAccessLayer.Req.Data.Infrastructure.Interfaces;
 using DataAccessLayer.Req.Data.Services.Interfaces;
 using Domain.Classes;
 using Domain.Classes.Req.Domain.Entities;
+using Req.Enums.Req.Common.Constants;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -10,6 +13,7 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace DataAccessLayer.Req.Data.Services.Classes
 {
@@ -24,6 +28,8 @@ namespace DataAccessLayer.Req.Data.Services.Classes
         {
             var modifiedEntities = dbContext.ChangeTracker.Entries().Where(p=> p.State == EntityState.Modified).ToList();
             var currentDateTime = DateTime.UtcNow;
+            int currentUserId = (int)HttpContext.Current.Session[Constants.CurrentUserId];
+            var createdBy = ((IReqDataSource)((DataContext)dbContext)).Users.SingleOrDefault(d => d.UserId == currentUserId);
             foreach(var change in modifiedEntities)
             {
                 var entityName = job.GetType().Name.Split('_')[0];
@@ -42,7 +48,8 @@ namespace DataAccessLayer.Req.Data.Services.Classes
                             PropertyName = prop,
                             OldValue = originalValue,
                             NewValue = currentValue,
-                            DateChanged = currentDateTime
+                            DateChanged = currentDateTime,
+                            LoggedBy = createdBy.UserName
                         };
                         _logChangeRepository.AddChangeLog(log);
                     }

@@ -49,6 +49,7 @@ namespace RequestEnhancementQueue.Controllers
             var model = new ReportRequestViewModel();
             model.StakeHolderId = stakeHolderId;
             model.StakeHolderOrganization = stakeHolderOrganization;
+            model.JobStatus = Req.Enums.JobStatus.New;
             ViewBag.Takers = _takerBLL.GetTakers();
             return View(model);
         }
@@ -109,7 +110,8 @@ namespace RequestEnhancementQueue.Controllers
         {
             var model = new ClientReportRequestViewModel()
             {
-                StaffId = (int)Session[Constants.StaffId]
+                StaffId = (int)Session[Constants.StaffId],
+                JobStatus = Req.Enums.JobStatus.New
             };
             ViewBag.Clients = _clientBLL.GetClients().ToList();
             ViewBag.Takers = _takerBLL.GetTakers();

@@ -14,6 +14,9 @@
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.JobId)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.JobTitle)
             </th>
             @*<th>
@@ -65,6 +68,9 @@
 
             <tr>
                 <td>
+                    @Html.DisplayFor(modelItem => item.JobId)
+                </td>
+                <td>
                     <u>@Html.ActionLink(item.JobTitle, "EditJobForClient", "Job", new { jobId = item.JobId }, null)</u>
                     <br />
                     @Html.DisplayFor(modelItem => item.JobDescription)
@@ -115,7 +121,7 @@
 <script>
     $(document).ready(function () {
         $('#example').DataTable({
-            "aaSorting": [[0, 'desc'], [5, 'asc']]
+            "aaSorting": [[0, 'asc'], [6, 'asc'], [1, 'asc']]
         });
     }
    );

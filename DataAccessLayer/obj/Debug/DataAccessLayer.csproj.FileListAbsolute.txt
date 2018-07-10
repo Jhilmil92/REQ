@@ -25,3 +25,6 @@ E:\Source\Repos\REQ\DataAccessLayer\obj\Debug\DataAccessLayer.dll
 E:\Source\Repos\REQ\DataAccessLayer\obj\Debug\DataAccessLayer.pdb
 E:\Source\Repos\REQ\DataAccessLayer\obj\Debug\DataAccessLayer.Migrations.initial.resources
 E:\Source\Repos\REQ\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.GenerateResource.Cache
+E:\Source\Repos\REQ\DataAccessLayer\obj\Debug\DataAccessLayer.ChangeLogMigrations.InitialCreate.resources
+E:\Source\Repos\REQ\DataAccessLayer\obj\Debug\DataAccessLayer.ChangeLogMigrations.CreatedByField.resources
+E:\Source\Repos\REQ\DataAccessLayer\obj\Debug\DataAccessLayer.ChangeLogMigrations.ChangeLog1.resources

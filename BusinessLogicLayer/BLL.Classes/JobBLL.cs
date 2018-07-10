@@ -66,7 +66,7 @@ namespace BusinessLogicLayer
             }
             else
             {
-                job.Status = JobStatus.Queued;
+                job.Status = JobStatus.New;
             }
 
             return _jobRepository.Create(job);
@@ -99,7 +99,7 @@ namespace BusinessLogicLayer
             }
             else
             {
-                job.Status = JobStatus.Queued;
+                job.Status = JobStatus.New;
             }
 
             return _jobRepository.Create(job);
@@ -194,6 +194,7 @@ namespace BusinessLogicLayer
             currentJob.JobCategory = viewModel.JobType;
             currentJob.JobPriority = viewModel.JobPriority;
             currentJob.UpdatedOn = DateTime.Now;
+            currentJob.Comments = viewModel.Comments;
             currentJob.AssignedToId = viewModel.AssignedTakerId;
             return _jobRepository.Update(currentJob);
         }

@@ -13,6 +13,9 @@
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.JobId)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.JobTitle)
             </th>
             <th>
@@ -43,6 +46,9 @@
             var createdOn = string.Format("{0:d-MMM-yyyy h:mm tt}", item.CreatedOn.Value);
             var lastUpdatedOn = (item.UpdatedOn == null) ? string.Format("{0:d-MMM-yyyy h:mm tt}", (DateTime.Now)) : string.Format("{0:d-MMM-yyyy h:mm tt}", item.UpdatedOn.Value);
             <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.JobId)
+                </td>
                 <td>
                     @Html.ActionLink(item.JobTitle, "EditJob", "Job", new { jobId = item.JobId }, null)
                     <br/>
@@ -84,7 +90,7 @@
             //    { "orderData": [1,6], "targets": [2,6]},
             //   // { "orderData" : [9] , "targets" : 2}
             //]
-            "aaSorting": [[0, 'desc'], [5, 'asc']]
+            "aaSorting": [[0, 'asc'], [6, 'desc'], [1, 'asc']]
             //"aoColumns": [
 			//null,
 			//null,

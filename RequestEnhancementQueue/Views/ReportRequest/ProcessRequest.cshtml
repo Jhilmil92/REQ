@@ -84,16 +84,29 @@
         </div>
     </div>
 
+     <div class="col-xs-6">
+        <div class="mini-box">
+            <div class="form-group">
+                @Html.LabelFor(model => model.JobStatus, htmlAttributes: new { @class = "control-label col-md-4 label-style color-label" })
+                    <div class="col-md-8">
+                        @Html.EnumDropDownListFor(model => model.JobStatus, "Job Status", new { @class = "form-control" , @disabled = "disabled" })
+                        @Html.ValidationMessageFor(model => model.JobStatus, "", new { @class = "text-danger" })
+                    </div>
+            </div>
+       </div>
+    </div>
+    
+
     <div class="col-xs-6">
         <div class="mini-box">
             <div class="form-group">
                 @Html.LabelFor(model => model.EstimatedTimeInHours, "Estimated Time", new { @class = "control-label col-md-4 label-style color-label" })
-                <div class="col-md-8">
+                <div class="col-md-3">
                     @Html.EditorFor(model => model.EstimatedTimeInHours, new { htmlAttributes = new { @class = "form-control", @min = 0 } })
                     @Html.ValidationMessageFor(model => model.EstimatedTimeInHours, "", new { @class = "text-danger" })
                 </div>
             </div>
-        </div>
+        </div>s
     </div>
 
     <div class="col-xs-6">

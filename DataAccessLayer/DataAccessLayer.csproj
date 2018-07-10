@@ -43,6 +43,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -50,6 +51,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChangeLogMigrations\201807031735594_InitialCreate.cs" />
+    <Compile Include="ChangeLogMigrations\201807031735594_InitialCreate.Designer.cs">
+      <DependentUpon>201807031735594_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChangeLogMigrations\201807091121245_CreatedByField.cs" />
+    <Compile Include="ChangeLogMigrations\201807091121245_CreatedByField.Designer.cs">
+      <DependentUpon>201807091121245_CreatedByField.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChangeLogMigrations\201807100539275_ChangeLog1.cs" />
+    <Compile Include="ChangeLogMigrations\201807100539275_ChangeLog1.Designer.cs">
+      <DependentUpon>201807100539275_ChangeLog1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChangeLogMigrations\Configuration.cs" />
     <Compile Include="Migrations\201807031034593_initial.cs" />
     <Compile Include="Migrations\201807031034593_initial.Designer.cs">
       <DependentUpon>201807031034593_initial.cs</DependentUpon>
@@ -82,12 +96,25 @@
       <Project>{930008a8-b297-406f-8cec-a86e8dcdcb7a}</Project>
       <Name>Domain.Classes</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Req.Enums\Common.csproj">
+      <Project>{4106437c-3e7e-4181-ad32-245c56c19f57}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ChangeLogMigrations\201807031735594_InitialCreate.resx">
+      <DependentUpon>201807031735594_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChangeLogMigrations\201807091121245_CreatedByField.resx">
+      <DependentUpon>201807091121245_CreatedByField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChangeLogMigrations\201807100539275_ChangeLog1.resx">
+      <DependentUpon>201807100539275_ChangeLog1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807031034593_initial.resx">
       <DependentUpon>201807031034593_initial.cs</DependentUpon>
     </EmbeddedResource>

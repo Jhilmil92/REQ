@@ -15,5 +15,6 @@ namespace Domain.Classes.Req.Domain.Entities
         public string OldValue { get; set; }
         public string NewValue { get; set; }
         public DateTime DateChanged { get; set; }
+        public string LoggedBy { get; set; }
     }
 }
