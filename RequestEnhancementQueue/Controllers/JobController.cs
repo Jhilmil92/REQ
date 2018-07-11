@@ -108,23 +108,54 @@ namespace RequestEnhancementQueue.Controllers
         {
             if(ModelState.IsValid)
             {
-                if(viewModel.Files != null)
-                {
-                    foreach(var file in viewModel.Files)
-                    {
-                        if(file != null)
-                        {
-                            var fileName = _fileBLL.GetFileName(file.FileName);
-                            var filePath = _fileBLL.GetFolderPath(viewModel.JobId);
-                            if(!(Directory.Exists(filePath)))
-                            {
-                                Directory.CreateDirectory(filePath);
-                            }
+                //if(viewModel.Files != null)
+                //{
+                //    foreach(var file in viewModel.Files)
+                //    {
+                //        if(file != null)
+                //        {
+                //            var fileName = _fileBLL.GetFileName(file.FileName);
+                //            var filePath = _fileBLL.GetFolderPath(viewModel.JobId);
+                //            if(!(Directory.Exists(filePath)))
+                //            {
+                //                Directory.CreateDirectory(filePath);
+                //            }
 
-                            file.SaveAs(Path.Combine("{0}\\{1}",filePath,fileName));
-                            ViewBag.UploadStatus = string.Format("{0} {1}",viewModel.Files.Count().ToString(),"Files Uploaded Successfully");
+                //            file.SaveAs(Path.Combine("{0}\\{1}",filePath,fileName));
+                //            ViewBag.UploadStatus = string.Format("{0} {1}",viewModel.Files.Count().ToString(),"Files Uploaded Successfully");
+                //        }
+                //    }
+                //}
+                var temporaryJobFolderPath = _fileBLL.GetFolderPath(Session.SessionID);
+                if(Directory.Exists(temporaryJobFolderPath))
+                {
+                    //Check whether the directory is empty or not.
+                    if ((Directory.GetFiles(temporaryJobFolderPath) != null) && (Directory.GetFiles(temporaryJobFolderPath).Length != 0))
+                    {
+                        //Get the actual path where the files have to be moved from the existing temporary session folder.
+                        var actualJobFolderPath = _fileBLL.GetFolderPath(viewModel.JobId);
+                        string sourceFileName = string.Empty;
+                        string destinationFileName = string.Empty;
+                        string[] files = Directory.GetFiles(temporaryJobFolderPath);
+                        if(!(Directory.Exists(actualJobFolderPath)))
+                        {
+                            Directory.CreateDirectory(actualJobFolderPath);
                         }
+                        //Physically move files from the session folder
+                        foreach (var file in files)
+                        {
+                            sourceFileName = System.IO.Path.GetFileName(file);
+                            destinationFileName = System.IO.Path.Combine(actualJobFolderPath,sourceFileName);
+                            System.IO.File.Copy(file,destinationFileName,true);
+                        }
+                        //Delete the session directory after the file transfer is done
+                        //foreach(var file in files)
+                        //{
+                        //    System.IO.File.Delete(file);
+                        //}
+                        //Directory.Delete(temporaryJobFolderPath);
                     }
+
                 }
                 viewModel.LastUpdatedOn = DateTime.Now;
                 _jobBLL.UpdateJob(viewModel);

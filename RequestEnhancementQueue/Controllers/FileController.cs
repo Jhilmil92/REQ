@@ -61,11 +61,12 @@ namespace RequestEnhancementQueue.Controllers
                     if(file != null)
                     {
                         var fileName = _fileBLL.GetFileName(file.FileName);
-                        
+                        file.SaveAs(Path.Combine(string.Format("{0}\\{1}",jobFolderPath,fileName)));
                     }
                 }
+                return Json (new {success = true , responseText = "File has been uploaded successfully"},JsonRequestBehavior.AllowGet);
             }
-            return View();
+            return Json(new { success = false , responseText = "There was a problem in uploading the file" },JsonRequestBehavior.AllowGet);
         }
     }
 }

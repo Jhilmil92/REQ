@@ -12,10 +12,10 @@ function CallUploadService(file) {
         processData: false,
         contentType : false,
         success: function (response) {
-            
-        },
-        error: function () {
-            alert("Error Occured")
-        }
-    });
+               alert(response.responseText);
+            },
+        error: function (response) {
+        alert("Error Occured!")
+    }   
+});
 }
