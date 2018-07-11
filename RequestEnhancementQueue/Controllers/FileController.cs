@@ -1,5 +1,6 @@
 ﻿using BusinessLogicLayer.BLL.Classes;
 using BusinessLogicLayer.BLL.Interfaces;
+using Req.Enums.Req.Common.Constants;
 using Req.Enums.Req.Common.Utility;
 using System;
 using System.Collections.Generic;
@@ -42,7 +43,9 @@ namespace RequestEnhancementQueue.Controllers
         {
             if(files != null)
             {
-                var jobFolderPath = _fileBLL.GetFolderPath(Session.SessionID);
+                string pathName = string.Format("{0}\\{1}", Session.SessionID, (int)Session[Constants.CurrentUserId]);
+                //var jobFolderPath = _fileBLL.GetFolderPath(Session.SessionID);
+                var jobFolderPath = _fileBLL.GetFolderPath(pathName);
                 if (!(Directory.Exists(jobFolderPath)))
                 {
                     Directory.CreateDirectory(jobFolderPath);

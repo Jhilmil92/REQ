@@ -73,11 +73,26 @@ namespace RequestEnhancementQueue.Controllers
         public ActionResult EditJob(int jobId)
         {
             string[] files = null;
+            List<string> folders = new List<string>();
+            List<string>[] filesByFolder = null;
             var job = _jobBLL.GetJobById(jobId);
             //Fetch uploaded files
             var folderPath = _fileBLL.GetFolderPath(job.JobId);
+            
             if (Directory.Exists(folderPath))
             {
+                //List all subfolders and fetch the files from each of them.
+                DirectoryInfo directoryInfo = new DirectoryInfo(folderPath);
+                //filesByFolder = new List<string>()[directoryInfo.GetDirectories().Length];
+
+                foreach(var directory in directoryInfo.GetDirectories())
+                {
+                    if(directory.GetFiles().Length > 0)
+                    {
+                        folders.Add(directory.Name);
+
+                    }
+                }
                 files = Directory.GetFiles(folderPath);
             }
 
@@ -126,14 +141,18 @@ namespace RequestEnhancementQueue.Controllers
                 //        }
                 //    }
                 //}
-                var temporaryJobFolderPath = _fileBLL.GetFolderPath(Session.SessionID);
+                string pathName = string.Format("{0}\\{1}", Session.SessionID, (int)Session[Constants.CurrentUserId]);
+                string actualPathName = string.Format("{0}\\{1}", viewModel.JobId, (int)Session[Constants.CurrentUserId]);
+               // var temporaryJobFolderPath = _fileBLL.GetFolderPath(Session.SessionID);
+                var temporaryJobFolderPath = _fileBLL.GetFolderPath(pathName);
                 if(Directory.Exists(temporaryJobFolderPath))
                 {
                     //Check whether the directory is empty or not.
                     if ((Directory.GetFiles(temporaryJobFolderPath) != null) && (Directory.GetFiles(temporaryJobFolderPath).Length != 0))
                     {
                         //Get the actual path where the files have to be moved from the existing temporary session folder.
-                        var actualJobFolderPath = _fileBLL.GetFolderPath(viewModel.JobId);
+                        //var actualJobFolderPath = _fileBLL.GetFolderPath(viewModel.JobId);
+                        var actualJobFolderPath = _fileBLL.GetFolderPath(actualPathName);
                         string sourceFileName = string.Empty;
                         string destinationFileName = string.Empty;
                         string[] files = Directory.GetFiles(temporaryJobFolderPath);
