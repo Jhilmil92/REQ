@@ -235,11 +235,11 @@
                                                         var fileNameFromPath = fileName.Split('\\');
                                                         <tr>
                                                             <td>
-                                                                @Html.ActionLink(fileNameFromPath[fileNameFromPath.Length - 1], "ViewFile", "File", new { jobId = Model.JobId, requiredFileName = fileNameFromPath[fileNameFromPath.Length - 1] }, new { @class = "view-file" })
+                                                                @Html.ActionLink(fileNameFromPath[fileNameFromPath.Length - 1], "ViewFile", "File", new { jobId = Model.JobId, userId = fileNameFromPath[fileNameFromPath.Length - 2], requiredFileName = fileNameFromPath[fileNameFromPath.Length - 1] }, new { @class = "view-file" })
                                                             </td>
                                                             <td></td>
                                                             <td>
-                                                                <a href="@Url.Action("DownloadFile", "File", new { jobId = Model.JobId, requiredFileName = fileNameFromPath[fileNameFromPath.Length - 1] })">
+                                                                <a href="@Url.Action("DownloadFile", "File", new { jobId = Model.JobId, userId = fileNameFromPath[fileNameFromPath.Length - 2], requiredFileName = fileNameFromPath[fileNameFromPath.Length - 1] })">
                                                                     <img width="20" height="20" src="~/Content/Images/Martz90-Circle-Addon2-Downloads.ico" />
                                                                 </a>
                                                                 @*<u>

@@ -19,23 +19,25 @@ namespace RequestEnhancementQueue.Controllers
             this._fileBLL = _fileBLL;
         }
         // GET: File
-        public ActionResult ViewFile(int jobId, string requiredFileName)
+        public ActionResult ViewFile(int jobId,int userId, string requiredFileName)
         {
             return new DisplayResult
             {
                 VirtualPath = "~/Uploads/",
                 DisplayFileName = requiredFileName,
-                JobId = jobId
+                JobId = jobId,
+                UserId = userId
             };
         }
 
-        public ActionResult DownloadFile(int jobId , string requiredFileName)
+        public ActionResult DownloadFile(int jobId, int userId, string requiredFileName)
         {
             return new DownloadResult
             {
                 VirtualPath = "~/Uploads/",
                 DownloadFileName = requiredFileName,
-                JobId = jobId
+                JobId = jobId,
+                UserId = userId
             };
         }
 
@@ -58,7 +60,6 @@ namespace RequestEnhancementQueue.Controllers
                         file.Delete();
                     }
                 }
-                //Check on how to delete a folder once the session ends.
                 foreach(var file in files)
                 {
                     if(file != null)
