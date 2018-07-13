@@ -219,7 +219,7 @@
                                     </div>
 
 
-                                    <br />
+                                   
                                     <div class="fileNames">
                                         <text><b><u>Uploaded Files :- </u></b></text>
                                         <br />
@@ -227,7 +227,7 @@
                                         @if (Model.FileNames != null && Model.FileNames.Count() != 0)
                                         {
                                             <table>
-                                                <thead>
+                                                @*<thead>
                                                     <tr>
                                                         <th>
                                                             <b>
@@ -235,17 +235,17 @@
                                                             </b>
                                                         </th>
                                                     </tr>
-                                                </thead>
+                                                </thead>*@
                                                 <tbody>
                                                     @foreach (var file in Model.FileNames)
                                                     {
                                                         var fileName = file.ToString().Split('\\');
                                                         <tr>
                                                             <td>
-                                                                <u>@Html.ActionLink(@fileName[fileName.Length - 1], "ViewFile", "File", new { jobId = Model.JobId, userId = fileName[fileName.Length - 2], requiredFileName = fileName[fileName.Length - 1] }, new { @class = "view-file" })</u>
+                                                                @Html.ActionLink(@fileName[fileName.Length - 1], "ViewFile", "File", new { jobId = Model.JobId, userId = fileName[fileName.Length - 2], requiredFileName = fileName[fileName.Length - 1] }, new { @class = "view-file" })
                                                             </td>
                                                             <td></td>
-                                                            <td class="download-file">
+                                                            <td>
                                                                 @*<u>@Html.ActionLink("Download", "DownloadFile", "File", new { jobId = Model.JobId, requiredFileName = fileName[fileName.Length - 1] }, new { @class = "download-file"})</u>*@
                                                                 <a href="@Url.Action("DownloadFile", "File", new { jobId = Model.JobId, userId = fileName[fileName.Length-2], requiredFileName = fileName[fileName.Length - 1] })">
                                                                     <img width="20" height="20" src="~/Content/Images/Martz90-Circle-Addon2-Downloads.ico" />

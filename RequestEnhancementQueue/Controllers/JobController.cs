@@ -76,7 +76,15 @@ namespace RequestEnhancementQueue.Controllers
             var job = _jobBLL.GetJobById(jobId);
             //Fetch uploaded files
             var folderPath = _fileBLL.GetFolderPath(job.JobId);
-            string[] files = Directory.GetFiles(folderPath, "*.*", SearchOption.AllDirectories);
+            string[] files = null;
+            try
+            {
+                files = Directory.GetFiles(folderPath, "*.*", SearchOption.AllDirectories) != null ? Directory.GetFiles(folderPath, "*.*", SearchOption.AllDirectories) : null;
+            }
+            catch
+            {
+
+            }
             
             var model = new UpdateJobViewModel
             {
@@ -191,7 +199,15 @@ namespace RequestEnhancementQueue.Controllers
             //    files = Directory.GetFiles(filePath);
             //}
             var folderPath = _fileBLL.GetFolderPath(job.JobId);
-            string[] files = Directory.GetFiles(folderPath, "*.*", SearchOption.AllDirectories);
+            string[] files = null;
+            try
+            {
+                files = Directory.GetFiles(folderPath, "*.*", SearchOption.AllDirectories) != null ? Directory.GetFiles(folderPath, "*.*", SearchOption.AllDirectories) : null;
+            }
+            catch
+            {
+
+            }
 
             var model = new UpdateStakeHolderJobViewModel
             {
@@ -298,7 +314,15 @@ namespace RequestEnhancementQueue.Controllers
 
             //Fetch uploaded files
             var folderPath = _fileBLL.GetFolderPath(job.JobId);
-            string[] files = Directory.GetFiles(folderPath, "*.*", SearchOption.AllDirectories);
+            string[] files = null;
+            try
+            {
+                files = Directory.GetFiles(folderPath, "*.*", SearchOption.AllDirectories) != null ? Directory.GetFiles(folderPath, "*.*", SearchOption.AllDirectories) : null;
+            }
+            catch
+            {
+
+            }
 
             var model = new UpdateClientJobViewModel
             {
