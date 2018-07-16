@@ -167,8 +167,10 @@ namespace RequestEnhancementQueue.Controllers
 
                 }
                 viewModel.LastUpdatedOn = DateTime.Now;
-                _jobBLL.UpdateJob(viewModel);
-                return RedirectToAction("ViewJobs");
+                Job job = _jobBLL.UpdateJob(viewModel);
+               // return RedirectToAction("ViewJobs");
+                return RedirectToAction("EditJob", new { jobId = job.JobId });
+
             }
             else
             {
@@ -290,7 +292,9 @@ namespace RequestEnhancementQueue.Controllers
 
                 var job = _jobBLL.UpdateJob(viewModel);
                 
-                return RedirectToAction("ViewReportedRequests", "ReportRequest");
+                //return RedirectToAction("ViewReportedRequests", "ReportRequest");
+                return RedirectToAction("EditJobForStakeHolder", new { jobId = job.JobId});
+                
             }
             else
             {
@@ -405,7 +409,8 @@ namespace RequestEnhancementQueue.Controllers
                 }
                 var job = _jobBLL.UpdateJob(viewModel);
 
-                return RedirectToAction("ViewClientReportedRequests", "ReportRequest");
+                //return RedirectToAction("ViewClientReportedRequests", "ReportRequest");
+                return RedirectToAction("EditJobForClient", new { jobId = job.JobId });
             }
             else
             {

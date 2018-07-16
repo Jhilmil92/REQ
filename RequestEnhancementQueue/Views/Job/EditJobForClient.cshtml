@@ -5,7 +5,10 @@
 }
 
 <h2>EditJobForClient</h2>
+<link href="~/Content/themes/datatables.css" rel="stylesheet" />
+<script src="~/Content/themes/datatables.js"></script>
 <link href="~/Content/themes/EditJobPageStyles.css" rel="stylesheet" />
+
 
 @using (Html.BeginForm("EditJobForClient", "Job", FormMethod.Post, new { encType = "multipart/form-data" }))
             {
@@ -213,52 +216,56 @@
 
                                 </div>
 
-                                <br />
-                                <div class="fileNames" >
-                                    @*<text><b><u>Uploaded Files :- </u></b></text>*@
-                                    <br />
-                                    <br />
-                                    @if (Model.FileNames != null && Model.FileNames.Count() != 0)
-                                    {
-                                        <table class="table table-striped table-responsive table-hover" style="border:1px solid">
-                                            <b>
-                                                <thead>
-                                            <th>
-                                                Uploaded Files
-                                            </th>
-                                            <th>
-                                                Download
-                                            </th>
-                                            </thead>
-                                            </b>
+                                <div class="col-md-6">
+                                    <div class="mini-box">
+                                        <div class="fileNames" id="fileNames">
+                                            @*<text><b><u>Uploaded Files :- </u></b></text>*@
+                                            <br />
+                                            <br />
+                                            @if (Model.FileNames != null && Model.FileNames.Count() != 0)
+                                            {
+                                                <table class="table table-striped table-bordered table-responsive table-hover" style="border:1px solid" id="file-table">
 
-                                            <tbody>
-                                                @foreach (var fileName in Model.FileNames)
-                                                {
-                                                    var fileNameFromPath = fileName.Split('\\');
-                                                    <tr>
-                                                        <td>
-                                                            @Html.ActionLink(fileNameFromPath[fileNameFromPath.Length - 1], "ViewFile", "File", new { jobId = Model.JobId, userId = fileNameFromPath[fileNameFromPath.Length - 2], requiredFileName = fileNameFromPath[fileNameFromPath.Length - 1] }, new { @class = "view-file" })
-                                                        </td>
-                                                        
-                                                        <td align="center">
-                                                            <a href="@Url.Action("DownloadFile", "File", new { jobId = Model.JobId, userId = fileNameFromPath[fileNameFromPath.Length - 2], requiredFileName = fileNameFromPath[fileNameFromPath.Length - 1] })">
-                                                                <img width="20" height="20" src="~/Content/Images/Martz90-Circle-Addon2-Downloads.ico" />
-                                                            </a>
-                                                            @*<u>
-                                                                @Html.ActionLink("Download", "DownloadFile", "File", new { jobId = Model.JobId, requiredFileName = fileNameFromPath[fileNameFromPath.Length - 1] }, new { @class = "download-file" })</u>*@
+                                                    <thead>
+                                                        <tr>
+                                                            <th>
+                                                                Uploaded Files
+                                                            </th>
+                                                            <th>
+                                                                Download
+                                                            </th>
+                                                        </tr>
+                                                    </thead>
 
-                                                        </td>
-                                                    </tr>
-                                                }
-                                            </tbody>
-                                        </table>
-                                    }
-                                    else
-                                    {
-                                        @:<text>No uploaded files available</text>
+                                                    <tbody>
+                                                        @foreach (var fileName in Model.FileNames)
+                                                        {
+                                                            var fileNameFromPath = fileName.Split('\\');
+                                                            <tr>
+                                                                <td>
+                                                                    @Html.ActionLink(fileNameFromPath[fileNameFromPath.Length - 1], "ViewFile", "File", new { jobId = Model.JobId, userId = fileNameFromPath[fileNameFromPath.Length - 2], requiredFileName = fileNameFromPath[fileNameFromPath.Length - 1] }, new { @class = "view-file" })
+                                                                </td>
+
+                                                                <td align="center">
+                                                                    <a href="@Url.Action("DownloadFile", "File", new { jobId = Model.JobId, userId = fileNameFromPath[fileNameFromPath.Length - 2], requiredFileName = fileNameFromPath[fileNameFromPath.Length - 1] })">
+                                                                        <img width="20" height="20" src="~/Content/Images/Martz90-Circle-Addon2-Downloads.ico" />
+                                                                    </a>
+                                                                    @*<u>
+                                                                        @Html.ActionLink("Download", "DownloadFile", "File", new { jobId = Model.JobId, requiredFileName = fileNameFromPath[fileNameFromPath.Length - 1] }, new { @class = "download-file" })</u>*@
+
+                                                                </td>
+                                                            </tr>
+                                                        }
+                                                    </tbody>
+                                                </table>
+                                            }
+                                            else
+                                            {
+                                                @:<text>No uploaded files available</text>
                 }
 
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <br />
@@ -294,5 +301,9 @@
     @Scripts.Render("~/bundles/jqueryval")
     <script src="~/Scripts/REQ Scripts/ModalScript.js"></script>
     <script src="~/Scripts/REQ Scripts/UploadFiles.js"></script>
-
+    <script>
+        $(document).ready(function () {
+            $('#file-table').dataTable();
+        });
+    </script>
 }
