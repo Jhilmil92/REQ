@@ -300,13 +300,18 @@
 
                         @section Scripts {
                             @Scripts.Render("~/bundles/jqueryval")
-                            <script src="~/Scripts/REQ Scripts/ModalScript.js"></script>
+                            @Scripts.Render("~/bundles/bootstrap")
                             <script src="~/Scripts/REQ Scripts/UploadFiles.js"></script>
+                            <script src="~/Scripts/REQ Scripts/ModalScript.js"></script>
                             <script>
                                 $(document).ready(function () {
-                                    $('#file-table').dataTable();
+                                $('#file-table').dataTable();
                                 });
                             </script>
+
+                         
+
+                            
 
                         }
 
