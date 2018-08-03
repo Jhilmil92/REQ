@@ -24,7 +24,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.StakeholderClientId, "Choose a Client", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.StakeholderClientId, new SelectList(ViewBag.Clients, "ClientId ", "ClientOrganization"), "Select a Client", new { @class = "form-control ", required = "required" }))
+                @Html.DropDownListFor(model => model.StakeholderClientId, new SelectList(ViewBag.Clients, "ClientId ", "ClientOrganization"), "Select a Client", new { @class = "form-control ", required = "required" })
                 @Html.ValidationMessageFor(model => model.StakeholderClientId, "", new { @class = "text-danger" })
             </div>
         </div>

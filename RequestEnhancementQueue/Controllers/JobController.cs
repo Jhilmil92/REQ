@@ -133,7 +133,7 @@ namespace RequestEnhancementQueue.Controllers
                 //}
                 string pathName = string.Format("{0}\\{1}", Session.SessionID, (int)Session[Constants.CurrentUserId]);
                 string actualPathName = string.Format("{0}\\{1}", viewModel.JobId, (int)Session[Constants.CurrentUserId]);
-               // var temporaryJobFolderPath = _fileBLL.GetFolderPath(Session.SessionID);
+                string sessionFolderPathName = string.Format("{0}", Session.SessionID);
                 var temporaryJobFolderPath = _fileBLL.GetFolderPath(pathName);
                 if(Directory.Exists(temporaryJobFolderPath))
                 {
@@ -158,11 +158,24 @@ namespace RequestEnhancementQueue.Controllers
                             System.IO.File.Copy(file,destinationFileName,true);
                         }
                         //Delete the session directory after the file transfer is done
-                        //foreach(var file in files)
-                        //{
-                        //    System.IO.File.Delete(file);
-                        //}
-                        //Directory.Delete(temporaryJobFolderPath);
+                        sessionFolderPathName = _fileBLL.GetFolderPath(sessionFolderPathName);
+                        
+                        try
+                        {
+                            files = Directory.GetFiles(sessionFolderPathName, "*.*", SearchOption.AllDirectories) != null ? Directory.GetFiles(sessionFolderPathName, "*.*", SearchOption.AllDirectories) : null;
+                            Array.ForEach(files, System.IO.File.Delete);
+                            var sessionDirectories = Directory.GetDirectories(sessionFolderPathName);
+                            foreach (var directory in sessionDirectories)
+                            {
+                                Directory.Delete(directory);
+                            }
+                            Directory.Delete(sessionFolderPathName);
+                            
+                        }
+                        catch
+                        {
+
+                        }
                     }
 
                 }
@@ -263,6 +276,8 @@ namespace RequestEnhancementQueue.Controllers
                 //}
                 string pathName = string.Format("{0}\\{1}", Session.SessionID, (int)Session[Constants.CurrentUserId]);
                 string actualPathName = string.Format("{0}\\{1}", viewModel.JobId, (int)Session[Constants.CurrentUserId]);
+                string sessionFolderPathName = string.Format("{0}", Session.SessionID);
+
 
                 var temporaryJobFolderPath = _fileBLL.GetFolderPath(pathName);
                 if (Directory.Exists(temporaryJobFolderPath))
@@ -285,6 +300,25 @@ namespace RequestEnhancementQueue.Controllers
                             sourceFileName = System.IO.Path.GetFileName(file);
                             destinationFileName = System.IO.Path.Combine(actualJobFolderPath, sourceFileName);
                             System.IO.File.Copy(file, destinationFileName, true);
+                        }
+
+                        sessionFolderPathName = _fileBLL.GetFolderPath(sessionFolderPathName);
+
+                        try
+                        {
+                            files = Directory.GetFiles(sessionFolderPathName, "*.*", SearchOption.AllDirectories) != null ? Directory.GetFiles(sessionFolderPathName, "*.*", SearchOption.AllDirectories) : null;
+                            Array.ForEach(files, System.IO.File.Delete);
+                            var sessionDirectories = Directory.GetDirectories(sessionFolderPathName);
+                            foreach (var directory in sessionDirectories)
+                            {
+                                Directory.Delete(directory);
+                            }
+                            Directory.Delete(sessionFolderPathName);
+
+                        }
+                        catch
+                        {
+
                         }
                     }
 
@@ -354,33 +388,13 @@ namespace RequestEnhancementQueue.Controllers
         [HttpPost]
         public ActionResult EditJobForClient(UpdateStakeHolderJobViewModel viewModel)
         {
-            //var stakeHolder = _stakeHolderBLL.GetStakeHolderById((int)(Session[Constants.StakeHolderId]));
-
             if (ModelState.IsValid)
             {
-                //if (viewModel.Files != null)
-                //{
-                //    foreach (var file in viewModel.Files)
-                //    {
-                //        if (file != null)
-                //        {
-                //            var fileName = _fileBLL.GetFileName(file.FileName);
-                //            var jobFolderPath = _fileBLL.GetFolderPath(viewModel.JobId);
-
-                //            if (!(Directory.Exists(jobFolderPath)))
-                //            {
-                //                Directory.CreateDirectory(jobFolderPath);
-                //            }
-
-                //            file.SaveAs(Path.Combine(string.Format("{0}\\{1}", jobFolderPath, fileName)));
-                //            ViewBag.UploadStatus = string.Format("{0} {1}", viewModel.Files.Count().ToString(), "Files Uploaded Successfully");
-                //        }
-                //    }
-
-                //}
 
                 string pathName = string.Format("{0}\\{1}", Session.SessionID, (int)Session[Constants.CurrentUserId]);
                 string actualPathName = string.Format("{0}\\{1}", viewModel.JobId, (int)Session[Constants.CurrentUserId]);
+                string sessionFolderPathName = string.Format("{0}", Session.SessionID);
+
 
                 var temporaryJobFolderPath = _fileBLL.GetFolderPath(pathName);
                 if (Directory.Exists(temporaryJobFolderPath))
@@ -403,6 +417,25 @@ namespace RequestEnhancementQueue.Controllers
                             sourceFileName = System.IO.Path.GetFileName(file);
                             destinationFileName = System.IO.Path.Combine(actualJobFolderPath, sourceFileName);
                             System.IO.File.Copy(file, destinationFileName, true);
+                        }
+
+                        sessionFolderPathName = _fileBLL.GetFolderPath(sessionFolderPathName);
+                        
+                        try
+                        {
+                            files = Directory.GetFiles(sessionFolderPathName, "*.*", SearchOption.AllDirectories) != null ? Directory.GetFiles(sessionFolderPathName, "*.*", SearchOption.AllDirectories) : null;
+                            Array.ForEach(files, System.IO.File.Delete);
+                            var sessionDirectories = Directory.GetDirectories(sessionFolderPathName);
+                            foreach (var directory in sessionDirectories)
+                            {
+                                Directory.Delete(directory);
+                            }
+                            Directory.Delete(sessionFolderPathName);
+                            
+                        }
+                        catch
+                        {
+
                         }
                     }
 
